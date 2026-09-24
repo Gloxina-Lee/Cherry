@@ -6,7 +6,7 @@
 
 > AIが読み上げをアシストするWordPressテーマ。カラフルで親しみやすく、機能が充実しています。
 
-[![GitHub release](https://img.shields.io/github/v/release/mirai-mamori/Sakurairo.svg?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases/latest)[![GitHub Release Date](https://img.shields.io/github/release-date/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)[![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/Fuukei/Public_Repository?color=red&logo=jsdelivr&logoColor=red&style=for-the-badge)](https://www.jsdelivr.com/package/gh/mirai-mamori/sakurairo)
+> このリポジトリは独立して保守しています。元のテーマから自動更新を受け取らず、バージョン統計も送信しません。更新はこのリポジトリを手動でパッケージ化して適用してください。
 
 ![Alt](https://repobeats.axiom.co/api/embed/292776675b642d6dc86f264f4b71ed411ee9be91.svg "Repobeats analytics image")
 
@@ -18,7 +18,6 @@
 
 - 本テーマを利用しているサイト：https://docs.fuukei.org/demo/
 
-- [シームレスアップデートプラグイン](https://github.com/mirai-mamori/wp-seamless-update/releases/latest) を利用して、最新の更新をいち早く入手できます
 
 - 公式通信情報：[QQグループ:784229925](https://jq.qq.com/?_wv=1027&k=U5UJjRik)  ＆  [Telegramグループ:fksakurairo](https://t.me/fksakurairo)
 
@@ -54,7 +53,6 @@
 
 - 本テーマでは、Codestarさんの[Codestar Framework](https://github.com/Codestar/codestar-framework) を設定用フレームワークとして使用しています。
 
-- 本テーマでは、YahnisElstsさんの[Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) を使って、テーマのアップデートを提供しています。
 
 - 本テーマでは、Themeumさんの[Kirki](https://github.com/themeum/kirki) を使って、ビジュアルエディタ関連の機能を提供しています。
 

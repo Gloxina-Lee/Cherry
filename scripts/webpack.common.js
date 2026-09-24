@@ -1,0 +1,152 @@
+const define = require('./define')
+const webpack = require('webpack')
+const path = require('path')
+const { commitHash } = require('./commit_hash')
+/* const { VueLoaderPlugin } = require('vue-loader')
+ */const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const package_info = require('./package_info')
+
+const javascript_loader = {
+    loader: 'babel-loader',
+    options: {
+        presets: [
+            ['@babel/preset-env',
+                {
+                    useBuiltIns: 'usage',
+                    corejs: '3.46',
+                }
+            ]],
+        cacheDirectory: true,
+        cacheCompression: false,
+        assumptions: {
+            //https://babeljs.io/docs/en/assumptions
+            noDocumentAll: true,
+            noClassCalls: true,
+            noIncompleteNsImportDetection: true
+        }
+    }
+}
+module.exports = {
+    entry: {
+        app: './src/app/',
+        page: { import: "./src/page/", dependOn: 'app' }
+    },
+    output: {
+        filename: '[name].js',
+        assetModuleFilename: '[hash][ext][query]',
+        path: define.dist_path,
+        clean: true, // 在生成文件之前清空 output 目录
+    },
+    optimization: {
+        /* runtimeChunk: {
+            name: 'runtime',
+        }, */
+        splitChunks: {
+            chunks: 'async',
+            minSize: 40000,
+            maxSize: 244000,
+            minRemainingSize: 0,
+            minChunks: 1,
+            maxAsyncRequests: 30,
+            maxInitialRequests: 30,
+            //enforceSizeThreshold: 50000,
+            cacheGroups: {
+                polyfill: {
+                    test: /[\\/]node_modules[\\/](@babel|core-js|regenerator-runtime)[\\/]/,
+                    name: 'polyfill',
+                    chunks: 'initial',
+                    priority: 60,
+                    enforce: true,
+                    reuseExistingChunk: true
+                },
+                defaultVendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    priority: -10,
+                    reuseExistingChunk: true,
+                    minChunks: 2,
+                    chunks: "all"
+                },
+                default: {
+                    priority: -20,
+                    reuseExistingChunk: true,
+                },
+            },
+        },
+        moduleIds: 'deterministic'
+    },
+    module: {
+        rules: [
+            {
+                test: /\.ts$/, use: [
+                    javascript_loader,
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            allowTsInNodeModules: true
+                        }
+                    }]
+            },
+            {
+                test: /\.m?js$/,
+                exclude: /node_modules/,
+                use: javascript_loader
+            }, /* {
+                test: /\.vue$/,
+                use: [
+                    'vue-loader'
+                ]
+            }, */ {
+                test: /\.css$/i,
+                use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader", 'postcss-loader'],
+            },
+        ]
+    },
+    resolve: {
+        extensions: ['.js', '.json', '.ts'], // 自动判断后缀名，引入时可以不带后缀
+        fallback: {
+            buffer: require.resolve('buffer'),
+        },
+    },
+    plugins: [
+/*         new VueLoaderPlugin(),
+ */        new MiniCssExtractPlugin(),
+        new webpack.BannerPlugin({
+            raw: true,
+            entryOnly: true,
+            banner: `/*! iro ${commitHash} ${new Date().toLocaleDateString('zh-cn')}*/`,
+            include: 'app'
+        }),
+        new webpack.DefinePlugin({
+            BUILD_INFO: JSON.stringify({
+                hash: commitHash,
+                date: new Date().toLocaleDateString()
+            }),
+            PKG_INFO: JSON.stringify(package_info)
+        }),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    // Copy files inside external/ into dist root, preserving any subfolder structure
+                    from: '**/*',
+                    context: path.resolve(__dirname, 'external'),
+                    to: path.resolve(define.dist_path),
+                    noErrorOnMissing: true,
+                }
+            ]
+        })
+        /* new webpack.DefinePlugin({
+            'typeof document': JSON.stringify('object'),
+            'typeof window': JSON.stringify('object'),
+            DEBUG: undefined
+        }) */
+    ],
+    target: "browserslist",
+    devtool: "source-map",
+    cache: {
+        type: 'filesystem',
+        buildDependencies: {
+            config: [__filename]
+        }
+    }
+};

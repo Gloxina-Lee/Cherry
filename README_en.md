@@ -6,7 +6,7 @@
 
 > A WordPress theme that is built with AI-assisted reading features, colorful, user-friendly, well-rounded, and rich in functionalities. 
 
-[![GitHub release](https://img.shields.io/github/v/release/mirai-mamori/Sakurairo.svg?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases/latest)[![GitHub Release Date](https://img.shields.io/github/release-date/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)[![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/Fuukei/Public_Repository?color=red&logo=jsdelivr&logoColor=red&style=for-the-badge)](https://www.jsdelivr.com/package/gh/mirai-mamori/sakurairo)
+> This repository is maintained independently. It does not receive upstream theme updates or send version statistics. Package and deploy this repository manually for updates.
 
 ![Alt](https://repobeats.axiom.co/api/embed/292776675b642d6dc86f264f4b71ed411ee9be91.svg "Repobeats analytics image")
 
@@ -18,7 +18,6 @@
 
 - Blogs based on iro：https://docs.fuukei.org/demo/
 
-- Use the [Seamless Update Plugin](https://github.com/mirai-mamori/wp-seamless-update/releases/latest) to get the latest updates as soon as possible.
 
 - Communication channels：[QQ Group:784229925](https://jq.qq.com/?_wv=1027&k=U5UJjRik)  ＆  [Telegram Group:fksakurairo](https://t.me/fksakurairo)
 
@@ -55,7 +54,6 @@ Please fill in with the issue template. Thanks for your cooperation.
 
 - The theme uses Codestar [Codestar Framework](https://github.com/Codestar/codestar-framework) as settings framework. 
 
-- The theme uses YahnisElsts [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) to provide updates.
 
 - The theme uses Themeum [Kirki](https://github.com/themeum/kirki) to provide visual editor related functions.
 

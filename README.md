@@ -6,7 +6,7 @@
 
 > 一款具有 AI 辅助阅读功能的 WordPress 主题，多彩、友好、功能全面、体验完善。
 
-[![GitHub release](https://img.shields.io/github/v/release/mirai-mamori/Sakurairo.svg?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases/latest)[![GitHub Release Date](https://img.shields.io/github/release-date/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)[![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/Fuukei/Public_Repository?color=red&logo=jsdelivr&logoColor=red&style=for-the-badge)](https://www.jsdelivr.com/package/gh/mirai-mamori/sakurairo)
+> 此仓库独立维护，不接收原主题自动更新，也不向原主题发送版本统计。更新请自行打包并部署此仓库代码。
 
 ![Alt](https://repobeats.axiom.co/api/embed/292776675b642d6dc86f264f4b71ed411ee9be91.svg "Repobeats analytics image")
 
@@ -15,10 +15,6 @@
 [![image](https://s.nmxc.ltd/sakurairo_vision/@3.0/readme/cn.webp)](https://docs.fuukei.org/)
 
 ## 下载及使用相关：
-
-- 你可以前往 [Github Release](https://github.com/mirai-mamori/Sakurairo/releases/latest) 或 [Gitee 镜像](https://gitee.com/mirai-mamori/Sakurairo) 下载
-
-- 使用 [无缝更新插件](https://github.com/mirai-mamori/wp-seamless-update/releases/latest) 第一时间获取最新更新
 
 - 使用本主题的博客：https://docs.fuukei.org/demo/
 
@@ -61,7 +57,6 @@
 
 - 本主题使用 Codestar [Codestar Framework](https://github.com/Codestar/codestar-framework) 作为设置框架
 
-- 本主题使用 YahnisElsts [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 以提供主题更新功能
 
 - 本主题使用 Themeum [Kirki](https://github.com/themeum/kirki) 以提供可视化编辑器相关功能
 

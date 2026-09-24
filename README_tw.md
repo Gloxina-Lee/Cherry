@@ -6,7 +6,7 @@
 
 > 一款具有 AI 輔助閱讀功能的 WordPress 主題，多彩、友善、功能全面、體驗完善。
 
-[![GitHub release](https://img.shields.io/github/v/release/mirai-mamori/Sakurairo.svg?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases/latest)[![GitHub Release Date](https://img.shields.io/github/release-date/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)](https://github.com/mirai-mamori/Sakurairo/releases)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mirai-mamori/Sakurairo?style=for-the-badge&logo=appveyor)[![jsDelivr hits (GitHub)](https://img.shields.io/jsdelivr/gh/hm/Fuukei/Public_Repository?color=red&logo=jsdelivr&logoColor=red&style=for-the-badge)](https://www.jsdelivr.com/package/gh/mirai-mamori/sakurairo)
+> 此儲存庫獨立維護，不接收原主題自動更新，也不向原主題傳送版本統計。更新請自行封裝並部署此儲存庫程式碼。
 
 ![Alt](https://repobeats.axiom.co/api/embed/292776675b642d6dc86f264f4b71ed411ee9be91.svg "Repobeats analytics image")
 
@@ -18,7 +18,6 @@
 
 - 使用本主題的站點：https://docs.fuukei.org/demo/
 
-- 使用 [無縫更新插件](https://github.com/mirai-mamori/wp-seamless-update/releases/latest) 第一時間獲取最新更新
 
 - 主題交流：[QQ群:784229925](https://jq.qq.com/?_wv=1027&k=U5UJjRik)  ＆  [Telegram群:fksakurairo](https://t.me/fksakurairo)
 
@@ -55,7 +54,6 @@
 
 - 本主題使用 Codestar [Codestar Framework](https://github.com/Codestar/codestar-framework) 作為設置框架
 
-- 本主題使用 YahnisElsts [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker) 以提供主題更新功能
 
 - 本主题使用 Themeum [Kirki](https://github.com/themeum/kirki) 以提供可視化編輯器相關功能
 
