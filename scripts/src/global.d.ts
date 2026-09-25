@@ -79,7 +79,6 @@ declare namespace _iro {
     const skin_bg2: string
     const skin_bg3: string
     const skin_bg4: string
-    const meting_api_url: string | undefined
     const code_highlight: "prism" | "hljs" | "custom"
     const theme_mathjax: boolean
     const code_highlight_prism: {
@@ -100,7 +99,6 @@ declare namespace _iro {
      */
     const cache_cover: boolean
     const site_bg_as_cover: boolean
-    const float_player_on: boolean
     const yiyan_api: Array<string>
     /**
      * 是否从CDN源加载第三方库

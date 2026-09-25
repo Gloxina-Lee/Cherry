@@ -140,19 +140,6 @@ $reception_background = iro_opt('reception_background');
     <?php endif; ?>
   </div>
 </div>
-<?php if (iro_opt('aplayer_server') != 'off'): ?>
-  <div id="aplayer-float" style="z-index: 100;" class="aplayer"
-    data-id="<?php echo esc_attr(iro_opt('aplayer_playlistid', '')); ?>"
-    data-server="<?php echo esc_attr(iro_opt('aplayer_server')); ?>"
-    data-preload="<?php echo esc_attr(iro_opt('aplayer_preload')); ?>"
-    data-type="playlist"
-    data-fixed="true"
-    data-order="<?php echo esc_attr(iro_opt('aplayer_order')); ?>"
-    data-volume="<?php echo esc_attr(iro_opt('aplayer_volume', '')); ?>"
-    data-theme="<?php echo esc_attr(iro_opt('theme_skin')); ?>">
-  </div>
-<?php endif; ?>
-
 <?php echo iro_opt('footer_addition', ''); ?>
 </body>
 <?php if (iro_opt("reception_background_blur",false)): // 使用独立遮罩，防止大面积子元素fixed等定位方式失效?>

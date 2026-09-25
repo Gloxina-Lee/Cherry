@@ -26,9 +26,6 @@ importers:
       activate-power-mode:
         specifier: github:Fuukei/activate-power-mode
         version: https://codeload.github.com/Fuukei/activate-power-mode/tar.gz/af3f686f10267f8ec50e15e997ea619aae9a90b5
-      aplayer:
-        specifier: github:Fuukei/APlayer
-        version: https://codeload.github.com/Fuukei/APlayer/tar.gz/cdcc1b1ecb75555edc4f5058d8973a52adf63802
       baguettebox.js:
         specifier: ^1.12.0
         version: 1.12.0
@@ -1240,10 +1237,6 @@ packages:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
 
-  aplayer@https://codeload.github.com/Fuukei/APlayer/tar.gz/cdcc1b1ecb75555edc4f5058d8973a52adf63802:
-    resolution: {tarball: https://codeload.github.com/Fuukei/APlayer/tar.gz/cdcc1b1ecb75555edc4f5058d8973a52adf63802}
-    version: 1.10.1
-
   aproba@2.0.0:
     resolution: {integrity: sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==}
 
@@ -1299,9 +1292,6 @@ packages:
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
-
-  balloon-css@1.2.0:
-    resolution: {integrity: sha512-urXwkHgwp6GsXVF+it01485Z2Cj4pnW02ICnM0TemOlkKmCNnDLmyy+ZZiRXBpwldUXO+aRNr7Hdia4CBvXJ5A==}
 
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
@@ -2843,9 +2833,6 @@ packages:
   sirv@2.0.3:
     resolution: {integrity: sha512-O9jm9BsID1P+0HOi81VpXPoDxYP374pkOLzACAoyUQ/3OUVndNpsz6wMnY2z+yOxzbllCKZrM+9QrWsv4THnyA==}
     engines: {node: '>= 10'}
-
-  smoothscroll@0.4.0:
-    resolution: {integrity: sha512-sggQ3U2Un38b3+q/j1P4Y4fCboCtoUIaBYoge+Lb6Xg1H8RTIif/hugVr+ErMtIDpvBbhQfTjtiTeYAfbw1ZGQ==}
 
   source-map-js@1.2.1:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
@@ -4584,11 +4571,6 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
-  aplayer@https://codeload.github.com/Fuukei/APlayer/tar.gz/cdcc1b1ecb75555edc4f5058d8973a52adf63802:
-    dependencies:
-      balloon-css: 1.2.0
-      smoothscroll: 0.4.0
-
   aproba@2.0.0:
     optional: true
 
@@ -4650,8 +4632,6 @@ snapshots:
   baguettebox.js@1.12.0: {}
 
   balanced-match@1.0.2: {}
-
-  balloon-css@1.2.0: {}
 
   base64-js@1.5.1: {}
 
@@ -6173,8 +6153,6 @@ snapshots:
       '@polka/url': 1.0.0-next.21
       mrmime: 1.0.1
       totalist: 3.0.1
-
-  smoothscroll@0.4.0: {}
 
   source-map-js@1.2.1: {}
 

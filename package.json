@@ -1,0 +1,8 @@
+{
+  "name": "cherry-theme-preview",
+  "private": true,
+  "scripts": {
+    "wp:start": "pwsh -NoProfile -File dev/wp-preview.ps1 start",
+    "wp:stop": "pwsh -NoProfile -File dev/wp-preview.ps1 stop"
+  }
+}

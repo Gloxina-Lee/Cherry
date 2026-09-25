@@ -117,14 +117,6 @@ function font_end_js_control()
         $lightGallery = str_replace(PHP_EOL, '', iro_opt('lightgallery_option'));
         $iro_opt['lightGallery'] = json_decode($lightGallery, true);
     }
-    if (iro_opt('aplayer_server') != 'off') {
-        $iro_opt['float_player_on'] = true;
-        if (!empty(iro_opt('custom_music_api'))) {
-            $iro_opt['meting_api_url'] = iro_opt('custom_music_api'); //使用外部api/歌单
-        } else {
-            $iro_opt['meting_api_url'] = rest_url('sakura/v1/meting/aplayer'); //使用内建
-        }
-    }
     if (iro_opt('code_highlight_method', 'hljs') == 'prism') {
         $iro_opt['code_highlight_prism'] = [
             'line_number_all' => check(iro_opt('code_highlight_prism_line_number_all')),

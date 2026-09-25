@@ -4,7 +4,6 @@ import { importExternal } from '../common/npmLib';
 const bgvideo = document.getElementById<HTMLVideoElement>("bgvideo");
 const videoList: Array<string> = _iro.movies.name?.split(",") || []// 视频列表
 let unplayedIndex = new Array(videoList.length).fill(0).map((_, index) => index)
-let aplayersToResume: any[] = []
 //from Siren
 declare global {
     interface Window {
@@ -43,13 +42,6 @@ function splay() {
     try {
         document.querySelector<HTMLElement>(".video-stu").style.bottom = "-100px";
         document.querySelector<HTMLElement>(".focusinfo").style.top = "-999px";
-        if (_iro.float_player_on) {
-            import('./aplayer').then(({ pauseAllPlayer }) => {
-                aplayersToResume = pauseAllPlayer()
-                bgvideo.play();
-            })
-            return
-        }
     } catch (e) {
         console.warn(e)
     }
@@ -68,9 +60,6 @@ function spause() {
         document.querySelector<HTMLElement>(".focusinfo").style.top = "49.3%";
     } catch { }
     bgvideo.pause();
-    for (const player of aplayersToResume) {
-        player.play()
-    }
 }
 /**
  * 自动续播 - 播放

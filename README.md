@@ -8,6 +8,22 @@
 
 > 此仓库独立维护，不接收原主题自动更新，也不向原主题发送版本统计。更新请自行打包并部署此仓库代码。
 
+## 本地 Docker 预览
+
+在仓库根目录启动 Docker Desktop 后运行：
+
+```powershell
+pnpm wp:start
+```
+
+打开 http://127.0.0.1:8396/ 查看主题；后台地址为 http://127.0.0.1:8396/wp-admin/ 。首次安装的管理员账号为 `cherryadmin`，密码为 `cherry-preview-2026`。预览站使用独立的容器和数据卷，主题目录从当前工作区只读挂载；本机修改主题文件后刷新页面即可查看效果。
+
+```powershell
+pnpm wp:stop
+```
+
+停止命令保留测试站数据，下一次运行 `pnpm wp:start` 会继续使用原站点。前端源码位于 `scripts/`，修改后还需重新构建并更新主题实际加载的 `js/` 文件。
+
 ![Alt](https://repobeats.axiom.co/api/embed/292776675b642d6dc86f264f4b71ed411ee9be91.svg "Repobeats analytics image")
 
 ## 版本简介：

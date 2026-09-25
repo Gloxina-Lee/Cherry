@@ -1,6 +1,8 @@
 tempCodeRunnerFile.php
 .vscode
 inc/blocks/node_modules
+/node_modules/
+/.pnpm-store/
 
 AGENTS.md
 MODULES.md

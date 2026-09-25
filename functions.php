@@ -253,26 +253,6 @@ function i18n_templates_name ($translated_name, $original_name) {
             'zh_TW' => '友情連結模板',
             'ja'    => 'フレンドリーリンクテンプレート',
         ),
-        'Bangumi Template' => array(
-            'zh_CN' => '追番模板',
-            'zh_TW' => '追番模板',
-            'ja'    => 'バンガミテンプレート',
-        ),
-        'Bilibili FavList Template' => array(
-            'zh_CN' => 'Bilibili 收藏模板',
-            'zh_TW' => 'Bilibili 收藏模板',
-            'ja'    => 'Bilibili お気に入りテンプレート',
-        ),
-        'Bilibili FollowVideos Template' => array(
-            'zh_CN' => 'Bilibili 追剧模板',
-            'zh_TW' => 'Bilibili 追劇模板',
-            'ja'    => 'Bilibili フォロービデオテンプレート',
-        ),
-        'Steam Library Template' => array(
-            'zh_CN' => 'Steam 库模板',
-            'zh_TW' => 'Steam 庫模板',
-            'ja'    => 'Steamライブラリテンプレート',
-        ),
         'Archive Template' => array(
             'zh_CN' => '归档模板',
             'zh_TW' => '歸檔模板',
@@ -646,19 +626,6 @@ require get_template_directory() . '/inc/api.php';
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * 初始化Bilibili收藏夹缓存定时任务
- */
-add_action('init', function() {
-    if (class_exists('Sakura\API\BilibiliFavListCron')) {
-        Sakura\API\BilibiliFavListCron::init();
-    }
-});
-
-// 加载缓存设置页
-
-require get_template_directory() . '/inc/cache_settings.php';
 
 /**
  * Customizer功能
@@ -2625,128 +2592,6 @@ function register_shortcodes() {
         return $iframes;
      });
 
-    add_shortcode('steamuser', function ($atts, $content = null) {
-        $key = iro_opt('steam_key');
-        if (empty($key)) {
-            // 多语言支持
-            $lang = get_user_locale();
-            if ($lang == 'zh_TW') {
-                return '<div class="steam-error">需在Steam模板設置填寫Steam API KEY</div>';
-            } elseif ($lang == 'ja') {
-                return '<div class="steam-error">SteamテンプレートでSteam API KEYを設定してください</div>';
-            } elseif ($lang == 'en_US') {
-                return '<div class="steam-error">Please fill in Steam API KEY in Steam template settings</div>';
-            } else {
-                return '<div class="steam-error">需在Steam模板设置填写Steam API KEY</div>';
-            }
-        }
-        preg_match_all('/\b7656\d{13}\b/', $content, $matches);
-        $output = '<div class="steam-user-card">';
-        foreach ($matches[0] as $steamid) {
-            $url = 'https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=' . $key . '&steamids=' . $steamid;
-            $response = get_transient('steam_stat_'.$steamid);
-            if (!$response) {
-                $response = wp_remote_get($url);
-                set_transient('steam_stat_'.$steamid, $response, 180);
-            }
-            
-            // 添加错误检查，防止WP_Error被当作数组使用
-            if (is_wp_error($response)) {
-                $output .= '<div class="steam-error">API错误: ' . $response->get_error_message() . '</div>';
-                continue;
-            }
-            
-            $data = json_decode($response["body"], true);
-            $player = $data['response']['players'][0] ?? [];
-            
-            // 多语言支持
-            $lang = get_user_locale();
-            $status_text = [
-                'offline' => [
-                    'zh_CN' => '离线',
-                    'zh_TW' => '離線',
-                    'ja' => 'オフライン',
-                    'en_US' => 'Offline'
-                ],
-                'online' => [
-                    'zh_CN' => '在线',
-                    'zh_TW' => '在線',
-                    'ja' => 'オンライン',
-                    'en_US' => 'Online'
-                ],
-                'away' => [
-                    'zh_CN' => '离开',
-                    'zh_TW' => '離開',
-                    'ja' => '退席中',
-                    'en_US' => 'Away'
-                ],
-                'unknown' => [
-                    'zh_CN' => '未知状态，请提交issue',
-                    'zh_TW' => '未知狀態，請提交issue',
-                    'ja' => '不明なステータス、issueを提出してください',
-                    'en_US' => 'Unknown status, please submit an issue'
-                ],
-                'playing' => [
-                    'zh_CN' => '正在玩',
-                    'zh_TW' => '正在玩',
-                    'ja' => 'プレイ中',
-                    'en_US' => 'Playing'
-                ],
-                'last_online' => [
-                    'zh_CN' => '上次在线',
-                    'zh_TW' => '上次在線',
-                    'ja' => '最終オンライン',
-                    'en_US' => 'Last online'
-                ],
-                'error' => [
-                    'zh_CN' => 'ID填写错误，请检验',
-                    'zh_TW' => 'ID填寫錯誤，請檢驗',
-                    'ja' => 'IDが間違っています、確認してください',
-                    'en_US' => 'ID error, please check'
-                ]
-            ];
-            
-            $status = match($player['personastate'] ?? 0) {
-                0 => $status_text['offline'][$lang] ?? $status_text['offline']['zh_CN'],
-                1 => $status_text['online'][$lang] ?? $status_text['online']['zh_CN'],
-                3 => $status_text['away'][$lang] ?? $status_text['away']['zh_CN'],
-                default => $status_text['unknown'][$lang] ?? $status_text['unknown']['zh_CN']
-            };
-            
-            if (empty($data['response']['players'][0])) {
-                $output .= '<div class="steam-error">' . ($status_text['error'][$lang] ?? $status_text['error']['zh_CN']) . '</div>';
-            } else {
-                $avatar = esc_attr(substr($player['avatar'], 0, strrpos($player['avatar'], '.')) . '_full' . substr($player['avatar'], strrpos($player['avatar'], '.')));
-                $output .= '<div class="steam-profile">';
-                $output .= '<div class="steam-profile-header">';
-                $output .= '<img class="steam-avatar" src="' . $avatar . '" alt="Steam Avatar">';
-                $output .= '<div class="steam-profile-info">';
-                $output .= '<a href="' . esc_attr($player['profileurl']) . '" target="_blank" class="steam-username"><i class="fa-brands fa-steam"></i> ' . esc_attr($player['personaname']) . '</a>';
-                $output .= '<div class="steam-status status-' . strtolower(str_replace(' ', '-', $status)) . '">' . $status . '</div>';
-                $output .= '</div>'; // .steam-profile-info
-                $output .= '</div>'; // .steam-profile-header
-
-                if(!empty($player['gameextrainfo'])) {
-                    $output .= '<div class="steam-game-info">';
-                    $output .= '<a href="https://store.steampowered.com/app/' . esc_attr($player['gameid']) . '/" target="_blank" class="steam-game-name"><i class="fa-solid fa-gamepad"></i> ' . 
-                        ($status_text['playing'][$lang] ?? $status_text['playing']['zh_CN']) . ': ' . esc_attr($player['gameextrainfo']) . '</a>';
-                    $output .= '<img class="steam-game-banner" src="https://shared.cdn.steamchina.queniuam.com/store_item_assets/steam/apps/' . esc_attr($player['gameid']) . '/header.jpg" alt="Game Banner">';
-                    $output .= '</div>'; // .steam-game-info
-                }
-                
-                if (($player['personastate'] ?? 0) === 0 && isset($player['lastlogoff'])) {
-                    $last_online = wp_date('Y-m-d H:i', $player['lastlogoff']);
-                    $output .= '<div class="steam-last-online"><i class="fa-regular fa-clock"></i> ' . 
-                        ($status_text['last_online'][$lang] ?? $status_text['last_online']['zh_CN']) . '：' . esc_attr($last_online) . '</div>';
-                }
-                
-                $output .= '</div>'; // .steam-profile
-            }
-        }
-        $output .= '</div>'; // .steam-user-card
-        return $output;
-    });
-
     add_shortcode('checkbox', function ($attr, $content = null) {
         $attr = shortcode_atts(array("checked" => "", "inline" => ""), $attr);
         return sprintf('
@@ -4183,37 +4028,6 @@ function iro_action_operator()
     $direct_info = sanitize_key($_GET['iro_act']);
 
     switch($direct_info){
-        case 'bangumi' :
-            $direct_url = 'https://api.bgm.tv/v0/users/' . (iro_opt('bangumi_id') ?: '944883') . '/collections';
-            header("Location: $direct_url", true, 302);
-            break;
-
-        case 'mal' :
-            switch (iro_opt('my_anime_list_sort')) {
-                case 1: // Status and Last Updated
-                    $sort = 'order=16&order2=5&status=7';
-                    break;
-                case 2: // Last Updated
-                    $sort = 'order=5&status=7';
-                    break;
-                case 3: // Status
-                    $sort = 'order=16&status=7';
-                    break;
-            }
-            $direct_url = 'https://myanimelist.net/animelist/' . (iro_opt('my_anime_list_username') ?: 'username') . '/load.json?' . $sort;
-            header("Location: $direct_url", true, 302);
-            break;
-        
-        case 'steam_library' :
-            $direct_url = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/?key=' . iro_opt('steam_key') .'&steamid=' . iro_opt('steam_id') .'&include_appinfo=1&include_played_free_games=1&include_free_games=1';
-            header("Location: $direct_url", true, 302);
-            break;
-
-        case 'playlist' :
-            $direct_url = rest_url('sakura/v1/meting/aplayer') . '?_wpnonce=' . wp_create_nonce('wp_rest') . '&server=' . (iro_opt('aplayer_server') ?: 'netease') . '&type=playlist&id=' . (iro_opt('aplayer_playlistid') ?: '5380675133');
-            header("Location: $direct_url", true, 302);
-            break;
-
         case 'gallery_init':
             include_once('inc/classes/gallery.php');
             $gallery = new Sakura\API\gallery();

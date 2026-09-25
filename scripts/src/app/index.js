@@ -113,11 +113,6 @@ function powermode() {
 //afterDOMContentLoaded
 
 ready(function () {
-    if (_iro.float_player_on) {
-        if (!isMobile()) {
-            import('./aplayer').then(({ aplayerInit }) => aplayerInit())
-        }
-    }
     if (_iro.land_at_home) initTypedJs()
     Promise.all([checkCoverBackground(), checkBgImgSetting()])
         .then(() => {

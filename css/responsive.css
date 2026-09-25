@@ -702,19 +702,6 @@
     display: inline;
   }
 
-  .steam-profile-header {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .steam-avatar {
-    margin-right: 0;
-    margin-bottom: 12px;
-  }
-
-  .steam-game-name {
-    text-align: center;
-  }
 }
 
 @media (min-width: 768px) {

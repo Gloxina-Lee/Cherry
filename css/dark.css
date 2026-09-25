@@ -170,7 +170,6 @@ body.dark h1.cat-title,
 body.dark .comment-respond input,
 body.dark .comment-respond textarea,
 body.dark .siren-checkbox-label,
-body.dark .aplayer .aplayer-list ol li .aplayer-list-author,
 body.dark,
 body.dark input,
 body.dark select,
@@ -251,31 +250,6 @@ body.dark h1.page-title {
   color: var(--dark-text-primary);
 }
 
-body.dark #aplayer-float,
-body.dark .aplayer.aplayer-fixed .aplayer-body,
-body.dark .aplayer .aplayer-miniswitcher,
-body.dark .aplayer .aplayer-pic {
-  color: var(--dark-text-primary);
-  background-color: var(--dark-bg-secondary) !important;
-}
-
-body.dark #aplayer-float .aplayer-lrc-current {
-  color: transparent !important;
-}
-
-body.dark .aplayer.aplayer-fixed .aplayer-lrc {
-  text-shadow: -1px -1px 0 var(--dark-text-secondary);
-}
-
-body.dark .aplayer.aplayer-fixed .aplayer-list {
-  border: none !important;
-}
-
-body.dark .aplayer.aplayer-fixed .aplayer-info,
-body.dark .aplayer .aplayer-list ol li {
-  border-top: none !important;
-}
-
 body.dark .font-family-controls button,
 body.dark .menu-list li {
   box-shadow: var(--dark-shadow-normal);
@@ -325,7 +299,6 @@ body.dark .post-footer>:not(section):hover,body.dark .post-footer >section > :ho
   background: #1a1a1acc;
 }
 
-body.dark .aplayer .aplayer-list ol li.aplayer-list-light,
 body.dark #preload {
   background: #333333;
 }
@@ -333,9 +306,7 @@ body.dark #preload {
 /* 合并主题色交互元素 */
 body.dark .scrollbar,
 body.dark .butterBar-message,
-body.dark .aplayer .aplayer-list ol li:hover,
 body.dark .pattern-center:after,
-body.dark .aplayer .aplayer-list ol li.aplayer-list-light .aplayer-list-cur,
 body.dark .menu-list li:hover,
 body.dark .font-family-controls button:hover {
   background: var(--article-theme-highlight, var(--theme-skin-dark)) !important;
@@ -402,10 +373,6 @@ body.dark .excerpt-tip {
 
 body.dark .post-excerpt i{
   color: #888 !important;
-}
-
-body.dark .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon:hover path {
-  fill: var(--theme-skin-dark);
 }
 
 body.dark #moblieGoTop:hover,
@@ -729,75 +696,6 @@ body.dark input[type=reset],
 body.dark input[type=submit],
 body.dark .top-social .inner img:hover {
   box-shadow: none;
-}
-
-/* Dark mode styles */
-body.dark .steam-profile {
-  background: var(--dark-bg-secondary);
-  border: 1px solid var(--dark-border-color);
-  box-shadow: var(--dark-shadow-normal);
-}
-
-body.dark .steam-profile:hover {
-  box-shadow: var(--dark-shadow-hover);
-}
-
-body.dark .steam-profile-header {
-  background: rgba(30, 30, 30, 0.6);
-  border-bottom: 1px solid var(--dark-border-color) !important;
-}
-
-body.dark .steam-avatar {
-  border-color: var(--dark-border-color);
-}
-
-body.dark .steam-username {
-  color: #e0e0e0;
-}
-
-body.dark .steam-username:hover {
-  color: var(--theme-skin-dark, var(--theme-skin-matching));
-}
-
-body.dark .steam-status {
-  background: rgba(50, 50, 50, 0.6);
-  color: #aaa;
-}
-
-body.dark .steam-status.status-在线,
-body.dark .steam-status.status-online,
-body.dark .steam-status.status-在線,
-body.dark .steam-status.status-オンライン {
-  background: rgba(66, 186, 150, 0.15);
-  color: #5ecfad;
-}
-
-body.dark .steam-status.status-离开,
-body.dark .steam-status.status-away,
-body.dark .steam-status.status-離開,
-body.dark .steam-status.status-退席中 {
-  background: rgba(255, 193, 7, 0.15);
-  color: #ffd54f;
-}
-
-body.dark .steam-game-name {
-  color: #e0e0e0;
-}
-
-body.dark .steam-game-name:hover {
-  color: var(--theme-skin-dark, var(--theme-skin-matching));
-}
-
-body.dark .steam-last-online {
-  color: #aaa;
-  border-top: 1px solid var(--dark-border-color) !important;
-  background: rgba(30, 30, 30, 0.4);
-}
-
-body.dark .steam-error {
-  background: rgba(255, 193, 7, 0.05);
-  color: #ffd54f;
-  border-left: 4px solid #ffc107;
 }
 
 body.dark .medal-capsule.bronze {

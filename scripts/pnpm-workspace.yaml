@@ -1,0 +1,4 @@
+allowBuilds:
+  baguettebox.js: set this to true or false
+  canvas: set this to true or false
+  core-js: set this to true or false

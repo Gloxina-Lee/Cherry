@@ -56,13 +56,6 @@ export default function initPjax() {
         for (let i = 0; i < _p.length; i++) {
             _p[i].classList.remove("head-copyright");
         }
-        let _div = document.getElementsByTagName("div"),
-            tla = document.getElementById("to-load-aplayer");
-        tla && tla.addEventListener("click", () => {
-            for (let i = 0; i < _div.length; i++) {
-                _div[i].classList.remove("load-aplayer");
-            }
-        });
         let iconflat = document.getElementsByClassName("iconflat");
         if (iconflat.length != 0) {
             iconflat[0].style.width = '50px';

@@ -249,7 +249,6 @@ body.dark .headertop-down svg path
 body.dark img,
 body.dark .highlight-wrap,
 body.dark iframe,
-body.dark .entry-content .aplayer,
 body.dark .post-thumb video
 {filter:brightness(<?=iro_opt('theme_darkmode_img_bright'); ?>);}
 
