@@ -10,7 +10,6 @@ import LoadNextPage from './pagination'
 import debounce from '@mui/utils/debounce'
 import { code_highlight_style } from '../common/code-highlight'
 import prepareEmoji from './emoji'
-import initAnnotations from './annotation'
 import initLinkSubmission from './link_form'
 import init_steamCard from './steam_card'
 import ghcardTheme from './ghcard_theme'
@@ -492,7 +491,6 @@ function whilePjaxComplete() {
         prepareEmoji()
         XCS()
         resizeTOC()
-        initAnnotations();
         apply_post_theme_color();
         initLinkSubmission();
         init_steamCard();
@@ -512,7 +510,6 @@ function whileLoaded() {
     tableOfContentScroll(true);
     addComtListener()
     resizeTOC()
-    initAnnotations();
     apply_post_theme_color();
     document.addEventListener('ajax_comment_complete', afterAjaxCommentComplete)
     initLinkSubmission();

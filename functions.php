@@ -1822,12 +1822,6 @@ function GBsubstr($string, $start, $length)
     }
 }
 
-/**
- * chatgpt excerpt
- */
-require_once __DIR__ . '/inc/chatgpt/hooks.php';
-IROChatGPT\apply_chatgpt_hook();
-
 function excerpt_length($exp)
 {
     if (!function_exists('mb_substr')) {

@@ -545,7 +545,7 @@ animation: slow-rotate 10s linear infinite;
     max-width: 70%;
 }
 
-.ai-excerpt-tip{
+.excerpt-tip{
     margin-right: 40%;
 }
 

@@ -7,7 +7,6 @@
  * @package Sakurairo
  */
 $post_id = get_the_ID();
-$ai_excerpt = get_post_meta($post_id, "ai_summon_excerpt", true); 
 ?>
 
 <?php
@@ -21,11 +20,6 @@ if (iro_opt('article_auto_toc', 'true') && check_title_tags($post->post_content)
 	<?php if (should_show_title()) { 
 		get_template_part('tpl/single-entry-header');
 	} ?>
-	<?php if ($ai_excerpt) { ?>
-	<div class="ai-excerpt">
-		<h4><i class="fa-solid fa-atom"></i><?php esc_html_e("AI Excerpt", "sakurairo"); ?></h4><?php echo esc_html($ai_excerpt); ?>
-	</div>
-	<?php } ?>
 	<div class="entry-content">
 		<?php the_content('', true); ?>
 		<?php

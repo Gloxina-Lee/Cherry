@@ -152,8 +152,6 @@ if (!function_exists('get_post_cover_html')) {
             $cover_html = get_post_cover_html();
 
             // 摘要字数限制
-            $ai_excerpt = get_post_meta($post->ID, "ai_summon_excerpt", true);
-            $excerpt = has_excerpt();
             ?>
             <article class="post post-list-thumb" style ="<?php echo var_post_theme_color(get_the_ID()) != 'false' ? "--article-theme-highlight: " . var_post_theme_color(get_the_ID()) : ""; ?>" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <div class="post-thumb">
@@ -177,12 +175,7 @@ if (!function_exists('get_post_cover_html')) {
                     </a>
                 </div>
                 <div class="post-excerpt">
-                    <?php if (!empty($ai_excerpt) && empty($excerpt)) { ?>
-                        <div class="ai-excerpt-tip"><i class="fa-solid fa-atom"></i><?php _e("AI Excerpt", "sakurairo") ?></div>
-                    <?php } ?>
-                    <?php if (empty($ai_excerpt)) { ?>
-                        <div class="ai-excerpt-tip"><i class="fa-solid fa-bars-staggered"></i><?php _e("Excerpt", "sakurairo") ?></div>
-                    <?php } ?>
+                    <div class="excerpt-tip"><i class="fa-solid fa-bars-staggered"></i><?php _e("Excerpt", "sakurairo") ?></div>
                     <?php the_excerpt() ?>
                 </div>
             </article>

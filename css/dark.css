@@ -126,7 +126,6 @@ body.dark input[type=url]:focus,
 body.dark input[type=week]:focus,
 body.dark textarea:focus,
 body.dark .author_info,
-body.dark .ai-excerpt,
 body.dark .shortcodestyle,
 body.dark .conversations-code-text,
 body.dark .showcard {
@@ -138,7 +137,6 @@ body.dark .showcard {
 
 /* 聚合hover效果相同的元素 */
 body.dark .reward-row:hover,
-body.dark .ai-excerpt:hover,
 body.dark .shortcodestyle:hover,
 body.dark .conversations-code-text:hover {
   box-shadow: 0 1px 30px -2px var(--article-theme-highlight,var(--theme-skin-dark)) !important;
@@ -163,8 +161,7 @@ body.dark .post-list p {
 /* 合并标题和链接文字颜色 */
 body.dark .entry-title a,
 body.dark .menhera-container .emoji-item,
-body.dark .shuoshuo-content p,
-body.dark .iro-annotation-popup .explanation{
+body.dark .shuoshuo-content p{
   color: var(--dark-text-secondary);
 }
 
@@ -399,7 +396,7 @@ body.dark .post-meta a:hover {
   color: var(--article-theme-highlight,var(--theme-skin-dark)) !important;
 }
 
-body.dark .ai-excerpt-tip {
+body.dark .excerpt-tip {
   color: #888;
 }
 
@@ -590,8 +587,7 @@ body.dark .nav-search-wrapper i,
 body.dark .header-user-menu a,
 body.dark .header-user-menu .header-user-name,
 body.dark .header-user-avatar a i,
-body.dark .no-logged a,
-body.dark .iro-annotation-popup .term {
+body.dark .no-logged a {
   color: var(--dark-text-primary) !important;
   transition: all 0.4s ease-in-out;
 }
@@ -802,10 +798,6 @@ body.dark .steam-error {
   background: rgba(255, 193, 7, 0.05);
   color: #ffd54f;
   border-left: 4px solid #ffc107;
-}
-
-body.dark .iro-annotation-popup{
-  background-color: var(--dark-bg-secondary);
 }
 
 body.dark .medal-capsule.bronze {
