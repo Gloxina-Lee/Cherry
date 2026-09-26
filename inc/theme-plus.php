@@ -274,7 +274,7 @@ function the_headPattern(){
     $center = 'single-center';
     $header = 'single-header';
     //$ava = iro_opt('personal_avatar', '') ? iro_opt('personal_avatar', '') : get_avatar_url(get_the_author_meta('user_email'));
-    $t .= the_title( '<h1 class="entry-title" style="' . esc_attr($title_style) . '">', '</h1>', false);
+    $t .= the_title( '<h1 class="entry-title" style="' . esc_attr($title_style) . '"><span class="entry-title-text">', '</span></h1>', false);
     $t .= '<span class="toppic-line"></span>';
     $t .= get_entry_census_html(true);
     endwhile; endif;
@@ -329,7 +329,7 @@ function the_video_headPattern(bool $isHls = false)
             //$ava = iro_opt('personal_avatar', '') ? iro_opt('personal_avatar', '') : get_avatar_url(get_the_author_meta('user_email'));
             $btn_playControl = '<button id="cv-pc" class="coverVideo-btn" onclick="coverVideo()"><i class="fa-solid fa-pause"></i></button>';
 //            $btn_volumeControl = '<button id="cv-vc" class="coverVideo-btn" onclick="coverVideoMute()"><i class="fa-solid fa-volume-xmark"></i></button>';
-            $t .= the_title('<h1 class="entry-title">', $btn_playControl./* $btn_volumeControl. */'</h1>', false);
+            $t .= the_title('<h1 class="entry-title"><span class="entry-title-text">', '</span>'.$btn_playControl./* $btn_volumeControl. */'</h1>', false);
             $t .= get_entry_census_html(true);
         }
     } elseif (is_page()) {

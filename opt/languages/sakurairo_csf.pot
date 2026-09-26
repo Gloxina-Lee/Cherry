@@ -3764,10 +3764,7 @@ msgid "Vision Resource Basepath"
 msgstr ""
 
 #: options/theme-options.php:4111
-msgid ""
-"This link directory structure needs to be consistent with the <a href=\"https://github.com/Fuukei/Sakurairo_Vision\">Sakurairo Vision</"
-"a> repositories officially provided by fuukei, otherwise some resources 404 may appear. The image source officially provided by <a "
-"href=\"https://waf.pro/\">WAFPRO</a> is adopted by default."
+msgid "This link directory structure needs to be consistent with the <a href=\"https://github.com/Fuukei/Sakurairo_Vision\">Sakurairo Vision</a> repositories officially provided by fuukei, otherwise some resources 404 may appear."
 msgstr ""
 
 #: options/theme-options.php:4117

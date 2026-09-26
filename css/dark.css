@@ -6,6 +6,7 @@
   --dark-bg-hover: rgba(26, 26, 26, 0.8);
   --dark-text-primary: #CCCCCC;
   --dark-text-secondary: #999999;
+  --dark-reading-text: #D4D4D4;
   --dark-text-tertiary: #7D7D7D;
   --dark-border-color: #7d7d7d30;
   
@@ -19,6 +20,14 @@
 body.dark .wrapper,
 body.dark .headertop-bar::after {
   background: var(--dark-bg-primary) !important;
+}
+
+body.dark .entry-content,
+body.dark .entry-content p,
+body.dark .entry-content ul,
+body.dark .entry-content ol,
+body.dark .entry-content blockquote {
+  color: var(--dark-reading-text) !important;
 }
 
 body.dark .site-footer {
@@ -149,9 +158,6 @@ body.dark .showcard:hover{
 }
 
 /* 聚合相同文字颜色的元素 */
-body.dark .entry-content p,
-body.dark .entry-content ul,
-body.dark .entry-content ol,
 body.dark .comments .body p,
 body.dark .post-excerpt,
 body.dark .post-list p {
@@ -405,6 +411,10 @@ body.dark .pattern-center h1.entry-title {
 
 body.dark h3#comments-list-title{
   color: var(--dark-text-primary);
+}
+
+body.dark #comments-list-title .noticom {
+  color: #B8B8B8;
 }
 
 body.dark .comment-respond input,

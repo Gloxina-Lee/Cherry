@@ -82,7 +82,8 @@ $show_user_avatar = (bool)iro_opt('nav_user_menu',true);
             'theme_location' => 'primary', 
             'container' => 'div', 
             'container_class' => 'mo_nav_item',
-            'walker' => new Iro_mo_nav(),
+            // The default page list needs WordPress's page walker, not a nav-menu walker.
+            'walker' => has_nav_menu('primary') ? new Iro_mo_nav() : null,
             ]); ?>
   </div>
   <?php //移动端结构结束 ?>

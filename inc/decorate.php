@@ -371,16 +371,22 @@ border-radius: <?=iro_opt('avatar_radius'); ?>px;
 /*标题横线动画*/
 <?php if (iro_opt('article_title_line', 'true')): ?>
 @media (min-width:860px) {
-.single-center .single-header h1.entry-title::after {
+.single-center .single-header .entry-title-text {
+    display: inline-block;
+    position: relative;
+    isolation: isolate;
+}
+
+.single-center .single-header .entry-title-text::after {
     content: '';
     position: absolute;
-    top: 40%;
-    left: 10%;
+    bottom: 0.15em;
+    left: 0;
     border-radius: 10px;
     display: inline-block;
     width: 20%;
     height: 10px;
-    z-index: 1;
+    z-index: -1;
     background-color: var(--article-theme-highlight,var(--theme-skin-matching));
     animation: lineWidth 2s <?=iro_opt('page_title_animation_time'); ?>s forwards;
     opacity: 0;
@@ -819,38 +825,38 @@ body{
 ?>;
 }
 #video-add{
-    background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/add.svg);
+    background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/add.svg);
 }
 @media (max-width:860px) {
   .headertop.filter-dot::before {
-    background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/grid.png);
+    background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/grid.png);
   }
 }
 .headertop.filter-grid::before {
-  background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/grid.png);
+  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/grid.png);
 }
 
 .headertop.filter-dot::before {
-  background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/dot.gif);
+  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/dot.gif);
 }
 .loadvideo,.video-play {
-  background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/play.svg);
+  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/play.svg);
 }
 
 .video-pause {
-  background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/pause.svg);
+  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/pause.svg);
 }
 
 #loading-comments {
-background-image: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/puff-load.svg);
+background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/puff-load.svg);
 }
 
 <?php if (iro_opt('wave_effects', 'true')): ?>
 #banner_wave_1 {
-    background: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/wave1.png) repeat-x;
+    background: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/wave1.png) repeat-x;
 }
 #banner_wave_2 {
-    background: url(<?=iro_opt('vision_resource_basepath', 'https://s.nmxc.ltd/sakurairo_vision/@3.0/')?>basic/wave2.png) repeat-x;
+    background: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/wave2.png) repeat-x;
 }
 .headertop{
     border-radius:0 !important;

@@ -20,7 +20,7 @@ array(
   "EDIT" => __("Action Edit (only displays while user has sufficient permissions)","sakurairo_csf"),
 ));
 
-$vision_resource_basepath = get_option('iro_options')['vision_resource_basepath'] ?? 'https://s.nmxc.ltd/sakurairo_vision/@3.0/';
+$vision_resource_basepath = get_option('iro_options')['vision_resource_basepath'] ?? CHERRY_VISION_BASE_URL;
 
 $prefix = 'iro_options';
 
@@ -35,29 +35,6 @@ $prefix = 'iro_options';
   Sakurairo_CSF::createOptions( $prefix, array(
     'menu_title' => __('iro-Options','sakurairo_csf'),
     'menu_slug'  => 'iro_options',
-  ) );
-
-  Sakurairo_CSF::createSection($prefix, array(
-    'title' => __('Hello!','sakurairo_csf'),
-    'icon'        => 'fa fa-podcast',
-    'fields'      => array(
-
-      array(
-        'type'    => 'heading',
-        'content' => __('Thank you to everyone who supports us!','sakurairo_csf'),
-      ),
-
-      array(
-        'type'    => 'content',
-        'content' => __('<a href="https://afdian.com/a/mamori"><img alt="afdian" height="50" src="https://s.nmxc.ltd/sakurairo_vision/@3.0/readme/afdian.webp"></a><a href="https://liberapay.com/furina/donate"><img alt="liberapay" height="50" src="https://s.nmxc.ltd/sakurairo_vision/@3.0/readme/liberapay.webp"></a><a href="https://app.unifans.io/c/somekawahitomi"><img alt="unifans" height="50" src="https://s.nmxc.ltd/sakurairo_vision/@3.0/readme/unifans.webp"></a>','sakurairo_csf'),
-      ),
-
-      array(
-        'type'    => 'content',
-        'content' => __('<img src="https://fuukei-api.nyat.icu/api/sponsors"  alt="Sponsor" width="100%" height="100%" />','sakurairo_csf'),
-      ),
-
-    )
   ) );
 
   Sakurairo_CSF::createSection( $prefix, array(
@@ -3574,22 +3551,6 @@ $prefix = 'iro_options';
     'fields'      => array(
 
       array(
-        'type'    => 'subheading',
-        'content' => __('Version Info','sakurairo_csf'),
-      ),
-
-      array(
-        'type'    => 'content',
-        'content' => __('<img src="https://s.nmxc.ltd/sakurairo_vision/@3.0/series/headlogo.webp"  alt="Theme Information" />','sakurairo_csf'),
-      ),
-
-      array(
-        'type'    => 'submessage',
-        'style'   => 'normal',
-        'content' => sprintf(__('Theme Sakurairo Version %s','sakurairo_csf'), IRO_VERSION),
-      ),
-
-      array(
         'type' => 'subheading',
         'content' => __('Resource Control','sakurairo_csf'),
       ),
@@ -3634,18 +3595,8 @@ $prefix = 'iro_options';
         'id' => 'vision_resource_basepath',
         'type' => 'text',
         'title' => __('Vision Resource Basepath','sakurairo_csf'),
-        'desc' => __('This link directory structure needs to be consistent with the <a href="https://github.com/Fuukei/Sakurairo_Vision">Sakurairo Vision</a> repositories officially provided by fuukei, otherwise some resources 404 may appear. The image source officially provided by <a href="https://waf.pro/">WAFPRO</a> is adopted by default.','sakurairo_csf'),
-        'default' => "https://s.nmxc.ltd/sakurairo_vision/@3.0/"
-      ),
-
-      array(
-        'type' => 'subheading',
-        'content' => __('Theme Contributors','sakurairo_csf'),
-      ),
-
-      array(
-        'type'    => 'content',
-        'content' => __('<img src="https://fuukei-api.nyat.icu/api/contributors" alt="Theme Contributors" width="100%" height="100%" />','sakurairo_csf'),
+        'desc' => __('This link directory structure needs to be consistent with the <a href="https://github.com/Fuukei/Sakurairo_Vision">Sakurairo Vision</a> repositories officially provided by fuukei, otherwise some resources 404 may appear.','sakurairo_csf'),
+        'default' => CHERRY_VISION_BASE_URL
       ),
 
       array(

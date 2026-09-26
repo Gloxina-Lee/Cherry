@@ -1,4 +1,4 @@
-@media (max-width: 860px) {
+@media (width < 860px) {
   .site-header {
     gap: 3px;
     height: 50px;
@@ -181,12 +181,15 @@
   width: 100%;
 }
 
-.mobile-nav .menu {
+.mobile-nav .menu,
+.mobile-nav .menu > ul {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.mobile-nav .menu > li {
+.mobile-nav .menu > li,
+.mobile-nav .menu > ul > li {
   align-items: center;
   padding: 10px;
   margin-right: 8px;
@@ -196,7 +199,8 @@
   transition: color 0.3s;
 }
 
-.mobile-nav .menu > li:hover {
+.mobile-nav .menu > li:hover,
+.mobile-nav .menu > ul > li:hover {
   color: var(--theme-skin-matching);
 }
 

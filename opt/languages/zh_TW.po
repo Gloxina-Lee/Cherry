@@ -4225,16 +4225,8 @@ msgid "Vision Resource Basepath"
 msgstr "視覺資源基本路徑"
 
 #: options/theme-options.php:4113
-msgid ""
-"This link directory structure needs to be consistent with the <a "
-"href=\"https://github.com/Fuukei/Sakurairo_Vision\">Sakurairo Vision</a> "
-"repositories officially provided by fuukei, otherwise some resources 404 may "
-"appear. The image source officially provided by <a href=\"https://waf.pro/"
-"\">WAFPRO</a> is adopted by default."
-msgstr ""
-"這個鏈接目錄結構需要與 Fuukei 官方提供的 <a href=\"https://github.com/Fuukei/"
-"Sakurairo_Vision\">Sakurairo Vision</a> 存儲庫保持一致，否則可能會出現一些資"
-"源404。默認採用 <a href=\"https://waf.pro/\">WAFPRO</a> 提供的镜像源。"
+msgid "This link directory structure needs to be consistent with the <a href=\"https://github.com/Fuukei/Sakurairo_Vision\">Sakurairo Vision</a> repositories officially provided by fuukei, otherwise some resources 404 may appear."
+msgstr "此連結目錄結構需要與 Fuukei 官方提供的 <a href=\"https://github.com/Fuukei/Sakurairo_Vision\">Sakurairo Vision</a> 公共倉庫保持一致，否則可能會出現一些資源 404。"
 
 #: options/theme-options.php:4119
 msgid "Theme Contributors"

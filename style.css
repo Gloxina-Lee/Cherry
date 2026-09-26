@@ -667,7 +667,8 @@ blockquote:after {
   justify-content: flex-start;
 }
 
-.nav-search-wrapper nav .menu {
+.nav-search-wrapper nav > .menu,
+.nav-search-wrapper nav > div.menu > ul {
     height: 100%;
 }
 
@@ -699,6 +700,12 @@ blockquote:after {
   box-sizing: border-box;
   align-items: center;
   justify-content: center;
+}
+
+/* Keep both assigned menus and the default page menu inside the padded bar. */
+.nav-search-wrapper nav > ul.menu > li > a,
+.nav-search-wrapper nav > div.menu > ul > li > a {
+  padding-block: 0;
 }
 
 .nav-search-wrapper nav ul li a:hover {
@@ -1715,22 +1722,27 @@ h3#comments-list-title {
   display: inline-block;
 }
 
-h3#comments-list-title::after {
+h3#comments-list-title .comments-heading {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+
+h3#comments-list-title .comments-heading::after {
 	content: '';
 	position: absolute;
-	bottom: -2px;
-  left: 15%;
-	width: 70%;
+	bottom: 1px;
+  left: 0;
+	width: 100%;
 	height: 0.7em;
 	background-color: var(--article-theme-highlight,var(--theme-skin-matching)) !important;
 	opacity: 0.4;
-	z-index: 0;
+	z-index: -1;
 	border-radius: 30px;
 	transition: all 0.3s ease;
 }
 
-h3#comments-list-title:hover::after {
-	width: 85%;
+h3#comments-list-title:hover .comments-heading::after {
 	opacity: 0.7;
 }
 
@@ -4516,7 +4528,7 @@ h1.page-title.mb- {
   color: #7d7d7d;
 }
 
-#comments-list-title span {
+#comments-list-title .noticom {
   font-size: 13px;
   color: #909090;
   margin-left: 10px;

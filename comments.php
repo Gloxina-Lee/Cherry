@@ -94,7 +94,7 @@ function get_smilies_panel() {
     
     <div class="comments-main">
         <h3 id="comments-list-title">
-            Comments <span class="noticom"><?php comments_number('NOTHING', '1' . __(" comment", "sakurairo"), '%' . __(" comments", "sakurairo")); ?></span>
+            <span class="comments-heading">Comments</span> <span class="noticom"><?php comments_number('NOTHING', '1' . __(" comment", "sakurairo"), '%' . __(" comments", "sakurairo")); ?></span>
         </h3>
         <div id="loading-comments"><span></span></div>
         
