@@ -492,7 +492,6 @@ add_action('after_setup_theme', 'akina_content_width', 0);
 function sakura_scripts()
 {
     global $core_lib_basepath;
-    global $shared_lib_basepath;
 
     // 预加载主要样式文件
     if(iro_opt('dev_mode',false) == false) { // 压缩并缓存主题样式
@@ -592,9 +591,9 @@ function sakura_scripts()
         );
     }
     
-    // 平滑滚动脚本优化为延迟加载
+    // 使用主题自带的平滑滚动脚本，避免公共 CDN 缺失文件导致功能失效。
     if (iro_opt('smoothscroll_option')) {
-        wp_enqueue_script('SmoothScroll', $shared_lib_basepath . '/js/smoothscroll.js', array(), IRO_VERSION . iro_opt('cookie_version', ''), true);
+        wp_enqueue_script('SmoothScroll', get_template_directory_uri() . '/js/smoothscroll.js', array(), IRO_VERSION . iro_opt('cookie_version', ''), true);
     }
 }
 add_action('wp_enqueue_scripts', 'sakura_scripts');
