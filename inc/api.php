@@ -13,9 +13,7 @@
 include_once('classes/Cache.php');
 include_once('classes/Images.php');
 include_once('classes/gallery.php');
-include_once('classes/QQ.php');
 include_once('classes/Captcha.php');
-use Sakura\API\QQ;
 use Sakura\API\Cache;
 use Sakura\API\Captcha;
 
@@ -46,18 +44,6 @@ add_action('rest_api_init', function () {
     //     'callback' => 'update_database',
     //     'permission_callback'=>'__return_true'
     // ));
-    register_rest_route('sakura/v1', '/qqinfo/json', array(
-        'methods' => 'GET',
-        'callback' => 'get_qq_info',
-        'permission_callback' => '__return_true'
-    )
-    );
-    register_rest_route('sakura/v1', '/qqinfo/avatar', array(
-        'methods' => 'GET',
-        'callback' => 'get_qq_avatar',
-        'permission_callback' => '__return_true'
-    )
-    );
     register_rest_route('sakura/v1', '/captcha/create', array(
         'methods' => 'GET',
         'callback' => 'create_CAPTCHA',
@@ -194,68 +180,6 @@ function cache_search_json(WP_REST_Request $request)
         )
     );
     return $result;
-}
-
-/**
- * QQ info
- * https://sakura.2heng.xin/wp-json/sakura/v1/qqinfo/json
- */
-function get_qq_info(WP_REST_Request $request)
-{
-    if (!sakura_verify_rest_request_nonce($request)) {
-        $output = array(
-            'status' => 403,
-            'success' => false,
-            'message' => 'Unauthorized client.'
-        );
-    } else {
-        $qq = sanitize_text_field($request->get_param('qq'));
-        if (empty($qq)) {
-            $output = array(
-                'status' => 400,
-                'success' => false,
-                'message' => 'Bad Request'
-            );
-        } else {
-            $output = QQ::get_qq_info($qq);
-        }
-    }
-
-    $result = new WP_REST_Response($output, $output['status']);
-    $result->set_headers(array('Content-Type' => 'application/json'));
-    return $result;
-}
-
-/**
- * QQ头像链接解密
- * https://sakura.2heng.xin/wp-json/sakura/v1/qqinfo/avatar
- */
-function get_qq_avatar(WP_REST_Request $request)
-{
-    $encrypted = sanitize_text_field($request->get_param('qq'));
-    if (empty($encrypted)) {
-        return new WP_REST_Response(array('status' => 400, 'message' => 'Missing qq parameter'), 400);
-    }
-    $imgurl = QQ::get_qq_avatar($encrypted);
-    if (!$imgurl) {
-        return new WP_REST_Response(array('status' => 404, 'message' => 'Avatar not found'), 404);
-    }
-    if (iro_opt('qq_avatar_link') == 'type_2') {
-        $imgdata = wp_remote_retrieve_body(wp_remote_get(esc_url_raw($imgurl)));
-        if (empty($imgdata)) {
-            return new WP_REST_Response(array('status' => 500, 'message' => 'Failed to fetch avatar'), 500);
-        }
-        // 二进制数据需直接输出，避免 REST 框架 JSON 编码导致响应损坏
-        header('Content-Type: image/jpeg');
-        header('Cache-Control: max-age=86400');
-        echo $imgdata;
-        exit;
-    } else {
-        $response = new WP_REST_Response();
-        $response->set_status(302);
-        $response->header('Location', esc_url_raw($imgurl));
-    }
-    return $response;
 }
 
 function create_CAPTCHA()

@@ -89,15 +89,11 @@ msgid "Cancel Reply"
 msgstr ""
 
 #: comments.php:234
-msgid "Nickname or QQ number"
+msgid "Nickname"
 msgstr ""
 
 #: comments.php:234 comments.php:238
 msgid "Must* "
-msgstr ""
-
-#: comments.php:235
-msgid "Auto pull nickname and avatar with a QQ num. entered"
 msgstr ""
 
 #: comments.php:238
@@ -605,10 +601,6 @@ msgstr ""
 #: functions.php:1699 functions.php:1702 inc/theme-plus.php:366
 #: layouts/mo_toc_menu.php:29
 msgid "Dashboard"
-msgstr ""
-
-#: functions.php:2251
-msgid "QQ"
 msgstr ""
 
 #: functions.php:2353

@@ -2950,22 +2950,6 @@ msgstr ""
 msgid "Enabled by default, comments posted without logging in need to be verified by CAPTCHA"
 msgstr ""
 
-#: options/theme-options.php:3164
-msgid "QQ Avatar Link Encryption"
-msgstr ""
-
-#: options/theme-options.php:3167
-msgid "Redirect (low security)"
-msgstr ""
-
-#: options/theme-options.php:3168
-msgid "Get avatar data in the backend (medium security)"
-msgstr ""
-
-#: options/theme-options.php:3169
-msgid "Parse avatar interface in the backend (high security, slow)"
-msgstr ""
-
 #: options/theme-options.php:3177
 msgid "Page Comment Area Upload Image Interface"
 msgstr ""

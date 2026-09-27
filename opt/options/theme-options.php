@@ -1438,6 +1438,77 @@ $prefix = 'iro_options';
 
       array(
         'type' => 'subheading',
+        'content' => __('一言','sakurairo_csf'),
+      ),
+
+      array(
+        'id' => 'signature_hitokoto',
+        'type' => 'switcher',
+        'title' => __('一言模式','sakurairo_csf'),
+        'desc' => __('开启后使用一言语句，覆盖 Typed.js 初始化选项中的设置。','sakurairo_csf'),
+        'dependency' => array(
+                              array( 'cover_switch', '==', 'true', '', 'true' ),
+                              array( 'infor_bar', '==', 'true' ),
+                              array( 'signature_typing', '==', 'true' ),
+                        ),
+        'default' => false,
+      ),
+
+      array(
+        'id' => 'signature_hitokoto_api',
+        'type' => 'text',
+        'title' => __('一言 API 地址','sakurairo_csf'),
+        'desc' => __('填写可供浏览器跨域访问、返回含 hitokoto 字段的 JSON 接口地址。','sakurairo_csf'),
+        'dependency' => array( 'signature_hitokoto', '==', 'true', '', 'true' ),
+        'default' => 'https://v1.hitokoto.cn/',
+        'validate' => 'csf_validate_url',
+      ),
+
+      array(
+        'id' => 'signature_hitokoto_loop',
+        'type' => 'switcher',
+        'title' => __('循环获取一言','sakurairo_csf'),
+        'desc' => __('开启后在每句打字完成后继续请求下一句；关闭后仅在进入或刷新主页时获取一句。','sakurairo_csf'),
+        'dependency' => array( 'signature_hitokoto', '==', 'true', '', 'true' ),
+        'default' => false,
+      ),
+
+      array(
+        'id' => 'signature_hitokoto_type_speed',
+        'type' => 'number',
+        'title' => __('一言打字速度（typeSpeed）','sakurairo_csf'),
+        'dependency' => array( 'signature_hitokoto', '==', 'true', '', 'true' ),
+        'min' => 0,
+        'max' => 1000,
+        'step' => 1,
+        'unit' => 'ms',
+        'default' => 140,
+        'validate' => 'csf_validate_numeric',
+      ),
+
+      array(
+        'id' => 'signature_hitokoto_back_speed',
+        'type' => 'number',
+        'title' => __('一言退字速度（backSpeed）','sakurairo_csf'),
+        'dependency' => array( 'signature_hitokoto', '==', 'true', '', 'true' ),
+        'min' => 0,
+        'max' => 1000,
+        'step' => 1,
+        'unit' => 'ms',
+        'default' => 50,
+        'validate' => 'csf_validate_numeric',
+      ),
+
+      array(
+        'id' => 'signature_hitokoto_show_cursor',
+        'type' => 'switcher',
+        'title' => __('显示一言打字光标（showCursor）','sakurairo_csf'),
+        'dependency' => array( 'signature_hitokoto', '==', 'true', '', 'true' ),
+        'default' => true,
+      ),
+
+      array(
+        'type' => 'subheading',
         'content' => __('Cover Random Image','sakurairo_csf'),
       ),
 
@@ -2672,19 +2743,6 @@ $prefix = 'iro_options';
           'turnstile' => __('Cloudflare Turnstile',"sakurairo_csf")
         ),
         'default' => 'iro_captcha',
-      ),
-
-      array(
-        'id' => 'qq_avatar_link',
-        'type' => 'select',
-        'title' => __('QQ Avatar Link Encryption','sakurairo_csf'),
-        'options' => array(
-          'off' => __('Off','sakurairo_csf'),
-          'type_1' => __('Redirect (low security)','sakurairo_csf'),
-          'type_2' => __('Get avatar data in the backend (medium security)','sakurairo_csf'),
-          'type_3' => __('Parse avatar interface in the backend (high security, slow)','sakurairo_csf'),
-        ),
-        'default' => 'off'
       ),
 
       array(

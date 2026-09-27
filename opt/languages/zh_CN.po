@@ -3275,22 +3275,6 @@ msgstr "主题内建验证码"
 msgid "Cloudflare Turnstile"
 msgstr ""
 
-#: options/theme-options.php:3169
-msgid "QQ Avatar Link Encryption"
-msgstr "QQ头像链接加密"
-
-#: options/theme-options.php:3172
-msgid "Redirect (low security)"
-msgstr "重定向（低安全性）"
-
-#: options/theme-options.php:3173
-msgid "Get avatar data in the backend (medium security)"
-msgstr "后端获取头像数据（中安全性）"
-
-#: options/theme-options.php:3174
-msgid "Parse avatar interface in the backend (high security, slow)"
-msgstr "后端解析头像接口（高安全性，慢速）"
-
 #: options/theme-options.php:3182
 msgid "Page Comment Area Upload Image Interface"
 msgstr "页面评论区域上传图片接口"

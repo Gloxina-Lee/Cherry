@@ -3,7 +3,7 @@ import { ready, slideToggle, buildAPI } from '../common/util'
 import lazyload from "../common/lazyload"
 import { createButterbar } from '../common/butterbar'
 import { insertCommentImage } from './global-func'
-import getqqinfo from './getqqinfo'
+import initCommentIdentity from './comment_identity'
 import addComment from './AddComment'
 import { _$, __ } from '../common/sakurairo_global'
 import LoadNextPage from './pagination'
@@ -445,7 +445,7 @@ function whileReady() {
     article_attach()
     XCS()
     XCP()
-    getqqinfo()
+    initCommentIdentity()
     add_upload_tips()
     ghcardTheme()
 }
@@ -456,7 +456,7 @@ function whilePjaxComplete() {
         LoadNextPage();
         tableOfContentScroll(true);
         click_to_view_image()
-        getqqinfo()
+        initCommentIdentity()
         sm()
         code_highlight_style()
         XCS()

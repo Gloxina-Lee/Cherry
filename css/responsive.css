@@ -656,11 +656,6 @@
     z-index: 2;
   }
 
-  .comment-user-avatar .socila-check {
-    font-size: .8em;
-    margin: -60% 0 0 50%;
-  }
-
   .cmt-popup {
     margin: 5px 0;
     inline-size: 100%;

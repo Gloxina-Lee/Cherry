@@ -333,6 +333,14 @@ $print_social_zone = function() use ($all_opt): void {
                     <script type="application/json" id="typed-js-initial">
                     <?= iro_opt('signature_typing_json', ''); ?>
                     </script>
+                    <script type="application/json" id="hitokoto-config"><?php echo wp_json_encode(array(
+                        'enabled' => (bool) iro_opt('signature_hitokoto', false),
+                        'url' => esc_url_raw(iro_opt('signature_hitokoto_api', 'https://v1.hitokoto.cn/')),
+                        'loop' => (bool) iro_opt('signature_hitokoto_loop', false),
+                        'typeSpeed' => (int) iro_opt('signature_hitokoto_type_speed', 140),
+                        'backSpeed' => (int) iro_opt('signature_hitokoto_back_speed', 50),
+                        'showCursor' => (bool) iro_opt('signature_hitokoto_show_cursor', true),
+                    ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
                     <?php endif; ?>
                     <p><?php echo esc_html(iro_opt('signature_text', 'Hi, Mashiro?')); ?></p>
                     <?php if (iro_opt('infor_bar_style') === 'v2') : ?>

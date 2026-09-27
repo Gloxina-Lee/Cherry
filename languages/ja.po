@@ -91,16 +91,12 @@ msgid "Cancel Reply"
 msgstr "返信をキャンセル"
 
 #: comments.php:234
-msgid "Nickname or QQ number"
-msgstr "ニックネーム または QQ 番号"
+msgid "Nickname"
+msgstr "ニックネーム"
 
 #: comments.php:234 comments.php:238
 msgid "Must* "
 msgstr "必須* "
-
-#: comments.php:235
-msgid "Auto pull nickname and avatar with a QQ num. entered"
-msgstr "QQ 番号が入力された自動プルニックネームとアバター"
 
 #: comments.php:238
 msgid "email"
@@ -631,10 +627,6 @@ msgstr "未決リンク"
 #: layouts/mo_toc_menu.php:29
 msgid "Dashboard"
 msgstr "ダッシュボード"
-
-#: functions.php:2251
-msgid "QQ"
-msgstr "QQ"
 
 #: functions.php:2353
 msgid "Sidebar"

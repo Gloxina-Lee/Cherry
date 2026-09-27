@@ -570,14 +570,18 @@ function sakura_scripts()
         }
     }
 
+    // Hitokoto support is built into this checkout's app bundle.
+    $local_hitokoto_scripts = (bool) iro_opt('signature_hitokoto', false);
+    $script_lib_basepath = $local_hitokoto_scripts ? get_template_directory_uri() : $core_lib_basepath;
+    $script_version = $local_hitokoto_scripts ? IRO_VERSION . '.' . filemtime(get_template_directory() . '/js/app.js') : IRO_VERSION;
     if(!is_404()){
-        wp_enqueue_script('app', $core_lib_basepath . '/js/app.js', array('polyfills'), IRO_VERSION, true);
+        wp_enqueue_script('app', $script_lib_basepath . '/js/app.js', array('polyfills'), $script_version, true);
         if (!is_home()) {
             //非主页的资源
-            wp_enqueue_script('app-page', $core_lib_basepath . '/js/page.js', array('app', 'polyfills'), IRO_VERSION, true);
+            wp_enqueue_script('app-page', $script_lib_basepath . '/js/page.js', array('app', 'polyfills'), $script_version, true);
         }
     }
-    wp_enqueue_script('polyfills', $core_lib_basepath . '/js/polyfill.js', array(), IRO_VERSION, true);
+    wp_enqueue_script('polyfills', $script_lib_basepath . '/js/polyfill.js', array(), $script_version, true);
     // defer加载
     add_filter('script_loader_tag', function($tag, $handle) {
         if ('polyfills' === $handle) {
@@ -1791,77 +1795,6 @@ function html_tag_parser($content)
     return $content;
 }
 add_filter('the_content', 'html_tag_parser'); //替换文章关键词
-
-/*
- * QQ 评论
- */
-// 数据库插入评论表单的qq字段
-add_action('wp_insert_comment', 'sql_insert_qq_field', 10, 2);
-function sql_insert_qq_field($comment_ID, $commmentdata)
-{
-    $qq = isset($_POST['new_field_qq']) ? $_POST['new_field_qq'] : false;
-    update_comment_meta($comment_ID, 'new_field_qq', $qq); // new_field_qq 是表单name值，也是存储在数据库里的字段名字
-}
-// 后台评论中显示qq字段
-add_filter('manage_edit-comments_columns', 'add_comments_columns');
-add_action('manage_comments_custom_column', 'output_comments_qq_columns', 10, 2);
-function add_comments_columns($columns)
-{
-    $columns['new_field_qq'] = __('QQ'); // 新增列名称
-    return $columns;
-}
-function output_comments_qq_columns($column_name, $comment_id)
-{
-    switch ($column_name) {
-        case "new_field_qq":
-            // 这是输出值，可以拿来在前端输出，这里已经在钩子manage_comments_custom_column上输出了
-            echo get_comment_meta($comment_id, 'new_field_qq', true);
-            break;
-    }
-}
-/**
- * 头像调用路径
- */
-add_filter('get_avatar', 'change_avatar', 10, 3);
-function change_avatar($avatar)
-{
-    global $comment, $sakura_privkey;
-    if ($comment && get_comment_meta($comment->comment_ID, 'new_field_qq', true)) {
-        $qq_number = get_comment_meta($comment->comment_ID, 'new_field_qq', true);
-        $qq_number = sanitize_text_field($qq_number);
-        if (iro_opt('qq_avatar_link') == 'off') {
-            return '<img src="https://q2.qlogo.cn/headimg_dl?dst_uin=' . esc_attr($qq_number) . '&spec=100" class="lazyload avatar avatar-24 photo" alt="😀" width="24" height="24" onerror="imgError(this,1)">';
-        }
-        if (iro_opt('qq_avatar_link') == 'type_3') {
-            $qqavatar = wp_remote_retrieve_body(wp_remote_get('https://ptlogin2.qq.com/getface?appid=1006102&imgtype=3&uin=' . urlencode($qq_number)));
-            preg_match('/:\"([^\"]*)\"/i', $qqavatar, $matches);
-            $avatar_url = isset($matches[1]) ? esc_url($matches[1]) : '';
-            if (empty($avatar_url)) {
-                return $avatar;
-            }
-            return '<img src="' . $avatar_url . '" class="lazyload avatar avatar-24 photo" alt="😀" width="24" height="24" onerror="imgError(this,1)">';
-        }
-        
-        // Ensure $sakura_privkey is defined and not null
-        if (isset($sakura_privkey) && !is_null($sakura_privkey)) {
-            // 生成一个合适长度的初始化向量
-            $iv_length = openssl_cipher_iv_length('aes-128-cbc');
-            $iv = openssl_random_pseudo_bytes($iv_length);
-            
-            // 加密数据
-            $encrypted = openssl_encrypt($qq_number, 'aes-128-cbc', $sakura_privkey, 0, $iv);
-            
-            // 将初始化向量和加密数据一起编码
-            $encrypted = urlencode(base64_encode($iv . $encrypted));
-            
-            return '<img src="' . esc_url(rest_url("sakura/v1/qqinfo/avatar") . '?qq=' . $encrypted) . '" class="lazyload avatar avatar-24 photo" alt="😀" width="24" height="24" onerror="imgError(this,1)">';
-        } else {
-            // Handle the case where $sakura_privkey is not set or is null
-            return $avatar;
-        }
-    }
-    return $avatar;
-}
 
 //生成随机链接，防止浏览器缓存策略
 function get_random_url(string $url): string

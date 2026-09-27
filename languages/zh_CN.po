@@ -88,16 +88,12 @@ msgid "Cancel Reply"
 msgstr "取消回复"
 
 #: comments.php:202
-msgid "Nickname or QQ number"
-msgstr "昵称 或 QQ号"
+msgid "Nickname"
+msgstr "昵称"
 
 #: comments.php:202 comments.php:206
 msgid "Must* "
 msgstr "必须* "
-
-#: comments.php:203
-msgid "Auto pull nickname and avatar with a QQ num. entered"
-msgstr "输入QQ号将自动拉取昵称和头像"
 
 #: comments.php:206
 msgid "email"
@@ -609,10 +605,6 @@ msgstr "待审核链接"
 #: layouts/mo_toc_menu.php:29
 msgid "Dashboard"
 msgstr "管理后台"
-
-#: functions.php:2293
-msgid "QQ"
-msgstr ""
 
 #: functions.php:2395
 msgid "Sidebar"

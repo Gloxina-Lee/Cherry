@@ -3409,23 +3409,6 @@ msgstr "統計に組み込まれたテーマ"
 msgid "Cloudflare Turnstile"
 msgstr ""
 
-#: options/theme-options.php:3169
-msgid "QQ Avatar Link Encryption"
-msgstr "QQアバターリンクの暗号化"
-
-#: options/theme-options.php:3172
-msgid "Redirect (low security)"
-msgstr "リダイレクト (低セキュリティ)"
-
-#: options/theme-options.php:3173
-msgid "Get avatar data in the backend (medium security)"
-msgstr "バックエンドでアバターデータを取得する(中程度のセキュリティ)"
-
-#: options/theme-options.php:3174
-msgid "Parse avatar interface in the backend (high security, slow)"
-msgstr ""
-"バックエンドでアバターインターフェイスを解析する(高いセキュリティ、遅い)"
-
 #: options/theme-options.php:3182
 msgid "Page Comment Area Upload Image Interface"
 msgstr "ページコメントエリアアップロード画像インタフェース"

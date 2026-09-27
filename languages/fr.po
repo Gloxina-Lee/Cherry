@@ -91,17 +91,12 @@ msgid "Cancel Reply"
 msgstr "Annuler la réponse"
 
 #: comments.php:234
-msgid "Nickname or QQ number"
-msgstr "Pseudo ou numéro QQ"
+msgid "Nickname"
+msgstr "Pseudo"
 
 #: comments.php:234 comments.php:238
 msgid "Must* "
 msgstr "Obligatoire* "
-
-#: comments.php:235
-msgid "Auto pull nickname and avatar with a QQ num. entered"
-msgstr ""
-"Récupération automatique du pseudo et de l'avatar avec un numéro QQ saisi"
 
 #: comments.php:238
 msgid "email"
@@ -651,10 +646,6 @@ msgstr "Liens en attente"
 #: layouts/mo_toc_menu.php:29
 msgid "Dashboard"
 msgstr "Tableau de bord"
-
-#: functions.php:2251
-msgid "QQ"
-msgstr "QQ"
 
 #: functions.php:2353
 msgid "Sidebar"
