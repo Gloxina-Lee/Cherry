@@ -1130,7 +1130,7 @@ if ($custom_login_switch) {
     // Add custom login styles
     function custom_login() {
         ?>
-        <style type="text/css">body.login{background-image:url('<?php echo DEFAULT_FEATURE_IMAGE(); ?>');background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;}.login h1 a{background-image:url('<?php echo iro_opt('login_logo_img') ?: get_site_icon_url(); ?>') !important;background-size:contain;width:100%;max-height:100px;}.login form{box-shadow:0 1px 30px -4px #e8e8e880;border:1px solid #FFFFFF;background:rgba(255,255,255,0.8);-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);border-radius:10px;}.login form input[type=checkbox],.login input[type=password],.login input[type=text],.login input[type=email]{background:rgba(255,255,255,0.7);box-shadow:0 1px 30px -4px #e8e8e880;border:1px solid #FFFFFF;-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);font-size:15px;padding:0.6rem;border-radius:8px;}.login form input[type=checkbox]:checked{background:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;border-color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>}.wp-core-ui .button-primary,#wp-webauthn{background:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;border-color:transparent;border-radius:6px;padding:1px 18px !important;transition:all 0.3s ease;}.wp-core-ui .button-primary:hover,#wp-webauthn:hover{background:<?php echo iro_opt('theme_skin_matching') ?: '#FF69B4'; ?>;border-color:transparent;transition:all 0.3s ease;}.vaptchaContainer{margin:5px 0 20px;}.login form .forgetmenot{margin-top: 6px;}.login .button.wp-hide-pw .dashicons{color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;}#language-switcher{color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;backdrop-filter:none;-webkit-backdrop-filter:none;}.login #nav{font-size:12px;padding:8px 12px;background:rgba(255,255,255,0.7);box-shadow:0 1px 30px -4px #e8e8e8;border:1px solid #FFFFFF;-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);width:fit-content;border-radius:8px;margin:auto;margin-top:-13%;}.login #backtoblog{display:none;}.captcha{display:flex !important;align-items:center;margin-bottom:20px !important;margin-top:10px;gap:10px;}.login form input[name=yzm]{margin:0;}.login label{margin-bottom:5px;}.wp-webauthn-notice{height: 40px !important;margin-bottom: 15px;}#wp-webauthn span{color:#fff;}.vp-dark-btn.vp-basic-btn{border-radius: 8px !important;}</style>
+        <style type="text/css">body.login{background-image:url('<?php echo DEFAULT_FEATURE_IMAGE(); ?>');background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;}.login h1 a{background-image:url('<?php echo iro_opt('login_logo_img') ?: get_site_icon_url(); ?>') !important;background-size:contain;width:100%;max-height:100px;}.login form{box-shadow:0 1px 30px -4px #e8e8e880;border:1px solid #FFFFFF;background:rgba(255,255,255,0.8);-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);border-radius:10px;}.login form input[type=checkbox],.login input[type=password],.login input[type=text],.login input[type=email]{background:rgba(255,255,255,0.7);box-shadow:0 1px 30px -4px #e8e8e880;border:1px solid #FFFFFF;-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);font-size:15px;padding:0.6rem;border-radius:8px;}.login form input[type=checkbox]:checked{background:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;border-color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>}.wp-core-ui .button-primary,#wp-webauthn{background:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;border-color:transparent;border-radius:6px;padding:1px 18px !important;transition:all 0.3s ease;}.wp-core-ui .button-primary:hover,#wp-webauthn:hover{background:<?php echo iro_opt('theme_skin_matching') ?: '#FF69B4'; ?>;border-color:transparent;transition:all 0.3s ease;}.login form .forgetmenot{margin-top: 6px;}.login .button.wp-hide-pw .dashicons{color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;}#language-switcher{color:<?php echo iro_opt('theme_skin') ?: '#FF69B4'; ?>;backdrop-filter:none;-webkit-backdrop-filter:none;}.login #nav{font-size:12px;padding:8px 12px;background:rgba(255,255,255,0.7);box-shadow:0 1px 30px -4px #e8e8e8;border:1px solid #FFFFFF;-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);width:fit-content;border-radius:8px;margin:auto;margin-top:-13%;}.login #backtoblog{display:none;}.captcha{display:flex !important;align-items:center;margin-bottom:20px !important;margin-top:10px;gap:10px;}.login form input[name=yzm]{margin:0;}.login label{margin-bottom:5px;}.wp-webauthn-notice{height: 40px !important;margin-bottom: 15px;}#wp-webauthn span{color:#fff;}</style>
         <?php
     }
     add_action('login_head', 'custom_login');
@@ -1300,11 +1300,6 @@ function comment_mail_notify($comment_id)
         </body>
         </html>';
         
-        // 处理表情符号和特殊格式
-        $message = convert_smilies($message);
-        $message = str_replace('{{', '<img src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/bilipng/emoji_', $message);
-        $message = str_replace('}}', '.png" alt="emoji" style="height: 1.5em; max-height: 1.5em; vertical-align: middle;">', $message);
-        
         // 处理图片
         $message = str_replace('{UPLOAD}', 'https://i.loli.net/', $message);
         $message = str_replace('[/img][img]', '[/img^img]', $message);
@@ -1383,251 +1378,6 @@ function comment_picture_support($content)
 }
 add_filter('comment_text', 'comment_picture_support');
 
-/*
- * 修改评论表情调用路径
- */
-
-// 简单遍历系统表情库，今后应考虑标识表情包名——使用增加的扩展名，同时保留原有拓展名
-// 还有一个思路是根据表情调用路径来判定<-- 此法最好！
-// 贴吧
-
-function make_onclick_grin($name,$type,$before='',$after=''){
-    $extra_params = "";
-    if($before || $after){
-        $extra_params = ",'$before','$after'";
-    }
-    return "onclick=\"grin('$name','$type'$extra_params)\"";
-}
-/**
- * 通过文件夹获取自定义表情列表，使用Transients来存储获得的列表，除非手动清除，数据永不过期。
- * 数据格式如下：
- * Array
- * (
- *     [0] => Array
- *         (
- *             [path] => C:\xampp\htdocs\wordpress/wp-content/uploads/sakurairo_vision/@2.4/smilies\bilipng\emoji_2233_chijing.png
- *             [little_path] => /sakurairo_vision/@2.4/smilies\bilipng\emoji_2233_chijing.png
- *             [file_url] => http://192.168.233.174/wordpress/wp-content/uploads/sakurairo_vision/@2.4/smilies\bilipng\emoji_2233_chijing.png
- *             [name] => emoji_2233_chijing.png
- *             [base_name] => emoji_2233_chijing
- *             [extension] => png
- *         )
- *     ...
- * ）    
- *
- * @return array
- */
-function get_custom_smilies_list()
-{
-
-    $custom_smilies_list = get_transient("custom_smilies_list");
-
-    if ($custom_smilies_list !== false) {
-        return $custom_smilies_list;
-    }
-
-    $custom_smilies_list = array();
-    $custom_smilies_dir = iro_opt('smilies_dir');
-
-    if (!$custom_smilies_dir) {
-        return $custom_smilies_list;
-    }
-
-    $custom_smilies_extension = ['jpg', 'jpeg', 'png', 'gif', 'svg', 'avif', 'webp'];
-    $custom_smilies_path = wp_get_upload_dir()['basedir'] . $custom_smilies_dir;
-
-    if (!is_dir($custom_smilies_path)) {
-        return $custom_smilies_list;
-    }
-
-    $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($custom_smilies_path), RecursiveIteratorIterator::LEAVES_ONLY);
-    foreach ($files as $file) {
-        if ($file->isFile()) {
-            $file_name = $file->getFilename();
-            $file_base_name = pathinfo($file_name, PATHINFO_FILENAME);
-            $file_extension = pathinfo($file_name, PATHINFO_EXTENSION);
-            $file_path = $file->getPathname();
-            $file_little_path = str_replace(wp_get_upload_dir()['basedir'], '', $file_path);
-            $file_url = wp_get_upload_dir()['baseurl'] . $file_little_path;
-            if (in_array($file_extension, $custom_smilies_extension)) {
-                $custom_smilies_list[] = array(
-                    'path' => $file_path,
-                    'little_path' => $file_little_path,
-                    'file_url' => $file_url,
-                    'name' => $file_name,
-                    'base_name' => $file_base_name,
-                    'extension' => $file_extension
-                );
-            }
-        }
-    }
-    set_transient("custom_smilies_list", $custom_smilies_list);
-
-    return $custom_smilies_list;
-}
-
-/**
- * 通过 GET 方法更新自定义表情包列表
- */
-function update_custom_smilies_list()
-{
-
-    if (!is_admin() || !current_user_can('manage_options')) {
-        return;
-    }
-
-    if (!isset($_GET['update_custom_smilies'])) {
-        return;
-    }
-
-    $transient_name = sanitize_key($_GET['update_custom_smilies']);
-
-    if ($transient_name === 'true') {
-        delete_transient("custom_smilies_list");
-        $custom_smilies_list = get_custom_smilies_list();
-        $much = count($custom_smilies_list);
-        $custom_smilies_dir = iro_opt('smilies_dir');
-        $custom_smilies_path = wp_get_upload_dir()['basedir'] . $custom_smilies_dir;
-        echo '自定义表情列表更新完成！总共有' . $much . '个表情。<br>';
-        echo 'Custom smilies updated!Total' . $much . '.';
-        echo "<pre>调试信息：
-        - 表情目录设置为: $custom_smilies_dir
-        - 实际读取的路径为: $custom_smilies_path
-        Debug info:
-        - Smilies path set is: $custom_smilies_dir
-        - The directory actually read is: $custom_smilies_path
-        </pre>
-        <p>以下图片已被收录至自定义表情中（The following images have been included in the custom emoticons）：</p>";
-    }
-    if (!empty($custom_smilies_list)) {
-            echo '<ul style="list-style: none; padding: 0; max-width: 600px;">';
-            foreach ($custom_smilies_list as $smiley) {
-                echo '<li style="margin-bottom: 10px; display: flex; align-items: center;">';
-                echo '<img src="' . esc_url($smiley['file_url']) . '" alt="' . esc_attr($smiley['base_name']) . '" style="height: 60px; margin-right: 10px;">';
-                echo '<span>' . esc_html($smiley['base_name']) . '</span>';
-                echo '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>没有任何图片被加入表情包中（No emoticons found）。</p>';
-        }
-}
-update_custom_smilies_list();
-
-
-$custom_smiliestrans = array();
-function push_custom_smilies()
-{
-
-    global $custom_smiliestrans;
-    $custom_smilies_panel = '';
-    $custom_smilies_list = get_custom_smilies_list();
-
-    if (!$custom_smilies_list) {
-        $custom_smilies_panel = '<div style="font-size: 20px;text-align: center;width: 300px;height: 100px;line-height: 100px;">File does not exist!</div>';
-        return $custom_smilies_panel;
-    }
-
-    $custom_smilies_cdn = iro_opt('smilies_proxy');
-    foreach ($custom_smilies_list as $smiley) {
-
-        if ($custom_smilies_cdn) {
-            $smiley_url = $custom_smilies_cdn . $smiley['little_path'];
-        } else {
-            $smiley_url = $smiley['file_url'];
-        }
-        $custom_smilies_panel = $custom_smilies_panel . '<span title="' . $smiley['base_name'].'" ' . make_onclick_grin($smiley['base_name'],'Math').'><img alt="custom_smilies" loading="lazy" style="height: 60px;" src="' . $smiley_url . '" /></span>';
-        $custom_smiliestrans['{{' . $smiley['base_name'] . '}}'] = '<span title="' . $smiley['base_name'] . '" ><img alt="custom_smilies" loading="lazy" style="height: 60px;" src="' . $smiley_url . '" /></span>';
-    }
-
-    return $custom_smilies_panel;
-}
-
-/**
- * 替换评论、文章中的表情符号
- *
- */
-function custom_smilies_filter($content)
-{
-    push_custom_smilies();
-    global $custom_smiliestrans;
-    $content = str_replace(array_keys($custom_smiliestrans), $custom_smiliestrans, $content);
-    return $content;
-}
-add_filter('the_content', 'custom_smilies_filter');
-add_filter('comment_text', 'custom_smilies_filter');
-
-
-$wpsmiliestrans = array();
-function push_tieba_smilies()
-{
-    global $wpsmiliestrans;
-    // don't bother setting up smilies if they are disabled
-    if (!get_option('use_smilies'))
-        return;
-    $tiebaname = array('good', 'han', 'spray', 'Grievance', 'shui', 'reluctantly', 'anger', 'tongue', 'se', 'haha', 'rmb', 'doubt', 'tear', 'surprised2', 'Happy', 'ku', 'surprised', 'theblackline', 'smilingeyes', 'spit', 'huaji', 'bbd', 'hu', 'shame', 'naive', 'rbq', 'britan', 'aa', 'niconiconi', 'niconiconi_t', 'niconiconit', 'awesome');
-    $return_smiles = '';
-    $type = is_webp() ? 'webp' : 'png';
-    $tiebaimgdir = 'tieba' . $type . '/';
-    $smiliesgs = '.' . $type;
-    foreach ($tiebaname as $tieba_Name) {
-        $grin = make_onclick_grin($tieba_Name,'tieba');
-        // 选择面版
-        $return_smiles = $return_smiles . '<span title="' . $tieba_Name . '" '.$grin.'><img alt="tieba_smilie" loading="lazy" src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/' . $tiebaimgdir . 'icon_' . $tieba_Name . $smiliesgs . '" /></span>';
-        // 正文转换
-        $wpsmiliestrans['::' . $tieba_Name . '::'] = '<span title="' . $tieba_Name . '" '.$grin.'><img alt="tieba_smilie" loading="lazy" src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/' . $tiebaimgdir . 'icon_' . $tieba_Name . $smiliesgs . '" /></span>';
-    }
-    return $return_smiles;
-}
-push_tieba_smilies();
-
-function tieba_smile_filter($content)
-{
-    global $wpsmiliestrans;
-    $content = str_replace(array_keys($wpsmiliestrans), $wpsmiliestrans, $content);
-    return $content;
-}
-add_filter('the_content', 'tieba_smile_filter'); //替换文章关键词
-add_filter('comment_text', 'tieba_smile_filter'); //替换评论关键词
-
-function push_emoji_panel()
-{
-    $emojis = ['(⌒▽⌒)', '（￣▽￣）', '(=・ω・=)', '(｀・ω・´)', '(〜￣△￣)〜', '(･∀･)', '(°∀°)ﾉ', '(￣3￣)', '╮(￣▽￣)╭', '(´_ゝ｀)', '←_←', '→_→', '(&lt;_&lt;)', '(&gt;_&gt;)', '(;¬_¬)', '("▔□▔)/', '(ﾟДﾟ≡ﾟдﾟ)!?', 'Σ(ﾟдﾟ;)', 'Σ(￣□￣||)', '(’；ω；‘)', '（/TДT)/', '(^・ω・^ )', '(｡･ω･｡)', '(●￣(ｴ)￣●)', 'ε=ε=(ノ≧∇≦)ノ', '(’･_･‘)', '(-_-#)', '（￣へ￣）', '(￣ε(#￣)Σ', 'ヽ(‘Д’)ﾉ', '（#-_-)┯━┯', '(╯°口°)╯(┴—┴', '←◡←', '( ♥д♥)', '_(:3」∠)_', 'Σ&gt;―(〃°ω°〃)♡→', '⁄(⁄ ⁄•⁄ω⁄•⁄ ⁄)⁄', '(╬ﾟдﾟ)▄︻┻┳═一', '･*･:≡(　ε:)', '(笑)', '(汗)', '(泣)', '(苦笑)'];
-    return join('', array_map(function ($emoji) {
-        return '<span class="emoji-item">' . $emoji . '</span>';
-    }, $emojis));
-}
-
-// bilibili smiles
-$bilismiliestrans = array();
-function push_bili_smilies()
-{
-    global $bilismiliestrans;
-    $name = array('baiyan', 'bishi', 'bizui', 'chan', 'dai', 'daku', 'dalao', 'dalian', 'dianzan', 'doge', 'facai', 'fanu', 'ganga', 'guilian', 'guzhang', 'haixiu', 'heirenwenhao', 'huaixiao', 'jingxia', 'keai', 'koubizi', 'kun', 'lengmo', 'liubixue', 'liuhan', 'liulei', 'miantian', 'mudengkoudai', 'nanguo', 'outu', 'qinqin', 'se', 'shengbing', 'shengqi', 'shuizhao', 'sikao', 'tiaokan', 'tiaopi', 'touxiao', 'tuxue', 'weiqu', 'weixiao', 'wunai', 'xiaoku', 'xieyanxiao', 'yiwen', 'yun', 'zaijian', 'zhoumei', 'zhuakuang');
-    $return_smiles = '';
-    $type = is_webp() ? 'webp' : 'png';
-    $biliimgdir = 'bili' . $type . '/';
-    $smiliesgs = '.' . $type;
-    foreach ($name as $smilies_Name) {
-        $grin = make_onclick_grin($smilies_Name,'Math');
-        // 选择面版
-        $return_smiles = $return_smiles . '<span title="' . $smilies_Name . '" '.$grin.'><img alt="bili_smilies" loading="lazy" src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/' . $biliimgdir . 'emoji_' . $smilies_Name . $smiliesgs . '" /></span>';
-        // 正文转换
-        $bilismiliestrans['{{' . $smilies_Name . '}}'] = '<span title="' . $smilies_Name . '" '.$grin.'><img alt="bili_smilies" loading="lazy" src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/' . $biliimgdir . 'emoji_' . $smilies_Name . $smiliesgs . '" /></span>';
-    }
-    return $return_smiles;
-}
-push_bili_smilies();
-
-function bili_smile_filter($content)
-{
-    global $bilismiliestrans;
-    $content = str_replace(array_keys($bilismiliestrans), $bilismiliestrans, $content);
-    return $content;
-}
-add_filter('the_content', 'bili_smile_filter'); //替换文章关键词
-add_filter('comment_text', 'bili_smile_filter'); //替换评论关键词
-
 function featuredtoRSS($content)
 {
     global $post;
@@ -1639,19 +1389,13 @@ function featuredtoRSS($content)
 add_filter('the_excerpt_rss', 'featuredtoRSS');
 add_filter('the_content_feed', 'featuredtoRSS');
 
-//
-function bili_smile_filter_rss($content)
+function comment_picture_support_rss($content)
 {
-    $type = is_webp() ? 'webp' : 'png';
-    $biliimgdir = 'bili' . $type . '/';
-    $smiliesgs = '.' . $type;
-    $content = str_replace('{{', '<img src="' . iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL) . 'smilies/' . $biliimgdir, $content);
-    $content = str_replace('}}', $smiliesgs . '" alt="emoji" style="height: 2em; max-height: 2em;">', $content);
     $content = str_replace('[img]', '<img src="', $content);
     $content = str_replace('[/img]', '" style="display: block;margin-left: auto;margin-right: auto;">', $content);
     return $content;
 }
-add_filter('comment_text_rss', 'bili_smile_filter_rss'); //替换评论rss关键词
+add_filter('comment_text_rss', 'comment_picture_support_rss');
 
 function toc_support($content)
 {
@@ -1802,16 +1546,6 @@ function excerpt_length($exp)
     return $exp;
 }
 add_filter('the_excerpt', 'excerpt_length', 11);
-
-/*
- * 评论表情修复
- */
-
-function admin_ini()
-{
-    wp_enqueue_style('cus-styles-fit', get_template_directory_uri() . '/css/dashboard-emoji-fix.css');
-}
-add_action('admin_enqueue_scripts', 'admin_ini');
 
 // 主动resize触发wp_scripts后台排版修正，防止左侧导航栏飞出
 add_action('admin_footer',function() {
@@ -2907,52 +2641,6 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
 
     }
     add_filter('registration_errors', 'registration_CAPTCHA_CHECK', 2, 3);
-} elseif ((iro_opt('captcha_select') === 'vaptcha') && (!empty(iro_opt("vaptcha_vid")) && !empty(iro_opt("vaptcha_key")))) {
-    function vaptchaInit()
-    {
-        include_once('inc/classes/Vaptcha.php');
-        $vaptcha = new Sakura\API\Vaptcha;
-        echo $vaptcha->html();
-        echo $vaptcha->script();
-    }
-    add_action('login_form', 'vaptchaInit');
-
-    function checkVaptchaAction($user)
-    {
-        if (empty($_POST)) {
-            return new WP_Error();
-        }
-        if (!(isset($_POST['vaptcha_server']) && isset($_POST['vaptcha_token']))) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：请先进行人机验证');
-
-        }
-        if (!preg_match('/^https:\/\/([\w-]+\.)+[\w-]*([^<>=?\"\'])*$/', $_POST['vaptcha_server']) || !preg_match('/^[\w\-\$]+$/', $_POST['vaptcha_token'])) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：非法数据');
-        }
-        include_once('inc/classes/Vaptcha.php');
-        $url = $_POST['vaptcha_server'];
-        $token = $_POST['vaptcha_token'];
-        $ip = get_the_user_ip();
-        $vaptcha = new Sakura\API\Vaptcha;
-        $response = $vaptcha->checkVaptcha($url, $token, $ip);
-        if ($response->msg && $response->success && $response->score) {
-            if ($response->success === 1 && $response->score >= 70) {
-                return $user;
-            }
-            if ($response->success === 0) {
-                $errorcode = $response->msg;
-                return new WP_Error('prooffail', '<strong>错误</strong>：' . $errorcode);
-            }
-            return new WP_Error('prooffail', '<strong>错误</strong>：人机验证失败');
-
-        } else if (is_string($response)) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：' . $response);
-        }
-        return new WP_Error('prooffail', '<strong>错误</strong>：未知错误');
-
-
-    }
-    add_filter('authenticate', 'checkVaptchaAction', 20, 3);
 } else if ((iro_opt('captcha_select') === 'turnstile') && (!empty(iro_opt("turnstile_site_key")) && !empty(iro_opt("turnstile_secret_key")))) {
     function turnstile_init() {
         include_once('inc/classes/Turnstile.php');
@@ -3086,7 +2774,7 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
                 captchaContainer = yzmField.parentNode;
             }
         } else if (turnstileWidget) {
-            captchaContainer = turnstileWidget.parentNode;
+            captchaContainer = turnstileWidget;
         }
         
         function checkPasswordField() {

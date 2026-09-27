@@ -9,7 +9,6 @@
  * @package Sakura
  */
 
-$reception_background = iro_opt('reception_background');
 ?>
   </div><!-- #content -->
   <?php comments_template('', true); ?>
@@ -20,9 +19,6 @@ $reception_background = iro_opt('reception_background');
         <img alt="loading_svg" src="<?php echo esc_url(iro_opt('load_nextpage_svg')); ?>">
       </div>
       <div class="footer-content">
-          <?php if (iro_opt('footer_yiyan')): ?>
-            <p id="footer_yiyan" class="hitokoto"></p>
-          <?php endif; ?>
           <?php if (!empty(iro_opt('footer_info', ''))): ?>
             <p class="footer_info"><?php echo iro_opt('footer_info', ''); ?></p>
           <?php endif; ?>
@@ -35,15 +31,6 @@ $reception_background = iro_opt('reception_background');
               </p>
           <?php endif; ?>
           
-          <?php if (iro_opt('footer_upyun', 'true')): ?>
-            <p class="cdn-provider">
-              <span>本网站由</span>
-              <a href="https://www.upyun.com/?utm_source=lianmeng&utm_medium=referral" target="_blank">
-                <img alt="upyun-logo" src="https://cdn.gloxina.com/cherry_vision/options/upyun_logo.webp" />
-              </a>
-              <span>提供 CDN 加速 / 云存储 服务</span>
-            </p>
-          <?php endif; ?>
         </div>
       
       <div class="theme-info">
@@ -106,26 +93,6 @@ $reception_background = iro_opt('reception_background');
         <li id="dark-bg" title="<?php esc_attr_e('Dark Mode', 'sakurairo'); ?>">
           <i class="fa-regular fa-moon"></i>
         </li><!--Night-->
-      </ul>
-    <?php endif; ?>
-    <?php if (array_search(1, $reception_background) !== false): ?>
-      <ul class="menu-list" title="<?php esc_attr_e('Toggle Page Background Image', 'sakurairo'); ?>">
-        <?php
-        $bgIcons = [
-          ['heart_shaped', 'fa-regular fa-heart', 'diy1-bg'],
-          ['star_shaped', 'fa-regular fa-star', 'diy2-bg'],
-          ['square_shaped', 'fa-brands fa-delicious', 'diy3-bg'],
-          ['lemon_shaped', 'fa-regular fa-lemon', 'diy4-bg']
-        ];
-        
-        foreach ($bgIcons as $bgIcon) {
-          if ($reception_background[$bgIcon[0]] == '1') {
-            echo '<li id="' . esc_attr($bgIcon[2]) . '">';
-            echo '<i class="' . esc_attr($bgIcon[1]) . '"></i>';
-            echo '</li>';
-          }
-        }
-        ?>
       </ul>
     <?php endif; ?>
     <?php if (iro_opt('widget_font', 'true')): ?>  

@@ -41,7 +41,6 @@ import { ready } from '../common/util'
 import about_us from './about_us'
 import preload_screen from './preload_screen'
 import { isSupported } from './compatibility'
-import hitokoto from './hitokoto'
 import { XLS, post_list_show_animation } from './post_list'
 import { initThemeColor, updateThemeSkin } from './theme-color'
 import initEffect from './effect'
@@ -49,7 +48,7 @@ import { initIsMobileCache, isMobile } from './mobile'
 import { initFontControl } from './font_control'
 import scrollHandler from './scroll_handler'
 import { checkDarkModeSetting, } from './darkmode'
-import { addSkinMenuListener, auto_height, bgButtonAddListener, CE, checkBgImgSetting, checkCoverBackground, closeSkinMenu, MN, PE, timeSeriesReload, collapseMenu } from './func'
+import { addSkinMenuListener, auto_height, bgButtonAddListener, CE, applyFrontendBackground, checkCoverBackground, closeSkinMenu, MN, PE, timeSeriesReload, collapseMenu } from './func'
 import initTypedJs from './typed'
 import add_copyright from './copyright'
 import initFooter from './footer'
@@ -103,7 +102,7 @@ window.addEventListener('hashchange', () => {
 checkDarkModeSetting();
 
 import POWERMODE from 'activate-power-mode'
-import { coverVideoIni, coverVideo } from './video'
+import { coverVideoIni } from './video'
 
 function powermode() {
     POWERMODE.colorful = true;
@@ -114,7 +113,7 @@ function powermode() {
 
 ready(function () {
     if (_iro.land_at_home) initTypedJs()
-    Promise.all([checkCoverBackground(), checkBgImgSetting()])
+    Promise.all([checkCoverBackground(), applyFrontendBackground()])
         .then(() => {
             if (_iro.extract_theme_skin || isSupported({ Version: 15/**Safari 15 */ })) {
                 initThemeColor()
@@ -143,8 +142,6 @@ ready(function () {
     }
     /*GT end;*/
     XLS();
-    coverVideo();
-    hitokoto()
     bgButtonAddListener()
     init_post_cover_as_bg();
     //#region has-dom-modify

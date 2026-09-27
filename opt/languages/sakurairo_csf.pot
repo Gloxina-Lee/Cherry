@@ -1189,33 +1189,13 @@ msgstr ""
 msgid "After opening Background Transparency Blur"
 msgstr ""
 
-#: options/theme-options.php:679
-msgid "Widgets Panel Background Switching(Frontend Background)"
-msgstr ""
-
 #: options/theme-options.php:688 options/theme-options.php:704 options/theme-options.php:720 options/theme-options.php:736
 #: options/theme-options.php:752 options/theme-options.php:2717 options/theme-options.php:2729
 msgid "Image"
 msgstr ""
 
-#: options/theme-options.php:693
-msgid "Heart Shaped"
-msgstr ""
-
 #: options/theme-options.php:699 options/theme-options.php:715 options/theme-options.php:731 options/theme-options.php:747
 msgid "Switch"
-msgstr ""
-
-#: options/theme-options.php:709
-msgid "Star Shaped"
-msgstr ""
-
-#: options/theme-options.php:725
-msgid "Square Shaped"
-msgstr ""
-
-#: options/theme-options.php:741
-msgid "Lemon Shaped"
 msgstr ""
 
 #: options/theme-options.php:772
@@ -1282,14 +1262,6 @@ msgstr ""
 
 #: options/theme-options.php:856
 msgid "Load occupancy information will appear at the end of the page after turning it on. Not recommended in production environment."
-msgstr ""
-
-#: options/theme-options.php:863
-msgid "Footer Upyun League Logo"
-msgstr ""
-
-#: options/theme-options.php:864
-msgid "Upyun Logo will appear at the end of the page after turning it on"
 msgstr ""
 
 #: options/theme-options.php:872
@@ -1398,34 +1370,6 @@ msgstr ""
 
 #: options/theme-options.php:970
 msgid "If you want to play VIP music on Netease Cloud Music Platform, please fill in your account cookies in this option."
-msgstr ""
-
-#: options/theme-options.php:975
-msgid "Hitokoto"
-msgstr ""
-
-#: options/theme-options.php:981
-msgid "Footer Hitokoto"
-msgstr ""
-
-#: options/theme-options.php:982
-msgid "Hitokoto will appear at the end of the page after turning it on"
-msgstr ""
-
-#: options/theme-options.php:989
-msgid ""
-"<h4>Hitokoto API Setup Instructions</h4> <p>Fill in as the example:<code> [\"https://v1.hitokoto.cn/\", \"https://v1.hitokoto.cn/\"]</"
-"code>, where the first API will be used first and the next ones will be the backup. </p> <p><strong>Official API:</strong> See the <a "
-"href=\"https://developer.hitokoto.cn/sentence/\"> documentation</a> for how to use it, and the parameter \"return code\" should not be "
-"anything except JSON. <a href=\"https://v1.hitokoto.cn/\">https://v1.hitokoto.cn/</a></p>"
-msgstr ""
-
-#: options/theme-options.php:997
-msgid "Hitokoto API address"
-msgstr ""
-
-#: options/theme-options.php:999
-msgid "Fill in the address in JavaScript array format"
 msgstr ""
 
 #: options/theme-options.php:1008
@@ -1962,49 +1906,6 @@ msgstr ""
 
 #: options/theme-options.php:1782
 msgid "Dot filter"
-msgstr ""
-
-#: options/theme-options.php:1790 options/theme-options.php:1796
-msgid "Cover Video"
-msgstr ""
-
-#: options/theme-options.php:1797
-msgid "Use a video instead of the images as the cover"
-msgstr ""
-
-#: options/theme-options.php:1805
-msgid "Cover Video Loop"
-msgstr ""
-
-#: options/theme-options.php:1810
-msgid "Video will loop automatically when enabled."
-msgstr ""
-
-#: options/theme-options.php:1817
-msgid "Cover Video Auto Resume"
-msgstr ""
-
-#: options/theme-options.php:1822
-msgid "Cover Video will resume automatically when coming back to homepage while Pjax enabled."
-msgstr ""
-
-#: options/theme-options.php:1829
-msgid "Cover Video URL Base Path"
-msgstr ""
-
-#: options/theme-options.php:1835
-msgid ""
-"Fill in the base path your video located at. For example: https://localhost. Your site's URL is used as default. Please pay attention "
-"to the protocol name of the URL."
-msgstr ""
-
-#: options/theme-options.php:1841
-msgid "Cover Video File Name"
-msgstr ""
-
-#: options/theme-options.php:1846
-msgid ""
-"For example: abc.mp4. Multiple videos should be separated by English commas like \"abc.mp4,efg.mp4,\" Random play is on by default."
 msgstr ""
 
 #: options/theme-options.php:1854
@@ -3001,58 +2902,6 @@ msgstr ""
 msgid "Comment Area Function"
 msgstr ""
 
-#: options/theme-options.php:3073
-msgid "Comment Area Emoticon"
-msgstr ""
-
-#: options/theme-options.php:3074
-msgid ""
-"Select the emoticons to be displayed in the comment area input box. Uncheck all to turn off the comment input box emoticon function."
-msgstr ""
-
-#: options/theme-options.php:3077
-msgid "BiliBili Emoticon Pack"
-msgstr ""
-
-#: options/theme-options.php:3078
-msgid "Baidu Tieba Emoticon Pack"
-msgstr ""
-
-#: options/theme-options.php:3079
-msgid "Emoji"
-msgstr ""
-
-#: options/theme-options.php:3080
-msgid "Customized Emoticon Pack"
-msgstr ""
-
-#: options/theme-options.php:3088
-msgid "Customized Emoticon Column Name"
-msgstr ""
-
-#: options/theme-options.php:3089
-msgid "It is recommended to enter less than 4 Chinese characters in length to avoid causing compatibility issues on mobile terminals."
-msgstr ""
-
-#: options/theme-options.php:3097
-msgid "Path To Custom Expression"
-msgstr ""
-
-#: options/theme-options.php:3098
-msgid ""
-"Click <a href=\"./admin.php?update_custom_smilies=true\" target=\"_blank\">here</a> updating emoticon list. Specific usage reference: "
-"<a href=\"https://docs.fuukei.org/Sakurairo/Pages/#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE\" target=\"_blank\">Comment "
-"related settings</a>"
-msgstr ""
-
-#: options/theme-options.php:3105
-msgid "Custom Emoticon Proxy Address"
-msgstr ""
-
-#: options/theme-options.php:3106
-msgid "Fill in the CDN address of the emoticon image. If left blank, the CDN proxy function will not be enabled."
-msgstr ""
-
 #: options/theme-options.php:3116
 msgid "Page Comment Area UA Info"
 msgstr ""
@@ -3256,32 +3105,8 @@ msgstr ""
 msgid "Theme Built in Captcha"
 msgstr ""
 
-#: options/theme-options.php:3337
-msgid "Vaptcha"
-msgstr ""
-
 #: options/theme-options.php:3338
 msgid "Cloudflare Turnstile"
-msgstr ""
-
-#: options/theme-options.php:3346
-msgid "Vaptcha VID"
-msgstr ""
-
-#: options/theme-options.php:3348
-msgid "Fill in your Vaptcha VID"
-msgstr ""
-
-#: options/theme-options.php:3354
-msgid "Vaptcha KEY"
-msgstr ""
-
-#: options/theme-options.php:3356
-msgid "Fill in your Vaptcha KEY"
-msgstr ""
-
-#: options/theme-options.php:3362
-msgid "Vaptcha Scene"
 msgstr ""
 
 #: options/theme-options.php:3378
@@ -3683,11 +3508,6 @@ msgstr ""
 msgid "Theme Update Source"
 msgstr ""
 
-#: options/theme-options.php:4031
-msgid ""
-"If you are using a server set up in mainland China, please use the Upyun source or the official theme source as your theme update source"
-msgstr ""
-
 #: options/theme-options.php:4038
 msgid "Theme Update Test Channel Disclaimer"
 msgstr ""
@@ -3848,4 +3668,8 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://github.com/Fuukei"
+msgstr ""
+
+#: options/theme-options.php
+msgid "Default Frontend Background"
 msgstr ""

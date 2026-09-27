@@ -1296,10 +1296,6 @@ msgstr "手前の背景をぼかす"
 msgid "After opening Background Transparency Blur"
 msgstr "機能をオンにした後、手前の背景をぼかす"
 
-#: options/theme-options.php:679
-msgid "Widgets Panel Background Switching(Frontend Background)"
-msgstr "ウィジェットパネルの背景切り替え(フロントエンドの背景)"
-
 #: options/theme-options.php:688 options/theme-options.php:704
 #: options/theme-options.php:720 options/theme-options.php:736
 #: options/theme-options.php:752 options/theme-options.php:2717
@@ -1307,26 +1303,10 @@ msgstr "ウィジェットパネルの背景切り替え(フロントエンド�
 msgid "Image"
 msgstr "画像"
 
-#: options/theme-options.php:693
-msgid "Heart Shaped"
-msgstr "ハート型"
-
 #: options/theme-options.php:699 options/theme-options.php:715
 #: options/theme-options.php:731 options/theme-options.php:747
 msgid "Switch"
 msgstr "切り替え"
-
-#: options/theme-options.php:709
-msgid "Star Shaped"
-msgstr "星形"
-
-#: options/theme-options.php:725
-msgid "Square Shaped"
-msgstr "正方形の形"
-
-#: options/theme-options.php:741
-msgid "Lemon Shaped"
-msgstr "レモンの形"
 
 #: options/theme-options.php:772
 msgid "Background Transparency in the Frontend"
@@ -1401,14 +1381,6 @@ msgid ""
 msgstr ""
 "負荷占有率は、オンにするとページの最後に表示されます。運用環境では推奨されま"
 "せん。"
-
-#: options/theme-options.php:863
-msgid "Footer Upyun League Logo"
-msgstr "フッターウピョンリーグロゴ"
-
-#: options/theme-options.php:864
-msgid "Upyun Logo will appear at the end of the page after turning it on"
-msgstr "ウプユンロゴは、オンにするとページの最後に表示されます"
 
 #: options/theme-options.php:872
 msgid "Footer Addition"
@@ -1543,44 +1515,6 @@ msgid ""
 msgstr ""
 "網易雲音楽プラットフォームでVIP音楽を再生したい場合は、このオプションでアカウ"
 "ントのクッキーを記入してください。"
-
-#: options/theme-options.php:975
-msgid "Hitokoto"
-msgstr "一言"
-
-#: options/theme-options.php:981
-msgid "Footer Hitokoto"
-msgstr "フッターの一言"
-
-#: options/theme-options.php:982
-msgid "Hitokoto will appear at the end of the page after turning it on"
-msgstr "オンにすると、ページの最後に一言は表示します"
-
-#: options/theme-options.php:989
-msgid ""
-"<h4>Hitokoto API Setup Instructions</h4> <p>Fill in as the example:<code> "
-"[\"https://v1.hitokoto.cn/\", \"https://v1.hitokoto.cn/\"]</code>, where the "
-"first API will be used first and the next ones will be the backup. </p> "
-"<p><strong>Official API:</strong> See the <a href=\"https://"
-"developer.hitokoto.cn/sentence/\"> documentation</a> for how to use it, and "
-"the parameter \"return code\" should not be anything except JSON. <a "
-"href=\"https://v1.hitokoto.cn/\">https://v1.hitokoto.cn/</a></p>"
-msgstr ""
-"<h4>ヒトコト API のセットアップ手順</h4> <p>最初のAPIが最初に使用され、次の"
-"APIがバックアップになる例として<code> [\"https://v1.hitokoto.cn/\", "
-"\"https://v1.hitokoto.cn/\"]</code>入力します。 </p> <p><strong>公式API:</"
-"strong> 使用方法については <a href=\"https://developer.hitokoto.cn/sentence/"
-"\"> ドキュメント</a> を参照し、パラメーター「リターンコード」はJSON以外のもの"
-"であってはなりません。 <a href=\"https://v1.hitokoto.cn/\">https://"
-"v1.hitokoto.cn/</a></p>"
-
-#: options/theme-options.php:997
-msgid "Hitokoto API address"
-msgstr "一言のAPIアドレス"
-
-#: options/theme-options.php:999
-msgid "Fill in the address in JavaScript array format"
-msgstr "JavaScriptの配列形式でアドレスを記入する"
 
 #: options/theme-options.php:1008
 msgid "Search Options"
@@ -2206,58 +2140,6 @@ msgstr "グリッド フィルター"
 #: options/theme-options.php:1782
 msgid "Dot filter"
 msgstr "ドットフィルター"
-
-#: options/theme-options.php:1790 options/theme-options.php:1796
-msgid "Cover Video"
-msgstr "カバービデオ"
-
-#: options/theme-options.php:1797
-msgid "Use a video instead of the images as the cover"
-msgstr "画像の代わりにビデオをカバーとして使用する"
-
-#: options/theme-options.php:1805
-msgid "Cover Video Loop"
-msgstr "カバービデオループ"
-
-#: options/theme-options.php:1810
-msgid "Video will loop automatically when enabled."
-msgstr "ビデオは、有効にすると自動的にループします, Pjaxが必要"
-
-#: options/theme-options.php:1817
-msgid "Cover Video Auto Resume"
-msgstr "カバービデオアドレス"
-
-#: options/theme-options.php:1822
-msgid ""
-"Cover Video will resume automatically when coming back to homepage while "
-"Pjax enabled."
-msgstr "ビデオは、有効にすると自動的にループします, Pjaxが必要"
-
-#: options/theme-options.php:1829
-msgid "Cover Video URL Base Path"
-msgstr "カバービデオ名"
-
-#: options/theme-options.php:1835
-msgid ""
-"Fill in the base path your video located at. For example: https://localhost. "
-"Your site's URL is used as default. Please pay attention to the protocol "
-"name of the URL."
-msgstr ""
-"ビデオのベース パスを入力します。たとえば、https://localhost。サイトの URL が"
-"既定として使用されます。URLのプロトコル名に注意してください。"
-
-#: options/theme-options.php:1841
-msgid "Cover Video File Name"
-msgstr "カバービデオ名"
-
-#: options/theme-options.php:1846
-msgid ""
-"For example: abc.mp4. Multiple videos should be separated by English commas "
-"like \"abc.mp4,efg.mp4,\" Random play is on by default."
-msgstr ""
-"たとえば、abc.mp4、ビデオファイル名abcを入力するだけです。複数の動画は、"
-"\"abc,efg\"のような英語のカンマで区切られるべきです、 ランダムプレイはデフォ"
-"ルトでオンになっています。"
 
 #: options/theme-options.php:1854
 msgid "Cover Social Area Options"
@@ -3452,76 +3334,6 @@ msgstr ""
 msgid "Comment Area Function"
 msgstr "コメントエリアの機能"
 
-#: options/theme-options.php:3073
-msgid "Comment Area Emoticon"
-msgstr "コメントエリアの絵文字"
-
-#: options/theme-options.php:3074
-msgid ""
-"Select the emoticons to be displayed in the comment area input box. Uncheck "
-"all to turn off the comment input box emoticon function."
-msgstr ""
-"コメントエリアの入力ボックスに表示する顔文字を選択します。すべてのチェックを"
-"外すと、コメント入力ボックスの顔文字機能がオフになります。"
-
-#: options/theme-options.php:3077
-msgid "BiliBili Emoticon Pack"
-msgstr "BiliBili 顔文字パック"
-
-#: options/theme-options.php:3078
-msgid "Baidu Tieba Emoticon Pack"
-msgstr "百度貼吧顔文字パック"
-
-#: options/theme-options.php:3079
-msgid "Emoji"
-msgstr "絵文字"
-
-#: options/theme-options.php:3080
-msgid "Customized Emoticon Pack"
-msgstr "カスタム顔文字パック"
-
-#: options/theme-options.php:3088
-msgid "Customized Emoticon Column Name"
-msgstr "カスタマイズ顔文字コラム名"
-
-#: options/theme-options.php:3089
-msgid ""
-"It is recommended to enter less than 4 Chinese characters in length to avoid "
-"causing compatibility issues on mobile terminals."
-msgstr ""
-"携帯端末での互換性の問題を避けるため、漢字の長さは4文字未満で入力することを推"
-"奨する。"
-
-#: options/theme-options.php:3097
-msgid "Path To Custom Expression"
-msgstr "カスタム式へのパス"
-
-#: options/theme-options.php:3098
-msgid ""
-"Click <a href=\"./admin.php?update_custom_smilies=true\" "
-"target=\"_blank\">here</a> updating emoticon list. Specific usage reference: "
-"<a href=\"https://docs.fuukei.org/Sakurairo/Pages/"
-"#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE\" "
-"target=\"_blank\">Comment related settings</a>"
-msgstr ""
-"顔文字一覧の更新は <a href=\"./admin.php?update_custom_smilies=true\" "
-"target=\"_blank\">こちら</a>。具体的な使い方の参考：<a href=\"https://"
-"docs.fuukei.org/Sakurairo/Pages/"
-"#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE\" target=\"_blank\">"
-"コメント関連設定</a>"
-
-#: options/theme-options.php:3105
-msgid "Custom Emoticon Proxy Address"
-msgstr "カスタム顔文字プロキシアドレス"
-
-#: options/theme-options.php:3106
-msgid ""
-"Fill in the CDN address of the emoticon image. If left blank, the CDN proxy "
-"function will not be enabled."
-msgstr ""
-"顔文字画像のCDNアドレスを入力します。空欄の場合、CDNプロキシ機能は有効になり"
-"ません。"
-
 #: options/theme-options.php:3116
 msgid "Page Comment Area UA Info"
 msgstr "ページコメントエリア UA 情報"
@@ -3787,30 +3599,6 @@ msgstr "ログイン画面のロゴを設定する"
 #: options/theme-options.php:3338
 msgid "Captcha Selection"
 msgstr "セクションをリセット"
-
-#: options/theme-options.php:3342
-msgid "Vaptcha"
-msgstr "Vaptcha"
-
-#: options/theme-options.php:3351
-msgid "Vaptcha VID"
-msgstr "Vaptcha VID"
-
-#: options/theme-options.php:3353
-msgid "Fill in your Vaptcha VID"
-msgstr "あなたのVaptcha VIDを記入してください"
-
-#: options/theme-options.php:3359
-msgid "Vaptcha KEY"
-msgstr "Vaptcha KEY"
-
-#: options/theme-options.php:3361
-msgid "Fill in your Vaptcha KEY"
-msgstr "Vaptcha KEYを入力する"
-
-#: options/theme-options.php:3367
-msgid "Vaptcha Scene"
-msgstr "Vaptchaシーン"
 
 #: options/theme-options.php:3383
 msgid "Turnstile Site Key"
@@ -4309,14 +4097,6 @@ msgstr "関連する更新プログラム"
 msgid "Theme Update Source"
 msgstr "テーマの更新元"
 
-#: options/theme-options.php:4033
-msgid ""
-"If you are using a server set up in mainland China, please use the Upyun "
-"source or the official theme source as your theme update source"
-msgstr ""
-"中国本土で設定されたサーバーを使用している場合は、UPYUNソースまたは公式テーマ"
-"ソースをテーマアップデートソースとして使用してください。"
-
 #: options/theme-options.php:4040
 msgid "Theme Update Test Channel Disclaimer"
 msgstr "テーマ更新テスト チャネルの免責事項"
@@ -4510,3 +4290,7 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://github.com/Fuukei"
 msgstr ""
+
+#: options/theme-options.php
+msgid "Default Frontend Background"
+msgstr "デフォルト背景"

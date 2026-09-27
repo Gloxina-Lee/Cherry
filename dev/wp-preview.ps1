@@ -144,9 +144,6 @@ if ($activeTheme.Trim() -ne 'Cherry') {
     Invoke-Docker ($cli + @('theme', 'activate', 'Cherry', '--allow-root'))
 }
 
-# 当前主题在全新站点缺少此选项时会在 footer.php 报错。仅补测试数据，不覆盖已有设置。
-$seedOptions = '$options = get_option("iro_options", []); if (!is_array($options)) { $options = []; } if (!array_key_exists("reception_background", $options)) { $options["reception_background"] = []; update_option("iro_options", $options); }'
-Invoke-Docker ($cli + @('eval', $seedOptions, '--allow-root')) | Out-Null
 Invoke-Docker @('exec', '-u', 'root', $web, 'sh', '-c', 'mkdir -p /var/www/html/wp-content/uploads && chown -R www-data:www-data /var/www/html/wp-content/uploads') | Out-Null
 
 Write-Host "Cherry 预览站：$siteUrl"

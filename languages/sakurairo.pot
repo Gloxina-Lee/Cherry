@@ -48,10 +48,6 @@ msgstr ""
 msgid "No personal profile set yet"
 msgstr ""
 
-#: comments.php:53
-msgid "Woooooow ヾ(≧∇≦*)ゝ"
-msgstr ""
-
 #: comments.php:75
 msgid "view comments"
 msgstr ""
@@ -359,10 +355,6 @@ msgstr ""
 
 #: footer.php:106
 msgid "Dark Mode"
-msgstr ""
-
-#: footer.php:112
-msgid "Toggle Page Background Image"
 msgstr ""
 
 #: footer.php:133

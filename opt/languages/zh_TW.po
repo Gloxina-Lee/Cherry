@@ -1272,10 +1272,6 @@ msgstr "前台背景模糊"
 msgid "After opening Background Transparency Blur"
 msgstr "開啟之後前台背景模糊"
 
-#: options/theme-options.php:679
-msgid "Widgets Panel Background Switching(Frontend Background)"
-msgstr "小部件面板背景切換（前台背景）"
-
 #: options/theme-options.php:688 options/theme-options.php:704
 #: options/theme-options.php:720 options/theme-options.php:736
 #: options/theme-options.php:752 options/theme-options.php:2717
@@ -1283,26 +1279,10 @@ msgstr "小部件面板背景切換（前台背景）"
 msgid "Image"
 msgstr "圖像"
 
-#: options/theme-options.php:693
-msgid "Heart Shaped"
-msgstr "心形形狀"
-
 #: options/theme-options.php:699 options/theme-options.php:715
 #: options/theme-options.php:731 options/theme-options.php:747
 msgid "Switch"
 msgstr "開關"
-
-#: options/theme-options.php:709
-msgid "Star Shaped"
-msgstr "星形形狀"
-
-#: options/theme-options.php:725
-msgid "Square Shaped"
-msgstr "方形形狀"
-
-#: options/theme-options.php:741
-msgid "Lemon Shaped"
-msgstr "檸檬形形狀"
 
 #: options/theme-options.php:772
 msgid "Background Transparency in the Frontend"
@@ -1374,14 +1354,6 @@ msgid ""
 "Load occupancy information will appear at the end of the page after turning "
 "it on. Not recommended in production environment."
 msgstr "開啟佔用資訊之後，該資訊將顯示在頁面末尾。不建議在生產環境中使用。"
-
-#: options/theme-options.php:863
-msgid "Footer Upyun League Logo"
-msgstr "頁尾 Upyun League Logo"
-
-#: options/theme-options.php:864
-msgid "Upyun Logo will appear at the end of the page after turning it on"
-msgstr "開啟之後Upyun Logo將出現在頁面末尾"
 
 #: options/theme-options.php:872
 msgid "Footer Addition"
@@ -1507,44 +1479,6 @@ msgid ""
 "If you want to play VIP music on Netease Cloud Music Platform, please fill "
 "in your account cookies in this option."
 msgstr "如果你想播放網易云音樂會員專享音樂，請在此選項填入你的帳號Cookies。"
-
-#: options/theme-options.php:975
-msgid "Hitokoto"
-msgstr "一言"
-
-#: options/theme-options.php:981
-msgid "Footer Hitokoto"
-msgstr "尾頁一言"
-
-#: options/theme-options.php:982
-msgid "Hitokoto will appear at the end of the page after turning it on"
-msgstr "開啟之後頁尾將出現一言"
-
-#: options/theme-options.php:989
-msgid ""
-"<h4>Hitokoto API Setup Instructions</h4> <p>Fill in as the example:<code> "
-"[\"https://v1.hitokoto.cn/\", \"https://v1.hitokoto.cn/\"]</code>, where the "
-"first API will be used first and the next ones will be the backup. </p> "
-"<p><strong>Official API:</strong> See the <a href=\"https://"
-"developer.hitokoto.cn/sentence/\"> documentation</a> for how to use it, and "
-"the parameter \"return code\" should not be anything except JSON. <a "
-"href=\"https://v1.hitokoto.cn/\">https://v1.hitokoto.cn/</a></p>"
-msgstr ""
-"<h4>一言API設定說明</h4>\n"
-"<p>填寫示例:<code> [\"https://v1.hitokoto.cn/\",\"https://v1.hitokoto.cn/"
-"\"]</code>，此時會優先使用第一項API，以後一項為後備。</p>\n"
-"<p><strong>官方API:</strong>使用方法請查閱<a href=\"https://"
-"developer.hitokoto.cn/sentence/\">文檔</a>，參數\"返回編碼\"不應設定為JSON以"
-"外的其他值。<a href=\"https://v1.hitokoto.cn/\">https://v1.hitokoto.cn/</a></"
-"p>"
-
-#: options/theme-options.php:997
-msgid "Hitokoto API address"
-msgstr "一言API地址"
-
-#: options/theme-options.php:999
-msgid "Fill in the address in JavaScript array format"
-msgstr "填寫地址，格式為JavaScript陣列"
 
 #: options/theme-options.php:1008
 msgid "Search Options"
@@ -2134,56 +2068,6 @@ msgstr "網格濾鏡"
 #: options/theme-options.php:1782
 msgid "Dot filter"
 msgstr "點狀濾鏡"
-
-#: options/theme-options.php:1790 options/theme-options.php:1796
-msgid "Cover Video"
-msgstr "封面影片"
-
-#: options/theme-options.php:1797
-msgid "Use a video instead of the images as the cover"
-msgstr "開啟之後將替代隨機圖像作為封面顯示"
-
-#: options/theme-options.php:1805
-msgid "Cover Video Loop"
-msgstr "封面影片循環"
-
-#: options/theme-options.php:1810
-msgid "Video will loop automatically when enabled."
-msgstr "開啟之後影片將自動循環"
-
-#: options/theme-options.php:1817
-msgid "Cover Video Auto Resume"
-msgstr "封面影片自動恢復"
-
-#: options/theme-options.php:1822
-msgid ""
-"Cover Video will resume automatically when coming back to homepage while "
-"Pjax enabled."
-msgstr "開啟之後返回首頁時視頻將恢復播放，需要開啟Pjax功能"
-
-#: options/theme-options.php:1829
-msgid "Cover Video URL Base Path"
-msgstr "封面影片URL連結路徑"
-
-#: options/theme-options.php:1835
-msgid ""
-"Fill in the base path your video located at. For example: https://localhost. "
-"Your site's URL is used as default. Please pay attention to the protocol "
-"name of the URL."
-msgstr ""
-"填寫影片所在的根路徑。例如：https://localhost. 你站點的URL將作為默認URL。請注"
-"意URL的協議名稱。"
-
-#: options/theme-options.php:1841
-msgid "Cover Video File Name"
-msgstr "封面影片檔案名稱"
-
-#: options/theme-options.php:1846
-msgid ""
-"For example: abc.mp4. Multiple videos should be separated by English commas "
-"like \"abc.mp4,efg.mp4,\" Random play is on by default."
-msgstr ""
-"例如：abc.mp4，多個影片請用英文逗號隔開，如：abc.mp4,efg.mp4。默認隨機播放。"
 
 #: options/theme-options.php:1854
 msgid "Cover Social Area Options"
@@ -3323,71 +3207,6 @@ msgstr "如果此選項為空白，則沒有圖像，無最佳推薦"
 msgid "Comment Area Function"
 msgstr "留言板區域功能"
 
-#: options/theme-options.php:3073
-msgid "Comment Area Emoticon"
-msgstr "留言板區域表情包"
-
-#: options/theme-options.php:3074
-msgid ""
-"Select the emoticons to be displayed in the comment area input box. Uncheck "
-"all to turn off the comment input box emoticon function."
-msgstr ""
-"選擇要在留言板區域輸入框中顯示的表情。 全部取消選中可關閉留言板區域輸入框表情"
-"功能。"
-
-#: options/theme-options.php:3077
-msgid "BiliBili Emoticon Pack"
-msgstr "嗶哩嗶哩表情包"
-
-#: options/theme-options.php:3078
-msgid "Baidu Tieba Emoticon Pack"
-msgstr "百度貼吧表情包"
-
-#: options/theme-options.php:3079
-msgid "Emoji"
-msgstr ""
-
-#: options/theme-options.php:3080
-msgid "Customized Emoticon Pack"
-msgstr "自訂表情包"
-
-#: options/theme-options.php:3088
-msgid "Customized Emoticon Column Name"
-msgstr "自訂表情包名稱"
-
-#: options/theme-options.php:3089
-msgid ""
-"It is recommended to enter less than 4 Chinese characters in length to avoid "
-"causing compatibility issues on mobile terminals."
-msgstr "建議輸入少於4個漢字的內容，以免造成移動端的相容性問題。"
-
-#: options/theme-options.php:3097
-msgid "Path To Custom Expression"
-msgstr "自訂表情包路徑"
-
-#: options/theme-options.php:3098
-msgid ""
-"Click <a href=\"./admin.php?update_custom_smilies=true\" "
-"target=\"_blank\">here</a> updating emoticon list. Specific usage reference: "
-"<a href=\"https://docs.fuukei.org/Sakurairo/Pages/"
-"#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE\" "
-"target=\"_blank\">Comment related settings</a>"
-msgstr ""
-"點擊 <a href=\"./admin.php?update_custom_smilies=true\" target=\"_blank\">這"
-"裡</a> 更新表情包清單。 使用方法請參攷：<a href=\"https://docs.fuukei.org/"
-"Sakurairo/Pages/#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE\" "
-"target=\"_blank\">留言相關設定</a>"
-
-#: options/theme-options.php:3105
-msgid "Custom Emoticon Proxy Address"
-msgstr "自訂表情包代理位址"
-
-#: options/theme-options.php:3106
-msgid ""
-"Fill in the CDN address of the emoticon image. If left blank, the CDN proxy "
-"function will not be enabled."
-msgstr "填寫表情圖片的CDN位址。 如果留空，則不會啟用CDN代理功能。"
-
 #: options/theme-options.php:3116
 msgid "Page Comment Area UA Info"
 msgstr "頁面留言板UA資訊"
@@ -3630,30 +3449,6 @@ msgstr "設定你的登入介面Logo"
 #: options/theme-options.php:3338
 msgid "Captcha Selection"
 msgstr "驗證碼選項"
-
-#: options/theme-options.php:3342
-msgid "Vaptcha"
-msgstr ""
-
-#: options/theme-options.php:3351
-msgid "Vaptcha VID"
-msgstr ""
-
-#: options/theme-options.php:3353
-msgid "Fill in your Vaptcha VID"
-msgstr "填寫你的Vaptcha VID"
-
-#: options/theme-options.php:3359
-msgid "Vaptcha KEY"
-msgstr ""
-
-#: options/theme-options.php:3361
-msgid "Fill in your Vaptcha KEY"
-msgstr "填寫你的Vaptcha KEY"
-
-#: options/theme-options.php:3367
-msgid "Vaptcha Scene"
-msgstr "Vaptcha場景"
 
 #: options/theme-options.php:3383
 msgid "Turnstile Site Key"
@@ -4130,14 +3925,6 @@ msgstr "更新相關"
 msgid "Theme Update Source"
 msgstr "主題更新源"
 
-#: options/theme-options.php:4033
-msgid ""
-"If you are using a server set up in mainland China, please use the Upyun "
-"source or the official theme source as your theme update source"
-msgstr ""
-"如果你使用的是架設在中國的伺服器，請使用 UPYUN 源或主題官方源作為你的主題更新"
-"源"
-
 #: options/theme-options.php:4040
 msgid "Theme Update Test Channel Disclaimer"
 msgstr "主題更新測試通道免責聲明"
@@ -4327,3 +4114,7 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://github.com/Fuukei"
 msgstr ""
+
+#: options/theme-options.php
+msgid "Default Frontend Background"
+msgstr "默認背景"

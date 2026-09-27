@@ -476,26 +476,6 @@
   }
 }
 
-@media (max-width: 860px) {
-  .emotion-box {
-    position: relative;
-    box-shadow: none;
-    max-height: 0px;
-    left: 0 !important;
-    top: 0 !important;
-    width: 100%;
-    transition: all 0.3s ease-in-out !important;
-  }
-
-  .emotion-box.open {
-    max-height: 200px;
-  }
-
-  .emotion-header {
-    display: none;
-  }
-}
-
 /* 860px 断点适配 */
 @media (max-width: 860px) {
   /* Pattern Center 相关 */
@@ -589,11 +569,6 @@
   #centerbg {
     height: 300px;
     background-attachment: scroll;
-  }
-
-  #video-container,
-  .loadvideo {
-    display: none;
   }
 
   /* Footer */
@@ -918,14 +893,4 @@
     vertical-align: middle;
   }
 
-  .bili-container,
-  .tieba-container {
-    padding-inline-start: 0;
-  }
-
-  .tieba-container img,
-  .tieba-container span {
-    transform: scale(0.6);
-    margin-block-end: -10px;
-  }
 }

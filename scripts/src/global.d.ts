@@ -1,14 +1,6 @@
 declare namespace _iro {
     // Poi
     let pjax: boolean
-    const movies: {
-        url: string,
-        name: string,
-        /**自动续播 */
-        live: boolean,
-        /**列表循环 */
-        loop: boolean
-    }/*  | 'close' */
     const windowheight: string
     const codeLamp: string
     const ajaxurl: string
@@ -75,10 +67,6 @@ declare namespace _iro {
     const site_name: string
     const skin_bg0: string
     const site_url: string
-    const skin_bg1: string
-    const skin_bg2: string
-    const skin_bg3: string
-    const skin_bg4: string
     const code_highlight: "prism" | "hljs" | "custom"
     const theme_mathjax: boolean
     const code_highlight_prism: {
@@ -99,7 +87,6 @@ declare namespace _iro {
      */
     const cache_cover: boolean
     const site_bg_as_cover: boolean
-    const yiyan_api: Array<string>
     /**
      * 是否从CDN源加载第三方库
      */

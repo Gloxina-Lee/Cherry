@@ -604,38 +604,6 @@ msgstr "全局默认字体/小组件字体A"
 msgid "Widgets Panel Font Switching B"
 msgstr "小组件字体B"
 
-#: customizer.php:1470
-msgid "♡Option Switcher"
-msgstr "♡选项开关"
-
-#: customizer.php:1477
-msgid "♡Corresponding Background"
-msgstr "♡选项背景"
-
-#: customizer.php:1484
-msgid "☆Option Switcher"
-msgstr "☆选项开关"
-
-#: customizer.php:1491
-msgid "☆Corresponding Background"
-msgstr "☆选项背景"
-
-#: customizer.php:1498
-msgid "□Option Switcher"
-msgstr "□选项开关"
-
-#: customizer.php:1505
-msgid "□Corresponding Background"
-msgstr "□选项背景"
-
-#: customizer.php:1512
-msgid "🍋Option Switcher"
-msgstr "🍋选项开关"
-
-#: customizer.php:1519
-msgid "🍋Corresponding Background"
-msgstr "🍋选项背景"
-
 #: customizer.php:1526
 msgid "Particles"
 msgstr "视觉特效"
@@ -703,18 +671,6 @@ msgstr "页尾文本字体"
 #: customizer.php:1627
 msgid "Footer Load Occupancy Query"
 msgstr "页尾负载占用查询"
-
-#: customizer.php:1633
-msgid "Footer Upyun League Logo"
-msgstr "页尾又拍云联盟Logo"
-
-#: customizer.php:1639
-msgid "Footer Hitokoto"
-msgstr "页尾一言"
-
-#: customizer.php:1645
-msgid "Hitokoto API address"
-msgstr "一言API地址"
 
 #: customizer.php:1671
 msgid "NProgress Loading Progress Bar"
@@ -960,30 +916,6 @@ msgstr "自定义提交按钮内容"
 #: customizer.php:2106
 msgid "Page Comment Area Bottom Right Background Image"
 msgstr "页面评论区域右下背景图片"
-
-#: customizer.php:2120
-msgid "Comment Area Emoticon"
-msgstr "评论区域右下背景图片"
-
-#: customizer.php:2121
-msgid "Please go to the backend to configure your custom emoticon pack"
-msgstr "请前往后台配置自定义表情包"
-
-#: customizer.php:2124
-msgid "BiliBili Emoticon Pack"
-msgstr "哔哩哔哩表情包"
-
-#: customizer.php:2125
-msgid "Baidu Tieba Emoticon Pack"
-msgstr "贴吧表情包"
-
-#: customizer.php:2126
-msgid "Emoji"
-msgstr "颜文字"
-
-#: customizer.php:2127
-msgid "Customized Emoticon Pack"
-msgstr "自定义"
 
 #: customizer.php:2133
 msgid ""

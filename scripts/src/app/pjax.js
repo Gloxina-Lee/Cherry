@@ -4,7 +4,6 @@ import { _$ } from '../common/sakurairo_global';
 import add_copyright from './copyright';
 import { loadFontSetting } from './font_control';
 import { MNH, auto_height, PE, CE, bgButtonAddListener, checkCoverBackground } from './func';
-import hitokoto from './hitokoto';
 import { coverVideoIni } from './video';
 import { XLS, post_list_show_animation } from './post_list'
 
@@ -78,7 +77,6 @@ export default function initPjax() {
             document.getElementsByClassName("js-search")[0].classList.toggle("is-visible");
             document.documentElement.style.overflowY = "unset";
         }
-        hitokoto()
         lazyload();
     });
     document.addEventListener("pjax:success", () => {
@@ -126,7 +124,6 @@ export default function initPjax() {
     })
     window.addEventListener('popstate', (e) => {
         auto_height();
-        hitokoto()
         PE();
         CE();
         post_list_show_animation();

@@ -11,23 +11,6 @@ remove_filter('term_description', 'wp_kses_data');
 show_admin_bar(false);
 
 /*
- * 视频
- */
-function bgvideo(){
-  $dis=null;
-  if(!iro_opt('cover_video'))return '';
-  if(!iro_opt('cover_full_screen')) $dis = 'display:none;';
-  $html = '<div id="video-container" style="'.$dis.'">'; 
-  $html .= '<video id="bgvideo" class="video" preload="auto"></video>';
-  $html .= '<div id="video-btn" class="loadvideo videolive"></div>';
-  $html .= '<div id="video-add"></div>';
-  $html .= '<div class="video-stu"></div>';
-  $html .= '</div>';
-  return $html;
-}
-
-
-/*
  * 使用本地图片作为头像，防止外源抽风问题
  */
 function get_avatar_profile_url():string{ 

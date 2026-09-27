@@ -50,10 +50,6 @@ msgstr " Précédent"
 msgid "No personal profile set yet"
 msgstr "Aucun profil personnel défini pour l'instant"
 
-#: comments.php:53
-msgid "Woooooow ヾ(≧∇≦*)ゝ"
-msgstr "Woooooow ヾ(≧∇≦*)ゝ"
-
 #: comments.php:75
 msgid "view comments"
 msgstr "voir les commentaires"
@@ -388,10 +384,6 @@ msgstr "Mode clair"
 #: footer.php:106
 msgid "Dark Mode"
 msgstr "Mode sombre"
-
-#: footer.php:112
-msgid "Toggle Page Background Image"
-msgstr "Basculer l'image de fond de la page"
 
 #: footer.php:133
 msgid "Switch To Font A"

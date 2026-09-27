@@ -608,38 +608,6 @@ msgstr "メインフォント/小組件フォントA"
 msgid "Widgets Panel Font Switching B"
 msgstr "小組件フォントB"
 
-#: customizer.php:1470
-msgid "♡Option Switcher"
-msgstr "♡オプションスイッチ"
-
-#: customizer.php:1477
-msgid "♡Corresponding Background"
-msgstr "♡オプションの背景"
-
-#: customizer.php:1484
-msgid "☆Option Switcher"
-msgstr "☆オプションスイッチ"
-
-#: customizer.php:1491
-msgid "☆Corresponding Background"
-msgstr "☆オプションの背景"
-
-#: customizer.php:1498
-msgid "□Option Switcher"
-msgstr "□オプションスイッチ"
-
-#: customizer.php:1505
-msgid "□Corresponding Background"
-msgstr "□オプションの背景"
-
-#: customizer.php:1512
-msgid "🍋Option Switcher"
-msgstr "🍋オプションスイッチ"
-
-#: customizer.php:1519
-msgid "🍋Corresponding Background"
-msgstr "🍋オプションの背景"
-
 #: customizer.php:1526
 msgid "Particles"
 msgstr "パーティクル効果"
@@ -707,18 +675,6 @@ msgstr "フッターフォント"
 #: customizer.php:1627
 msgid "Footer Load Occupancy Query"
 msgstr "サーバー負荷表示"
-
-#: customizer.php:1633
-msgid "Footer Upyun League Logo"
-msgstr "UPYUNロゴ表示"
-
-#: customizer.php:1639
-msgid "Footer Hitokoto"
-msgstr "一言表示"
-
-#: customizer.php:1645
-msgid "Hitokoto API address"
-msgstr "一言APIアドレス"
 
 #: customizer.php:1671
 msgid "NProgress Loading Progress Bar"
@@ -985,31 +941,6 @@ msgstr "カスタム送信ボタンの内容"
 #: customizer.php:2106
 msgid "Page Comment Area Bottom Right Background Image"
 msgstr "ページコメントエリア右下の背景画像"
-
-#: customizer.php:2120
-#, fuzzy
-msgid "Comment Area Emoticon"
-msgstr "コメントエリアのエモーティコン"
-
-#: customizer.php:2121
-msgid "Please go to the backend to configure your custom emoticon pack"
-msgstr "カスタムエモーティコンパックの設定はバックエンドで行ってください"
-
-#: customizer.php:2124
-msgid "BiliBili Emoticon Pack"
-msgstr "BiliBiliエモーティコンパック"
-
-#: customizer.php:2125
-msgid "Baidu Tieba Emoticon Pack"
-msgstr "Baidu Tiebaエモーティコンパック"
-
-#: customizer.php:2126
-msgid "Emoji"
-msgstr "絵文字"
-
-#: customizer.php:2127
-msgid "Customized Emoticon Pack"
-msgstr "カスタムエモーティコンパック"
 
 #: customizer.php:2133
 msgid ""

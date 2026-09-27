@@ -50,10 +50,6 @@ msgstr " 前へ"
 msgid "No personal profile set yet"
 msgstr "個人プロファイルはまだ設定されていません"
 
-#: comments.php:53
-msgid "Woooooow ヾ(≧∇≦*)ゝ"
-msgstr "うわーうわーヾ(≧∇≦*)ゝ"
-
 #: comments.php:75
 msgid "view comments"
 msgstr "コメントを表示する"
@@ -369,10 +365,6 @@ msgstr "ライトフィルター"
 #: footer.php:106
 msgid "Dark Mode"
 msgstr "ダークモード"
-
-#: footer.php:112
-msgid "Toggle Page Background Image"
-msgstr "検索エリア背景画像"
 
 #: footer.php:133
 msgid "Switch To Font A"

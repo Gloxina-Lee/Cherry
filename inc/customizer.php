@@ -1275,9 +1275,8 @@ $sections = [
 		'fields'      =>[
 			[
 				'type'     => 'image',
-				'settings' => 'reception_background_img1',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'img1',
+				'settings' => 'reception_background_image',
+				'iro_key'  => 'reception_background_image',
 				'label'    => esc_html__( 'Default Frontend Background', 'Sakurairo_C' ),
 			],
 			[
@@ -1461,63 +1460,6 @@ $sections = [
 				'iro_key'  => 'global_font_2',
 				'label'    => esc_html__( 'Widgets Panel Font Switching B', 'Sakurairo_C' ),
 			],
-			//四个背景按钮
-			[
-				'type'     => 'switch',
-				'settings' => 'reception_background_heart_shaped',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'heart_shaped',
-				'label'    => esc_html__( '♡Option Switcher', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'image',
-				'settings' => 'reception_background_img2',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'img2',
-				'label'    => esc_html__( '♡Corresponding Background', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'switch',
-				'settings' => 'reception_background_star_shaped',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'star_shaped',
-				'label'    => esc_html__( '☆Option Switcher', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'image',
-				'settings' => 'reception_background_img3',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'img3',
-				'label'    => esc_html__( '☆Corresponding Background', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'switch',
-				'settings' => 'reception_background_square_shaped',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'square_shaped',
-				'label'    => esc_html__( '□Option Switcher', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'image',
-				'settings' => 'reception_background_img4',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'img4',
-				'label'    => esc_html__( '□Corresponding Background', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'switch',
-				'settings' => 'reception_background_lemon_shaped',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'lemon_shaped',
-				'label'    => esc_html__( '🍋Option Switcher', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'image',
-				'settings' => 'reception_background_img5',
-				'iro_key'  => 'reception_background',
-				'iro_subkey'  => 'img5',
-				'label'    => esc_html__( '🍋Corresponding Background', 'Sakurairo_C' ),
-			],
 		],
     ],
 	// ====================粒子特效====================
@@ -1625,34 +1567,6 @@ $sections = [
 				'settings' => 'footer_load_occupancy',
 				'iro_key'  => 'footer_load_occupancy',
 				'label'    => esc_html__( 'Footer Load Occupancy Query', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'switch',
-				'settings' => 'footer_upyun',
-				'iro_key'  => 'footer_upyun',
-				'label'    => esc_html__( 'Footer Upyun League Logo', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'switch',
-				'settings' => 'footer_yiyan',
-				'iro_key'  => 'footer_yiyan',
-				'label'    => esc_html__( 'Footer Hitokoto', 'Sakurairo_C' ),
-			],
-			[
-				'type'     => 'code',
-				'settings' => 'yiyan_api',
-				'iro_key'  => 'yiyan_api',
-				'label'    => esc_html__( 'Hitokoto API address', 'Sakurairo_C' ),
-				'active_callback' => [
-					[
-						'setting'  => 'footer_yiyan',
-						'operator' => '==',
-						'value'    => true,
-					]
-				],
-				'choices'     => [
-					'language' => 'json',
-				],
 			],
 		],
     ],
@@ -2112,20 +2026,6 @@ $sections = [
 						'value_pattern' => '$ !important',
 					),
 				),
-			],
-			[
-				'type'     => 'select',
-				'settings' => 'smilies_list',
-				'iro_key'  => 'smilies_list',
-				'label'    => esc_html__( 'Comment Area Emoticon', 'Sakurairo_C' ),
-				'description' => esc_html__( 'Please go to the backend to configure your custom emoticon pack', 'Sakurairo_C' ),
-				'multiple'    => 0,
-				'choices'     => [
-					'bilibili'   => __('BiliBili Emoticon Pack','Sakurairo_C'),
-					'tieba'   => __('Baidu Tieba Emoticon Pack','Sakurairo_C'),
-					'yanwenzi' => __('Emoji','Sakurairo_C'),
-					'custom' => __('Customized Emoticon Pack','Sakurairo_C'),
-				],
 			],
 			[
 				'type'     => 'custom',

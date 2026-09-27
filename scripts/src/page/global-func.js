@@ -1,21 +1,10 @@
-function grin(tag, type, before, after) {
+export function insertCommentImage(url) {
     const myField = document.getElementById('comment');
     if (!myField || myField.type != 'textarea') {
         return false;
     }
-    switch (type) {
-        case "custom": tag = before + tag + after; break;
-        case "Img": tag = '[img]' + tag + '[/img]'; break;
-        case "Math": tag = ' {{' + tag + '}} '; break;
-        case "tieba": tag = ' ::' + tag + ':: '; break;
-        default: tag = ' :' + tag + ': ';
-    }
-/*     if (document.selection) {
-        myField.focus();
-        const sel = document.selection.createRange();
-        sel.text = tag;
-        myField.focus();
-    } else */ if (myField.selectionStart || myField.selectionStart == '0') {
+    const tag = `[img]${url}[/img]`;
+    if (myField.selectionStart || myField.selectionStart == '0') {
         let startPos = myField.selectionStart,
             endPos = myField.selectionEnd,
             cursorPos = endPos;
@@ -29,4 +18,3 @@ function grin(tag, type, before, after) {
         myField.focus();
     }
 }
-window.grin = grin

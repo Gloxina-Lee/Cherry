@@ -824,9 +824,6 @@ body{
     background-size:<?=iro_opt(('reception_background_size'),'auto')
 ?>;
 }
-#video-add{
-    background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/add.svg);
-}
 @media (max-width:860px) {
   .headertop.filter-dot::before {
     background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/grid.png);
@@ -839,14 +836,6 @@ body{
 .headertop.filter-dot::before {
   background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/dot.gif);
 }
-.loadvideo,.video-play {
-  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/play.svg);
-}
-
-.video-pause {
-  background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/pause.svg);
-}
-
 #loading-comments {
 background-image: url(<?=iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL)?>basic/puff-load.svg);
 }

@@ -24,14 +24,6 @@ function font_end_js_control()
     };
 
     $vision_resource_basepath = iro_opt('vision_resource_basepath', CHERRY_VISION_BASE_URL);
-    $movies = iro_opt('cover_video') ?
-        array(
-            'url' => iro_opt('cover_video_link'),
-            'name' => iro_opt('cover_video_title'),
-            'live' => iro_opt('cover_video_live') ? true : false,
-            'loop' => iro_opt('cover_video_loop') ? true : false
-        )
-        : 'close';
     $auto_height = !iro_opt('cover_full_screen') ? 'fixed' : 'auto';
     if (iro_opt('gravatar_proxy') == 'custom_proxy_address_of_gravatar') {
         $gravatar_url = iro_opt('custom_proxy_address_of_gravatar') ?: 'secure.gravatar.com/avatar';
@@ -39,11 +31,9 @@ function font_end_js_control()
         $gravatar_url = iro_opt('gravatar_proxy') ?: 'secure.gravatar.com/avatar';
     }
     $lightbox = iro_opt('lightbox');
-    $reception_background = iro_opt('reception_background');
     $iro_opt = [
         // Poi
         'pjax' => check(iro_opt('poi_pjax')),
-        'movies' => $movies,
         'windowheight' => $auto_height,
         'ajaxurl' => admin_url('admin-ajax.php'),
         'language' => esc_js(str_replace('-', '_', get_locale())),
@@ -86,12 +76,7 @@ function font_end_js_control()
         'img_upload_max_size' => iro_opt('img_upload_max_size',5),
         'cache_cover' => check(iro_opt('cache_cover')),
         'site_bg_as_cover' => check(iro_opt('site_bg_as_cover')),
-        'yiyan_api' => empty(iro_opt('yiyan_api')) ? ["https://v1.hitokoto.cn/", "https://api.nmxc.ltd/yiyan/"] : json_decode(iro_opt('yiyan_api')),
-        'skin_bg0' => $reception_background['img1'] ?? '',
-        'skin_bg1' => $reception_background['img2'] ?? '',
-        'skin_bg2' => $reception_background['img3'] ?? '',
-        'skin_bg3' => $reception_background['img4'] ?? '',
-        'skin_bg4' => $reception_background['img5'] ?? '',
+        'skin_bg0' => iro_opt('reception_background_image', ''),
         'missing_avatars' => iro_opt("missing_avatars_default",""),
         'missing_images' => iro_opt("missing_images_default",""),
         'dev_mode' => iro_opt('dev_mode',false) == true ? true : false ,

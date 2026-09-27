@@ -323,68 +323,6 @@ blockquote:after {
   flex-direction: column;
 }
 
-#bgvideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  min-height: 550px;
-  z-index: 0;
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16/9; /* 添加默认宽高比 */
-  contain: content; /* 控制布局计算范围 */
-}
-
-#video-add {
-  position: absolute;
-  bottom: 45px;
-  right: 5px;
-  width: 32px;
-  height: 32px;
-  z-index: 99;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-  opacity: .8;
-  -webkit-animation: poi-face 10s linear infinite alternate;
-  animation: poi-face 10s linear infinite alternate;
-  display: none;
-}
-
-#video-btn {
-  position: absolute;
-  bottom: 3px;
-  right: 5px;
-  width: 32px;
-  height: 32px;
-  z-index: 99;
-  background-position: center;
-  background-size: cover;
-  cursor: pointer;
-  opacity: .8;
-  -webkit-animation: poi-face 10s linear infinite alternate;
-  animation: poi-face 10s linear infinite alternate;
-}
-
-.video-stu {
-  position: absolute;
-  bottom: -100px;
-  left: 0;
-  right: 0;
-  margin: auto;
-  padding: 6px 15px;
-  text-align: center;
-  color: #FFF;
-  width: 100%;
-  background-color: rgba(0, 0, 0, .8);
-  border-radius: 0;
-  font-size: 18px;
-  font-weight: var(--global-font-weight);
-}
-
 .pattern-center::before {
   content: "";
   position: absolute;
@@ -1245,26 +1183,9 @@ body.dark .site-footer a {
   gap: 15px;
 }
 
-.hitokoto {
-  font-style: italic;
-}
-
 .site-footer p {
   margin: 0;
   color: #00000080;
-}
-
-.cdn-provider {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.cdn-provider img {
-  width: 60px;
-  height: 30px;
-  display: inline-block;
-  vertical-align: middle;
 }
 
 .theme-info {
@@ -3303,8 +3224,7 @@ iframe {
   margin-bottom: 8px;
 }
 
-/* 表情面板 */
-#emotion-toggle,
+/* 评论表单控件 */
 .insert-image-tips,
 .markdown-toggle{
   text-align: center;
@@ -3324,119 +3244,12 @@ iframe {
   font-weight: var(--global-font-weight);
 }
 
-#emotion-toggle:hover,
 .insert-image-tips:hover,
 .markdown-toggle:hover{
   color: var(--article-theme-highlight,var(--theme-skin-matching));
   box-shadow: 0 1px 20px 10px #e8e8e8;
 }
 
-.emotion-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  transform: scale(0);
-  transition: transform 0.3s ease-in-out;
-  z-index: 99;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  overflow: hidden;
-}
-
-.emotion-box.open {
-  transform: scale(1);
-}
-
-.emotion-header {
-  width: 100%;
-  background: #f0f0f0;
-  padding: 5px;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-}
-
-.motion-switcher-table {
-  border-collapse: collapse;
-  width: 100%;
-  margin: 0;
-  table-layout: fixed;
-}
-
-.motion-container {
-  height: 100%;
-  overflow: scroll;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  background: transparent;
-}
-
-.motion-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.motion-container::-webkit-scrollbar {
-  background-color: transparent;
-  height: 0px;
-}
-/* 表情面板结束 */
-/* 表情选区 */
-.motion-container span:hover img,
-.motion-container .emoji-item:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s ease-in-out;
-}
-
-.bili-container,
-.tieba-container {
-  padding-left: 16px;
-}
-
-.tieba-container span {
-  width: 32px;
-  height: 32px;
-}
-
-.tieba-container img,
-.bili-container img {
-  width: 32px;
-  height: 32px;
-  margin: 7px;
-}
-
-.tieba-container img:hover {
-  background-color: rgba(245, 245, 245, .8);
-  border-radius: 5px;
-}
-
-.motion-switcher-table td,
-.motion-switcher-table th {
-  padding: 8px;
-  text-align: center;
-  border-radius: 5px;
-}
-
-.motion-switcher-table th:hover {
-  background-color: rgba(245, 245, 245, .5);
-  color: var(--article-theme-highlight,var(--theme-skin-matching));
-}
-
-.menhera-container .emoji-item {
-  padding: 3px 5px;
-  margin: 3px 3px;
-  display: inline-block;
-  border-radius: 4px;
-  color: var(--theme-skin, #505050);
-}
-
-.menhera-container .emoji-item:hover {
-  background-color: rgba(245, 245, 245, .8);
-}
-/* 表情选区结束 */
 /* markdown按钮 */
 .markdown-toggle {
   display: inline-flex;
@@ -4031,10 +3844,7 @@ span.edit-link,
 .siren-checkbox-radio,
 .infinite-scroll .posts-navigation,
 .infinite-scroll.neverending .site-footer,
-.gallery-caption,
-.emotion-select-child,
-.emotion-toggle-on,
-.emotion-hide {
+.gallery-caption {
   display: none;
 }
 
@@ -4236,8 +4046,6 @@ textarea:focus {
   color: #111;
 }
 
-#video-add:hover,
-#video-btn:hover,
 .comment .contents .comment-reply-link:hover,
 #baguetteBox-overlay.visible {
   opacity: 1;
@@ -4562,8 +4370,7 @@ h1.page-title.mb- {
 
 .group-blog .byline,
 .single .byline,
-.comment.bypostauthor>.contents .isauthor,
-.emotion-show {
+.comment.bypostauthor>.contents .isauthor {
   display: inline;
 }
 

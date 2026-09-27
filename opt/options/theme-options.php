@@ -655,96 +655,9 @@ $prefix = 'iro_options';
       ),
 
       array(
-        'id' => 'reception_background',
-        'type' => 'tabbed',
-        'title' => __('Widgets Panel Background Switching(Frontend Background)','sakurairo_csf'),
-        'tabs' => array(
-          array(
-            'title' => __('Default','sakurairo_csf'),
-            'icon' => 'fa fa-television',
-            'fields' => array(
-              array(
-                'id' => 'img1',
-                'type' => 'upload',
-                'title' => __('Image','sakurairo_csf'),
-              ),
-            )
-          ),
-          array(
-            'title' => __('Heart Shaped','sakurairo_csf'),
-            'icon' => 'fa fa-heart-o',
-            'fields' => array(
-              array(
-                'id' => 'heart_shaped',
-                'type' => 'switcher',
-                'title' => __('Switch','sakurairo_csf'),
-              ),
-              array(
-                'id' => 'img2',
-                'type' => 'upload',
-                'title' => __('Image','sakurairo_csf'),
-              ),
-            )
-          ),
-          array(
-            'title' => __('Star Shaped','sakurairo_csf'),
-            'icon' => 'fa fa-star-o',
-            'fields' => array(
-              array(
-                'id' => 'star_shaped',
-                'type' => 'switcher',
-                'title' => __('Switch','sakurairo_csf'),
-              ),
-              array(
-                'id' => 'img3',
-                'type' => 'upload',
-                'title' => __('Image','sakurairo_csf'),
-              ),
-            )
-          ),
-          array(
-            'title' => __('Square Shaped','sakurairo_csf'),
-            'icon' => 'fa fa-delicious',
-            'fields' => array(
-              array(
-                'id' => 'square_shaped',
-                'type' => 'switcher',
-                'title' => __('Switch','sakurairo_csf'),
-              ),
-              array(
-                'id' => 'img4',
-                'type' => 'upload',
-                'title' => __('Image','sakurairo_csf'),
-              ),
-            )
-          ),
-          array(
-            'title' => __('Lemon Shaped','sakurairo_csf'),
-            'icon' => 'fa fa-lemon-o',
-            'fields' => array(
-              array(
-                'id' => 'lemon_shaped',
-                'type' => 'switcher',
-                'title' => __('Switch','sakurairo_csf'),
-              ),
-              array(
-                'id' => 'img5',
-                'type' => 'upload',
-                'title' => __('Image','sakurairo_csf'),
-              ),
-            )
-          ),
-        ),
-        'default'       => array(
-          'heart_shaped'  => true,
-          'star_shaped'  => true,
-          'square_shaped'  => true,
-          'lemon_shaped'  => true,
-          'img2'  => $vision_resource_basepath . 'background/bg1.png',
-          'img3'  => $vision_resource_basepath . 'background/bg2.png',
-          'img4' => $vision_resource_basepath . 'background/bg3.png',
-          'img5' => $vision_resource_basepath . 'background/bg4.png',
-        )
+        'id' => 'reception_background_image',
+        'type' => 'upload',
+        'title' => __('Default Frontend Background','sakurairo_csf'),
       ),
 
       array(
@@ -839,49 +752,11 @@ $prefix = 'iro_options';
       ),
 
       array(
-        'id' => 'footer_upyun',
-        'type' => 'switcher',
-        'title' => __('Footer Upyun League Logo','sakurairo_csf'),
-        'label' => __('Upyun Logo will appear at the end of the page after turning it on','sakurairo_csf'),
-        'default' => false
-      ),
-
-      array(
         'id'=>'footer_addition',
         'type'     => 'code_editor',
         'sanitize' => false,
         'title' => __('Footer Addition','sakurairo_csf'),
         'desc' => __('Add HTML code at the end of the page. Useful for adding customize JavaScript.','sakurairo_csf'),
-      ),
-
-      array(
-        'type' => 'subheading',
-        'content' => __('Hitokoto','sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'footer_yiyan',
-        'type' => 'switcher',
-        'title' => __('Footer Hitokoto','sakurairo_csf'),
-        'label' => __('Hitokoto will appear at the end of the page after turning it on','sakurairo_csf'),
-        'default' => false
-      ),
-
-      array(
-        'type' => 'content',
-        'dependency' => array( 'footer_yiyan', '==', 'true', '', 'true' ),
-        'content' => __('<h4>Hitokoto API Setup Instructions</h4>'
-        .' <p>Fill in as the example:<code> ["https://v1.hitokoto.cn/", "https://v1.hitokoto.cn/"]</code>, where the first API will be used first and the next ones will be the backup. </p>'
-        .' <p><strong>Official API:</strong> See the <a href="https://developer.hitokoto.cn/sentence/"> documentation</a> for how to use it, and the parameter "return code" should not be anything except JSON. <a href="https://v1.hitokoto.cn/">https://v1.hitokoto.cn/</a></p>','sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'yiyan_api',
-        'type' => 'textarea',
-        'title' => __('Hitokoto API address','sakurairo_csf'),
-        'dependency' => array( 'footer_yiyan', '==', 'true', '', 'true' ),
-        'desc' => __('Fill in the address in JavaScript array format','sakurairo_csf'),
-        'default' => '["https://v1.hitokoto.cn/","https://v1.hitokoto.cn/"]'
       ),
 
     )
@@ -1667,67 +1542,6 @@ $prefix = 'iro_options';
         ),
         'dependency' => array( 'cover_switch', '==', 'true', '', 'true' ),
         'default' => 'filter-nothing'
-      ),
-
-      array(
-        'type' => 'subheading',
-        'content' => __('Cover Video','sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'cover_video',
-        'type' => 'switcher',
-        'title' => __('Cover Video','sakurairo_csf'),
-        'label' => __('Use a video instead of the images as the cover','sakurairo_csf'),
-        'dependency' => array( 'cover_switch', '==', 'true', '', 'true' ),
-        'default' => false
-      ),
-
-      array(
-        'id' => 'cover_video_loop',
-        'type' => 'switcher',
-        'title' => __('Cover Video Loop','sakurairo_csf'),
-        'dependency' => array(
-                              array( 'cover_video', '==', 'true' ),
-                              array( 'cover_switch', '==', 'true', '', 'true' ),
-                        ),
-        'label' => __('Video will loop automatically when enabled.','sakurairo_csf'),
-        'default' => false
-      ),
-
-      array(
-        'id' => 'cover_video_live',
-        'type' => 'switcher',
-        'title' => __('Cover Video Auto Resume','sakurairo_csf'),
-        'dependency' => array(
-                              array( 'cover_video', '==', 'true' ),
-                              array( 'cover_switch', '==', 'true', '', 'true' ),
-                        ),
-        'label' => __('Cover Video will resume automatically when coming back to homepage while Pjax enabled.','sakurairo_csf'),
-        'default' => false
-      ),
-
-      array(
-        'id' => 'cover_video_link',
-        'type' => 'text',
-        'title' => __('Cover Video URL Base Path','sakurairo_csf'),
-        'dependency' => array(
-                              array( 'cover_video', '==', 'true' ),
-                              array( 'cover_switch', '==', 'true', '', 'true' ),
-                        ),
-        'validate' => 'iro_validate_optional_url',
-        'desc' => __("Fill in the base path your video located at. For example: https://localhost. Your site's URL is used as default. Please pay attention to the protocol name of the URL.",'sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'cover_video_title',
-        'type' => 'text',
-        'title' => __('Cover Video File Name','sakurairo_csf'),
-        'dependency' => array(
-                              array( 'cover_video', '==', 'true' ),
-                              array( 'cover_switch', '==', 'true', '', 'true' ),
-                        ),
-        'desc' => __('For example: abc.mp4. Multiple videos should be separated by English commas like "abc.mp4,efg.mp4," Random play is on by default.','sakurairo_csf'),
       ),
 
     )
@@ -2808,49 +2622,6 @@ $prefix = 'iro_options';
       ),
 
       array(
-        'id'       => 'smilies_list',
-        'type'     => 'button_set',
-        'title' => __('Comment Area Emoticon','sakurairo_csf'),
-        'desc' => __('Select the emoticons to be displayed in the comment area input box. Uncheck all to turn off the comment input box emoticon function.','sakurairo_csf'),
-        'multiple' => true,
-        'options'  => array(
-          'bilibili'   => __('BiliBili Emoticon Pack','sakurairo_csf'),
-          'tieba'   => __('Baidu Tieba Emoticon Pack','sakurairo_csf'),
-          'yanwenzi' => __('Emoji','sakurairo_csf'),
-          'custom' => __('Customized Emoticon Pack','sakurairo_csf'),
-        ),
-        'default'  => array( 'bilibili', 'tieba', 'yanwenzi' )
-      ),
-
-      array(
-        'id'         => 'smilies_name',
-        'type'       => 'text',
-        'title' => __('Customized Emoticon Column Name','sakurairo_csf'),
-        'desc' => __('It is recommended to enter less than 4 Chinese characters in length to avoid causing compatibility issues on mobile terminals.','sakurairo_csf'),
-        'dependency' => array( 'smilies_list', 'any', 'custom', '', 'true' ),
-        'default' => 'custom'
-      ),
-    
-      array(
-        'id'         => 'smilies_dir',
-        'type'       => 'text',
-        'title' => __('Path To Custom Expression','sakurairo_csf'),
-        'desc' => __('Click <a href="./admin.php?update_custom_smilies=true" target="_blank">here</a> updating emoticon list. Specific usage reference: <a href="https://docs.fuukei.org/Sakurairo/Pages/#%E8%AF%84%E8%AE%BA%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE" target="_blank">Comment related settings</a>','sakurairo_csf'),
-        'dependency' => array( 'smilies_list', 'any', 'custom', '', 'true' ),
-      ),
-
-      array(
-        'id'         => 'smilies_proxy',
-        'type'       => 'text',
-        'title' => __('Custom Emoticon Proxy Address','sakurairo_csf'),
-        'desc' => __('Fill in the CDN address of the emoticon image. If left blank, the CDN proxy function will not be enabled.','sakurairo_csf'),
-        'dependency' => array( 
-                              array('smilies_list', 'any', 'custom', '', 'true' ),
-                              array('smilies_dir', '!=', '', '', 'true'),
-                            ),
-      ),
-
-      array(
         'id' => 'comment_useragent',
         'type' => 'switcher',
         'title' => __('Page Comment Area UA Info','sakurairo_csf'),
@@ -3079,44 +2850,11 @@ $prefix = 'iro_options';
         'options' => array(
           'off' => __('Off','sakurairo_csf'),
           'iro_captcha' => __('Theme Built in Captcha','sakurairo_csf'),
-          'vaptcha' => __('Vaptcha','sakurairo_csf'),
           'turnstile' => __('Cloudflare Turnstile',"sakurairo_csf")
         ),
         'default' => 'off',
       ),
       
-      array(
-        'id' => 'vaptcha_vid',
-        'type' => 'text',
-        'title' => __('Vaptcha VID','sakurairo_csf'),
-        'dependency' => array( 'captcha_select', '==', 'vaptcha', '', 'true' ),
-        'desc' => __('Fill in your Vaptcha VID','sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'vaptcha_key',
-        'type' => 'text',
-        'title' => __('Vaptcha KEY','sakurairo_csf'),
-        'dependency' => array( 'captcha_select', '==', 'vaptcha', '', 'true' ),
-        'desc' => __('Fill in your Vaptcha KEY','sakurairo_csf'),
-      ),
-
-      array(
-        'id' => 'vaptcha_scene',
-        'type' => 'select',
-        'title' => __('Vaptcha Scene','sakurairo_csf'),
-        'dependency' => array( 'captcha_select', '==', 'vaptcha', '', 'true' ),
-        'options' => array(
-          '1' => __(1,'sakurairo_csf'),
-          '2' => __(2,'sakurairo_csf'),
-          '3' => __(3,'sakurairo_csf'),
-          '4' => __(4,'sakurairo_csf'),
-          '5' => __(5,'sakurairo_csf'),
-          '6' => __(6,'sakurairo_csf'),
-        ),
-        'default' => 1,
-      ),
-
       array(
         'id' => 'turnstile_site_key',
         'type' => 'text',

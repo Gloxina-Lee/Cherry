@@ -166,7 +166,6 @@ body.dark .post-list p {
 
 /* 合并标题和链接文字颜色 */
 body.dark .entry-title a,
-body.dark .menhera-container .emoji-item,
 body.dark .shuoshuo-content p{
   color: var(--dark-text-secondary);
 }
@@ -204,7 +203,6 @@ body.dark .ins-section .fa,
 body.dark .site-title,
 body.dark .header-info,
 body.dark .site-info,
-body.dark #emotion-toggle,
 body.dark .insert-image-tips,
 body.dark .markdown-toggle,
 body.dark .mo_toc_panel .user-menu-option a{
@@ -323,7 +321,6 @@ body.dark .entry-title a:hover,
 body.dark .ins-section .ins-search-item:hover,
 body.dark .ins-section .ins-search-item:hover .ins-slug,
 body.dark .ins-section .ins-search-item:hover .ins-search-preview,
-body.dark .menhera-container .emoji-item:hover,
 body.dark .comment-respond .logged-in-as a:hover {
   color: var(--article-theme-highlight,var(--theme-skin-dark)) !important;
 }
@@ -421,8 +418,6 @@ body.dark .comment-respond input,
 body.dark .comment-respond textarea,
 body.dark .comment-respond,
 body.dark .comment .main,
-body.dark .emotion-box,
-body.dark #emotion-toggle,
 body.dark .insert-image-tips,
 body.dark .markdown-toggle{
   background: rgb(26 26 26 / 60%);
@@ -430,20 +425,14 @@ body.dark .markdown-toggle{
   border: 1.5px solid var(--dark-border-color);
 }
 
-body.dark .emotion-header{
-  background: var(--dark-bg-hover);
-}
-
 body.dark .comment-respond:hover,
 body.dark .comment .main:hover,
-body.dark #emotion-toggle:hover,
 body.dark .insert-image-tips:hover,
 body.dark .markdown-toggle:hover{
   background: var(--dark-bg-hover);
   box-shadow: 0 1px 10px -2px var(--article-theme-highlight,var(--theme-skin-dark)) !important;
 }
 
-body.dark #emotion-toggle:hover,
 body.dark .insert-image-tips:hover,
 body.dark .markdown-toggle:hover{
   color: var(--article-theme-highlight,var(--theme-skin-dark));

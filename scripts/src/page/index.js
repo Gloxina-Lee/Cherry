@@ -2,14 +2,13 @@ import article_attach from './artile_attachment'
 import { ready, slideToggle, buildAPI } from '../common/util'
 import lazyload from "../common/lazyload"
 import { createButterbar } from '../common/butterbar'
-import './global-func'
+import { insertCommentImage } from './global-func'
 import getqqinfo from './getqqinfo'
 import addComment from './AddComment'
 import { _$, __ } from '../common/sakurairo_global'
 import LoadNextPage from './pagination'
 import debounce from '@mui/utils/debounce'
 import { code_highlight_style } from '../common/code-highlight'
-import prepareEmoji from './emoji'
 import initLinkSubmission from './link_form'
 import ghcardTheme from './ghcard_theme'
 import initTimeArchive from './time_archive'
@@ -35,15 +34,6 @@ function click_to_view_image() {
 }
 function clean_upload_images() {
     document.getElementById("upload-img-show").innerHTML = '';
-}
-function original_emoji_click() {
-    const emoji = document.getElementsByClassName('emoji-item');
-    if (!emoji.length) return;
-    document.querySelector(".menhera-container").addEventListener("click", function (e) {
-        if (e.target.classList.contains("emoji-item")) {
-            grin(e.target.innerText, "custom", "`", "` ");
-        }
-    })
 }
 function XCS() {
     const __list = 'commentwrap';
@@ -399,7 +389,7 @@ function attach_image() {
                         document.getElementById("upload-img-show").insertAdjacentHTML('afterend', '<img class="lazyload upload-image-preview" src="' + _iro.loading_ph + '" data-src="' + get_the_url + '" onclick="window.open(\'' + get_the_url + '\')" onerror="imgError(this)" />');
                         lazyload();
                         createButterbar(__("图片上传成功~"));
-                        grin(get_the_url, type = 'Img');
+                        insertCommentImage(get_the_url);
                     } else {
                         createButterbar(_$('上传失败！\n文件名: {0}\ncode: {1}\n{2}', f.name, res.status, res.message), 3000)
                     }
@@ -439,22 +429,6 @@ function add_upload_tips() {
         Tip.classList.toggle('show');
     });
 }
-function addComtListener() {
-    document.querySelectorAll(".comt-addsmilies").forEach((e) => {
-        e.addEventListener("click", () => {
-            if (e.stlye.display == "block") {
-                e.style.display = "none";
-            } else {
-                e.style.display = "block";
-            }
-        })
-    })
-    document.querySelectorAll(".comt-smilies a").forEach((e) => {
-        e.addEventListener("click", () => {
-            e.parentNode.style.display = "none";
-        })
-    })
-}
 function afterAjaxCommentComplete() {
     lazyload();
     code_highlight_style();
@@ -484,9 +458,7 @@ function whilePjaxComplete() {
         click_to_view_image()
         getqqinfo()
         sm()
-        original_emoji_click()
         code_highlight_style()
-        prepareEmoji()
         XCS()
         resizeTOC()
         apply_post_theme_color();
@@ -502,10 +474,7 @@ function whileLoaded() {
     code_highlight_style()
     LoadNextPage();
     sm()
-    original_emoji_click()
-    prepareEmoji()
     tableOfContentScroll(true);
-    addComtListener()
     resizeTOC()
     apply_post_theme_color();
     document.addEventListener('ajax_comment_complete', afterAjaxCommentComplete)

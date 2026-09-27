@@ -1,6 +1,5 @@
 export default function initFooter(action = 'init') {
   let footer = document.getElementById('colophon');
-  let emojiPanel = document.querySelector('.emotion-box');
   if (!footer) return;
 
   // 隐藏 footer
@@ -25,9 +24,6 @@ export default function initFooter(action = 'init') {
 
     if (scrollPosition + windowHeight >= showThreshold) {
       if (!footer.classList.contains('show')) {
-        if (emojiPanel && emojiPanel.classList.contains("open") && window.outerWidth < 860) {
-          return;
-        }
         requestAnimationFrame(() => footer.classList.add('show'));
       }
     } else {
@@ -39,7 +35,6 @@ export default function initFooter(action = 'init') {
 
   function initialize() {
     footer = document.getElementById('colophon');
-    emojiPanel = document.querySelector('.emotion-box');
     // 初始化隐藏
     hideFooter();
     adjustWrapperPadding();

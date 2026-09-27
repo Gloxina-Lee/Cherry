@@ -33,7 +33,6 @@ function saveUserSetting(value: boolean) {
             localStorage.setItem("dark", "0");
         }
     }
-    //localStorage.setItem("bgImgSetting", "white-bg");
 }
 export function turnOnDarkMode(userTriggered?: boolean) {
     document.documentElement.style.backgroundColor = "#333";

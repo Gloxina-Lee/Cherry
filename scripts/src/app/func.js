@@ -3,39 +3,16 @@ import { slideToggle } from "../common/util";
 import { changeCoverBG, getCoverPath, getCurrentBG, nextBG, preBG } from "./coverBackground";
 import { isMobile } from "./mobile";
 
-var _mashiro_global_skin_secter = true
 /**
  * 设置前台背景
- * @param {string} tagId 前台背景ID
  * @returns 
  */
-export async function changeSkin(tagId) {
-    //@sideeffect
-    _mashiro_global_skin_secter = tagId == "white-bg" || tagId == "dark-bg";
-    let bg_url;
-    switch (tagId) {
-        case "white-bg":
-            if (_iro.site_bg_as_cover) {
-                changeCoverBG(await getCoverPath())//为触发封面背景相关事件 调用函数而不是走下方流程
-                return
-            } else {
-                bg_url = _iro.skin_bg0;
-            }
-            break;
-        case "diy1-bg":
-            bg_url = _iro.skin_bg1;
-            break;
-        case "diy2-bg":
-            bg_url = _iro.skin_bg2;
-            break;
-        case "diy3-bg":
-            bg_url = _iro.skin_bg3;
-            break;
-        case "diy4-bg":
-            bg_url = _iro.skin_bg4;
-            break;
+export async function changeSkin() {
+    if (_iro.site_bg_as_cover) {
+        changeCoverBG(await getCoverPath());
+        return;
     }
-    document.body.style.backgroundImage = bg_url ? `url(${bg_url})` : '';
+    document.body.style.backgroundImage = _iro.skin_bg0 ? `url(${_iro.skin_bg0})` : '';
 }
 
 export function bgButtonAddListener() {
@@ -45,8 +22,6 @@ export function bgButtonAddListener() {
     if (pre) { pre.onclick = preBG }
 }
 
-import { liveplay, livepause, } from './video'
-
 /**
  * @has-dom-modify
  */
@@ -55,9 +30,7 @@ export function auto_height() {
         if (_iro.land_at_home) {
             //let _height = document.documentElement.clientHeight + "px";
             const centerbg = document.getElementById("centerbg")
-            const bgvideo = document.getElementById("bgvideo")
             if (centerbg) centerbg.style.height = "100vh";
-            if (bgvideo) bgvideo.style.minHeight = "100vh";
         }
     } else {
         const headertop = document.querySelector(".headertop")
@@ -77,7 +50,6 @@ export function PE() {
             } catch (e) { }
             headertop.style.height = "auto";
             headertop.style.display = "";
-            if (_iro.movies.live) liveplay();
         } else {
             try {
                 blank.style.paddingTop = "75px";
@@ -137,8 +109,7 @@ export function addSkinMenuListener() {
             turnOnDarkMode(true)
         } else {
             turnOffDarkMode(true)
-            changeSkin(tagid)
-            localStorage.setItem("bgImgSetting", tagid)
+            changeSkin()
         }
         closeSkinMenu();
     }
@@ -147,15 +118,15 @@ export function addSkinMenuListener() {
     }
 }
 /**
- * 根据设置初始化前台背景。启用前台背景与站点封面背景一体化以后封面背景在此设置
+ * 根据当前配置应用前台背景。启用前台背景与站点封面背景一体化以后封面背景在此设置
  * @returns 一个Promise。Promise resolved 时封面背景应当已经加载完毕
  */
-export function checkBgImgSetting() {
-    return changeSkin(localStorage.getItem("bgImgSetting") || 'white-bg');
+export function applyFrontendBackground() {
+    return changeSkin();
 }
 export async function checkCoverBackground() {
     if (_iro.site_bg_as_cover) {
-        return //交给checkBgImgSetting处理
+        return //交给 applyFrontendBackground 处理
     }
     if (!_iro.land_at_home) return//进入非主页  
     if (getCurrentBG()) {//进入主页且已经加载了封面背景

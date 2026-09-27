@@ -47,10 +47,6 @@ msgstr " 更早的文章"
 msgid "No personal profile set yet"
 msgstr "尚未设置个人简介"
 
-#: comments.php:53
-msgid "Woooooow ヾ(≧∇≦*)ゝ"
-msgstr "嘿嘿嘿 ヾ(≧∇≦*)ゝ"
-
 #: comments.php:75
 msgid "view comments"
 msgstr "查看评论"
@@ -359,10 +355,6 @@ msgstr "浅色模式"
 #: footer.php:106
 msgid "Dark Mode"
 msgstr "深色模式"
-
-#: footer.php:112
-msgid "Toggle Page Background Image"
-msgstr "切换页面背景图像"
 
 #: footer.php:133
 msgid "Switch To Font A"
