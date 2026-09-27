@@ -368,6 +368,32 @@
   }
 }
 
+/* 手机浏览器中让前台背景按视口绘制，避免 body 的整页高度影响缩放。 */
+@media (max-width: 860px), (hover: none) and (pointer: coarse) {
+  body {
+    background-attachment: scroll;
+    background-size: 0 0 !important;
+    isolation: isolate;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* 工具栏收放时保持图片尺寸稳定，避免反复按可见视口重新缩放。 */
+    height: 100vh;
+    height: 100lvh;
+    z-index: -1;
+    pointer-events: none;
+    background-image: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: var(--reception-background-size, auto);
+  }
+}
+
 /* 大屏幕适配 (1160px+) */
 @media (max-width: 1160px) {
   .toc-container {

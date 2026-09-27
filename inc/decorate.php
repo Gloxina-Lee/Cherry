@@ -821,8 +821,8 @@ if(iro_opt('cover_half_screen_curve',true)){
 }
 ?>
 body{
-    background-size:<?=iro_opt(('reception_background_size'),'auto')
-?>;
+    --reception-background-size: <?=iro_opt('reception_background_size', 'auto')?>;
+    background-size: var(--reception-background-size);
 }
 @media (max-width:860px) {
   .headertop.filter-dot::before {
