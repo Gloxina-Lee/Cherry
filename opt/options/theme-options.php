@@ -1527,11 +1527,9 @@ $prefix = 'iro_options';
       array(
         'type'    => 'content',
         'title' => __('Built-in Gallery controllers','sakurairo_csf'),
-        'content' => __('<a href="./admin.php?iro_act=gallery_init" target="_blank">Initlize/Rebuild index</a> | <a href="./admin.php?iro_act=gallery_webp" target="_blank">Refomart images to webp</a>'
-        . '<br>After initlized,put images in `wp-content/uploads/iro_gallery/img` and then click to rebuild the index.'
-        . '<br>You can use folders to categorize content, but please rebuild the index after the location of the relevant content changes.'
-        . '<br>Please make sure that the working directory is readable and writable when using relevant functions.',
-        'sakurairo_csf'),
+        'content' => '<a href="' . esc_url(admin_url('admin-post.php?action=cherry_gallery&operation=init')) . '" target="_blank" rel="noopener">' . esc_html__('Rebuild gallery index', 'sakurairo_csf') . '</a> | '
+        . '<a href="' . esc_url(admin_url('admin-post.php?action=cherry_gallery&operation=webp')) . '" target="_blank" rel="noopener">' . esc_html__('Create WebP copies', 'sakurairo_csf') . '</a>'
+        . '<p>' . esc_html__('Place images in wp-content/uploads/iro_gallery/img, then rebuild the index. WebP conversion preserves original files; rebuild the index after conversion to use the copies.', 'sakurairo_csf') . '</p>',
         'dependency' => array( 'random_graphs_options', '==', 'gallery', '', 'true' ),
       ),
 

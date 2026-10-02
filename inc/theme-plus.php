@@ -148,18 +148,7 @@ function comment_captcha(){
     return true;
   }
   if (iro_opt('comment_captcha_select') == "iro_captcha") {
-      $captcha = isset($_POST['captcha']) ? sanitize_text_field(wp_unslash($_POST['captcha'])) : '';
-      $timestamp = isset($_POST['timestamp']) ? sanitize_text_field(wp_unslash($_POST['timestamp'])) : '';
-      $captcha_id = isset($_POST['id']) ? sanitize_text_field(wp_unslash($_POST['id'])) : '';
-      if (empty(trim($captcha))) {
-          return siren_ajax_comment_err(__('Please fill in the captcha answer','sakurairo'));
-      }
-      if (empty($timestamp) || empty($captcha_id) || !preg_match('/^[\w$.\/]+$/', $captcha_id) || !ctype_digit($timestamp)) {
-          return siren_ajax_comment_err(__('Have you modified the captcha code data? Or refresh the captcha and try again?','sakurairo'));
-      }
-      include_once( get_template_directory() . '/inc/classes/Captcha.php');
-      $img = new Sakura\API\Captcha;
-      $check = $img->check_captcha($captcha, $timestamp, $captcha_id);
+      $check = \Sakura\API\Captcha::check_request('captcha');
       if ($check['code'] == 5) {
           return true;
       }
@@ -652,30 +641,7 @@ function siren_request( $query_vars ){
     return $query_vars;
 }
 
-/*
- * 私密评论
- * @bigfa
- */
-function siren_private_message_hook($comment_content , $comment){
-    $comment_ID = $comment->comment_ID;
-    $parent_ID = $comment->comment_parent;
-    $parent_email = get_comment_author_email($parent_ID);
-    $is_private = get_comment_meta($comment_ID,'_private',true);
-    $email = $comment->comment_author_email;
-    $current_commenter = wp_get_current_commenter();
-    if ( $is_private ) $comment_content = '#私密# ' . $comment_content;
-    if ( $current_commenter['comment_author_email'] == $email || $parent_email == $current_commenter['comment_author_email'] || current_user_can('delete_user') ) return $comment_content;
-    if ( $is_private ) return '<i class="fa-solid fa-lock"></i> '.__("The comment is private","sakurairo")/*该评论为私密评论*/;
-    return $comment_content;
-}
-add_filter('get_comment_text','siren_private_message_hook',10,2);
-
-function siren_mark_private_message($comment_id){
-    if ( isset($_POST['is-private']) ) {
-        update_comment_meta($comment_id,'_private','true');
-    }
-}
-add_action('comment_post', 'siren_mark_private_message');
+require_once get_template_directory() . '/inc/private-comments.php';
 
 
 /*

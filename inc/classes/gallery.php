@@ -52,6 +52,14 @@ class gallery
 
         foreach ($allFiles as $filePath) {
             if (in_array(strtolower(pathinfo($filePath, PATHINFO_EXTENSION)), $allowedExtensions)) {
+                // Prefer a valid additive copy while leaving original URLs usable.
+                $copy = $filePath . '.webp';
+                if (!is_link($copy) && is_file($copy)) {
+                    $copyInfo = @getimagesize($copy);
+                    if ($copyInfo && $copyInfo[2] === IMAGETYPE_WEBP) {
+                        $filePath = $copy;
+                    }
+                }
                 //获取图片信息进行分拣
                 $imageSize = @getimagesize($filePath);
 
@@ -73,6 +81,8 @@ class gallery
             }
         }
 
+        $imageFiles['long'] = array_values(array_unique($imageFiles['long']));
+        $imageFiles['wide'] = array_values(array_unique($imageFiles['wide']));
         //保存索引
         file_put_contents($this->image_list, json_encode($imageFiles));
 
@@ -91,6 +101,9 @@ class gallery
             }
 
             $filePath = $directory . '/' . $file;
+            if (is_link($filePath)) {
+                continue;
+            }
             if (is_dir($filePath)) {
                 $result = array_merge($result, $this->get_all_files($filePath));
             } else {
@@ -101,91 +114,79 @@ class gallery
         return $result;
     }
 
-    //webp优化步骤
+    // Create additive copies: originals, backups, and the active index never move.
     public function webp() {
         $this->log = '';
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
-
-        //检查backup目录是否有内容
-        if (!is_dir($this->backup_folder) || count(scandir($this->backup_folder)) <= 2) {
-            //没有则执行备份步骤
-            if (!rename($this->image_folder, $this->backup_folder)) {
-                $this->log .= __("The target directory is not accessible. Please check the permission settings.", "sakurairo") . '<br>';
-                return $this->log;
-            }
-            if (!mkdir($this->image_folder, 0755, true)) {
-                $this->log .= __("The target directory is not accessible. Please check the permission settings.", "sakurairo") . '<br>';
-                return $this->log;
-            }
-            $this->log .= __("Successfully backed up images from the 'img' folder to the 'backup' folder.", "sakurairo") . '<br>';
-        } else {
-            $this->log .= __("Detected content in the 'backup' folder. Verifying and attempting to restore conversion operations.", "sakurairo") . '<br>';
+        if (!function_exists('imagewebp') || is_link($this->image_folder)
+            || !is_dir($this->image_folder) || !is_writable($this->image_folder)) {
+            return esc_html__('WebP support and a writable image directory are required.', 'sakurairo');
         }
-
-        $allFiles = $this->get_all_files($this->backup_folder);
-
-        foreach ($allFiles as $backupPath) {
-            if (!in_array(strtolower(pathinfo($backupPath, PATHINFO_EXTENSION)), $allowedExtensions)) {
-                continue;
-            }
-
-            //生成 WebP 文件的相对路径和目标路径
-            $relativePath = str_replace($this->backup_folder . '/', '', $backupPath);  //相对路径
-            $pathInfo = pathinfo($relativePath);
-            $webpPath = $this->image_folder . '/' . $pathInfo['dirname'] . '/' . $pathInfo['filename'] . '.webp';
-
-            //跳过已存在的WebP文件(从上个断点继续转换)
-            if (file_exists($webpPath)) {
-                $this->log .= __("Skipped file: {$relativePath}, a webp image with the same name already exists.", "sakurairo") . '<br>';
-                continue;
-            }
-
-            //确保目标子目录存在
-            $targetDir = dirname($webpPath);
-            if (!is_dir($targetDir)) {
-                mkdir($targetDir, 0755, true);
-            }
-
-            //转换文件
-            $this->convert_to_webp($backupPath, $webpPath);
+        $lock = fopen($this->image_dir . '/.webp.lock', 'c');
+        if (!$lock) {
+            return esc_html__('Unable to lock the gallery.', 'sakurairo');
         }
-
-        $this->log .= __("All images have been compressed to WebP format. The original files are stored in the 'backup' folder.<br> Please confirm correctness before reinitializing the index.<br>", "sakurairo") . '<br>';
-
-        return $this->log;
+        if (!flock($lock, LOCK_EX | LOCK_NB)) {
+            fclose($lock);
+            return esc_html__('Another gallery conversion is running.', 'sakurairo');
+        }
+        try {
+            $readers = ['jpg' => 'imagecreatefromjpeg', 'jpeg' => 'imagecreatefromjpeg', 'png' => 'imagecreatefrompng'];
+            foreach ($this->get_all_files($this->image_folder) as $source) {
+                $extension = strtolower(pathinfo($source, PATHINFO_EXTENSION));
+                // Keep GIF animation and existing WebP files intact.
+                if (!isset($readers[$extension])) {
+                    continue;
+                }
+                $destination = $source . '.webp';
+                if (file_exists($destination) || is_link($destination)) {
+                    $this->log .= esc_html(sprintf(__('Skipped existing file: %s', 'sakurairo'), basename($destination))) . '<br>';
+                    continue;
+                }
+                $converted = $this->convert_to_webp($source, $destination, $readers[$extension]);
+                $this->log .= esc_html(sprintf($converted
+                    ? __('Created WebP copy: %s', 'sakurairo')
+                    : __('Conversion failed; original preserved: %s', 'sakurairo'), basename($source))) . '<br>';
+            }
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
+        }
+        return $this->log . esc_html__('Originals and the current index are unchanged. Rebuild the index to use valid WebP copies.', 'sakurairo');
     }
 
-    //webp优化方法
-    private function convert_to_webp($source, $webpPath) {
-        $extension = strtolower(pathinfo($source, PATHINFO_EXTENSION));
-
-        switch ($extension) {
-            case 'jpg':
-            case 'jpeg':
-                $image = imagecreatefromjpeg($source);
-                break;
-            case 'png':
-                $image = imagecreatefrompng($source);
-                break;
-            case 'gif':
-                $image = imagecreatefromgif($source);
-                break;
-            case 'webp':
-                $image = imagecreatefromwebp($source);
-                break;
-            default:
-                $this->log .= __("Unsupported file type: $source .", "sakurairo") . '<br>';
+    private function convert_to_webp($source, $destination, $reader) {
+        if (!function_exists($reader)) {
+            return false;
         }
-
-        if ($image) {
-            imagewebp($image, $webpPath, 80);
+        $image = @$reader($source);
+        if (!$image) {
+            return false;
+        }
+        // Exclusive creation prevents overwriting files, including a concurrent writer's output.
+        $stream = @fopen($destination, 'xb');
+        if (!$stream) {
             imagedestroy($image);
-            $this->log .= __("Successfully converted to WebP: $source .", "sakurairo") . '<br>';
-            return $this->log;
-        } else {
-            $this->log .= __("Failed to convert file: $source .", "sakurairo") . '<br>';
-            return $this->log;
+            return false;
         }
+        $success = false;
+        try {
+            imagealphablending($image, false);
+            imagesavealpha($image, true);
+            $success = imagewebp($image, $stream, 80);
+            fflush($stream);
+            $info = @getimagesize($destination);
+            $success = $success && $info && $info[2] === IMAGETYPE_WEBP;
+        } catch (\Throwable $error) {
+            $success = false;
+        } finally {
+            fclose($stream);
+            imagedestroy($image);
+            if (!$success) {
+                // Only remove the new file opened exclusively by this invocation.
+                unlink($destination);
+            }
+        }
+        return $success;
     }
 
     //获取图片

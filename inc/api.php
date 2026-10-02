@@ -185,8 +185,12 @@ function cache_search_json(WP_REST_Request $request)
 function create_CAPTCHA()
 {
     $CAPTCHA = new Captcha();
-    $response = new WP_REST_Response($CAPTCHA->create_captcha_img());
+    try {
+        $response = new WP_REST_Response($CAPTCHA->create_captcha_img());
+    } catch (\RuntimeException $error) {
+        return new WP_Error('captcha_unavailable', __('Captcha unavailable. Please try again.', 'sakurairo'), array('status' => 503));
+    }
     $response->set_status(200);
-    $response->set_headers(array('Content-Type' => 'application/json'));
+    $response->set_headers(array('Content-Type' => 'application/json', 'Cache-Control' => 'no-store, private'));
     return $response;
 }

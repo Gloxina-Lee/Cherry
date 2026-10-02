@@ -2423,23 +2423,7 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
      */
     function CAPTCHA_CHECK($user, $username, $password)
     {
-        // Skip captcha check if it's a passwordless login
-        if (isset($_POST['skip_captcha_check']) && $_POST['skip_captcha_check'] == '1') {
-            return $user;
-        }
-        
-        if (empty($_POST)) {
-            return new WP_Error();
-        }
-        if (!(isset($_POST['yzm']) && !empty(trim($_POST['yzm'])))) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：验证码为空！');
-        }
-        if (!isset($_POST['timestamp']) || !isset($_POST['id']) || !preg_match('/^[\w$.\/]+$/', $_POST['id']) || !ctype_digit($_POST['timestamp'])) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：非法数据');
-        }
-        include_once('inc/classes/Captcha.php');
-        $img = new Sakura\API\Captcha;
-        $check = $img->check_captcha($_POST['yzm'], $_POST['timestamp'], $_POST['id']);
+        $check = \Sakura\API\Captcha::check_request('yzm');
         if ($check['code'] == 5) {
             return $user;
         }
@@ -2447,105 +2431,14 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
     }
     add_filter('authenticate', 'CAPTCHA_CHECK', 20, 3);
     
-    // Add JavaScript to check for password field and toggle captcha visibility
-    function add_captcha_check_script() {
-        ?>
-        <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var loginForm = document.getElementById('loginform');
-            if (!loginForm) return;
-            
-            // Add hidden field for skipping captcha check
-            var hiddenField = document.createElement('input');
-            hiddenField.type = 'hidden';
-            hiddenField.name = 'skip_captcha_check';
-            hiddenField.id = 'skip_captcha_check';
-            hiddenField.value = '0';
-            loginForm.appendChild(hiddenField);
-            
-            // Get elements once at initialization
-            var passwordField = document.getElementById('user_pass');
-            var captchaImg = document.getElementById('captchaimg');
-            var yzmField = document.getElementById('yzm');
-            
-            // Find the captcha container (the parent element that contains the captcha)
-            var captchaContainer = null;
-            if (yzmField) {
-                // Try to find the parent paragraph or label
-                captchaContainer = yzmField.closest('p') || yzmField.closest('label');
-                if (!captchaContainer && yzmField.parentNode) {
-                    captchaContainer = yzmField.parentNode;
-                }
-            }
-            
-            function checkPasswordField() {
-                // Check if password field is hidden or not present
-                var isPasswordVisible = passwordField && 
-                                        passwordField.style.display !== 'none' && 
-                                        passwordField.offsetParent !== null;
-                
-                if (!isPasswordVisible) {
-                    // Hide captcha elements
-                    if (captchaContainer) {
-                        captchaContainer.style.display = 'none';
-                    }
-                    
-                    hiddenField.value = '1';
-                } else {
-                    // Show captcha elements
-                    if (captchaContainer) {
-                        captchaContainer.style.display = '';
-                    }
-                    
-                    hiddenField.value = '0';
-                }
-            }
-            
-            // Initial check
-            checkPasswordField();
-            
-            // Set up a less frequent interval to reduce performance impact
-            var checkInterval = setInterval(checkPasswordField, 500);
-            
-            // Use MutationObserver for efficiency
-            if (typeof MutationObserver !== 'undefined') {
-                var observer = new MutationObserver(checkPasswordField);
-                
-                observer.observe(loginForm, {
-                    childList: true,
-                    subtree: true,
-                    attributes: true,
-                    attributeFilter: ['style', 'class', 'display']
-                });
-            }
-            
-            // Add event listener for form submission
-            loginForm.addEventListener('submit', checkPasswordField);
-        });
-        </script>
-        <?php
-    }
-    add_action('login_footer', 'add_captcha_check_script');
     /**
      * 忘记密码界面验证码验证
      */
     function lostpassword_CHECK($errors)
     {
-        if (empty($_POST)) {
-            return false;
-        }
-        if (isset($_POST['yzm']) && !empty(trim($_POST['yzm']))) {
-            if (!isset($_POST['timestamp']) || !isset($_POST['id']) || !preg_match('/^[\w$.\/]+$/', $_POST['id']) || !ctype_digit($_POST['timestamp'])) {
-                return new WP_Error('prooffail', '<strong>错误</strong>：非法数据');
-            }
-            include_once('inc/classes/Captcha.php');
-            $img = new Sakura\API\Captcha;
-            $check = $img->check_captcha($_POST['yzm'], $_POST['timestamp'], $_POST['id']);
-            if ($check['code'] != 5) {
-                return $errors->add('invalid_department ', '<strong>错误</strong>：' . $check['msg']);
-            }
-        } else {
-            return $errors->add('invalid_department', '<strong>错误</strong>：验证码为空！');
+        $check = \Sakura\API\Captcha::check_request('yzm');
+        if ($check['code'] != 5) {
+            $errors->add('prooffail', $check['msg']);
         }
     }
 
@@ -2555,24 +2448,13 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
      */
     function registration_CAPTCHA_CHECK($errors, $sanitized_user_login, $user_email)
     {
-        if (empty($_POST)) {
-            return new WP_Error();
+        $check = \Sakura\API\Captcha::check_request('yzm');
+        if ($check['code'] != 5) {
+            $errors->add('prooffail', $check['msg']);
         }
-        if (!(isset($_POST['yzm']) && !empty(trim($_POST['yzm'])))) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：验证码为空！');
-        }
-        if (!isset($_POST['timestamp']) || !isset($_POST['id']) || !preg_match('/^[\w$.\/]+$/', $_POST['id']) || !ctype_digit($_POST['timestamp'])) {
-            return new WP_Error('prooffail', '<strong>错误</strong>：非法数据');
-        }
-        include_once('inc/classes/Captcha.php');
-        $img = new Sakura\API\Captcha;
-        $check = $img->check_captcha($_POST['yzm'], $_POST['timestamp'], $_POST['id']);
-        if ($check['code'] == 5)
-            return $errors;
-
-        return new WP_Error('prooffail', '<strong>错误</strong>：' . $check['msg']);
-
+        return $errors;
     }
+
     add_filter('registration_errors', 'registration_CAPTCHA_CHECK', 2, 3);
 } else if ((iro_opt('captcha_select') === 'turnstile') && (!empty(iro_opt("turnstile_site_key")) && !empty(iro_opt("turnstile_secret_key")))) {
     function turnstile_init() {
@@ -2586,11 +2468,7 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
     add_action('lostpassword_form', 'turnstile_init');
 
     function verify_turnstile($user, $username = '', $password = '') {
-        // Skip captcha check if it's a passwordless login
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            return $user;
-        }
-        if (isset($_POST['skip_captcha_check']) && $_POST['skip_captcha_check'] == '1') {
             return $user;
         }
         
@@ -2677,86 +2555,6 @@ if (iro_opt('captcha_select') === 'iro_captcha') {
     }
     add_filter('registration_errors', 'turnstile_registration_check', 10, 3);
 
-    function add_captcha_check_script() {
-    ?>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var loginForm = document.getElementById('loginform');
-        if (!loginForm) return;
-        
-        // Add hidden field for skipping captcha check
-        var hiddenField = document.createElement('input');
-        hiddenField.type = 'hidden';
-        hiddenField.name = 'skip_captcha_check';
-        hiddenField.id = 'skip_captcha_check';
-        hiddenField.value = '0';
-        loginForm.appendChild(hiddenField);
-        
-        // Get elements once at initialization
-        var passwordField = document.getElementById('user_pass');
-        var captchaImg = document.getElementById('captchaimg');
-        var yzmField = document.getElementById('yzm');
-        var turnstileWidget = document.querySelector('.cf-turnstile');
-        
-        // Find the captcha container (the parent element that contains the captcha)
-        var captchaContainer = null;
-        if (yzmField) {
-            // Try to find the parent paragraph or label
-            captchaContainer = yzmField.closest('p') || yzmField.closest('label');
-            if (!captchaContainer && yzmField.parentNode) {
-                captchaContainer = yzmField.parentNode;
-            }
-        } else if (turnstileWidget) {
-            captchaContainer = turnstileWidget;
-        }
-        
-        function checkPasswordField() {
-            // Check if password field is hidden or not present
-            var isPasswordVisible = passwordField && 
-                                    passwordField.style.display !== 'none' && 
-                                    passwordField.offsetParent !== null;
-            
-            if (!isPasswordVisible) {
-                // Hide captcha elements
-                if (captchaContainer) {
-                    captchaContainer.style.display = 'none';
-                }
-                
-                hiddenField.value = '1';
-            } else {
-                // Show captcha elements
-                if (captchaContainer) {
-                    captchaContainer.style.display = '';
-                }
-                
-                hiddenField.value = '0';
-            }
-        }
-        
-        // Initial check
-        checkPasswordField();
-        
-        // Set up a less frequent interval to reduce performance impact
-        var checkInterval = setInterval(checkPasswordField, 500);
-        
-        // Use MutationObserver for efficiency
-        if (typeof MutationObserver !== 'undefined') {
-            var observer = new MutationObserver(checkPasswordField);
-            
-            observer.observe(loginForm, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['style', 'class', 'display']
-            });
-        }
-        
-        // Add event listener for form submission
-        loginForm.addEventListener('submit', checkPasswordField);
-    });
-    </script>
-    <?php
-}
 }
 
 // 获取访客 IP
@@ -2925,13 +2723,8 @@ function sakurairo_link_submission_handler() {
 
         // 验证验证码
         include_once('inc/classes/Captcha.php');
-        $img = new Sakura\API\Captcha;
-        $captcha_check = $img->check_captcha(
-            sanitize_text_field($_POST['yzm']), 
-            sanitize_text_field($_POST['timestamp']), 
-            sanitize_text_field($_POST['id'])
-        );
-        
+        $captcha_check = \Sakura\API\Captcha::check_request('yzm');
+
         if ($captcha_check['code'] != 5) {
             wp_send_json_error(array('message' => $captcha_check['msg']));
             return;
@@ -3606,35 +3399,4 @@ function iterator_to_string(Iterator $iterator): string
     return $content;
 }
 
-/*GET参数操作*/
-function iro_action_operator()
-{
-    if (!isset($_GET['iro_act']) || empty($_GET['iro_act'])) {
-        return;
-    }
-
-    if (!is_admin() || !current_user_can('manage_options')) {
-        echo __("Access denied.", "sakurairo");
-        return;
-    }
-
-    $direct_info = sanitize_key($_GET['iro_act']);
-
-    switch($direct_info){
-        case 'gallery_init':
-            include_once('inc/classes/gallery.php');
-            $gallery = new Sakura\API\gallery();
-            echo $gallery->init();
-            echo 'Done!';
-            break;
-
-        case 'gallery_webp':
-            include_once('inc/classes/gallery.php');
-            $gallery = new Sakura\API\gallery();
-            echo $gallery->webp();
-            echo 'Done!';
-            break;
-    }
-}
-iro_action_operator();
-
+require_once get_template_directory() . '/inc/gallery-admin.php';

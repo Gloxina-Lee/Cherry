@@ -40,30 +40,17 @@ class Captcha
         }
     }
 
-    /**
-     * crypt_captcha
-     *
-     * @return string
-     */
-    private function crypt_captcha(): string
+    /** Read the existing form contract without accepting arrays or oversized timestamps. */
+    public static function check_request(string $answer_field): array
     {
-        //return md5($this->captchCode);
-        return password_hash($this->captchaResult, PASSWORD_DEFAULT);
-        // return wp_hash_password($this->captchCode);
-    }
-
-    /**
-     * verify_captcha
-     *
-     * @param  string $captcha
-     * @param  string $hash
-     * @return bool
-     */
-    public function verify_captcha(string $captcha, string $hash): bool
-    {
-        //return md5($captcha) == $hash ? true : false;
-        return password_verify($captcha, $hash);
-        // return wp_check_password($captcha, $hash);
+        $answer = $_POST[$answer_field] ?? '';
+        $timestamp = $_POST['timestamp'] ?? '';
+        $id = $_POST['id'] ?? '';
+        if (!is_string($answer) || !is_string($timestamp) || !is_string($id)
+            || !preg_match('/\A[0-9]{1,10}\z/', $timestamp)) {
+            return ['code' => 3, 'data' => '', 'msg' => __('Bad Request.', 'sakurairo')];
+        }
+        return (new self())->check_captcha(trim($answer), (int) $timestamp, $id);
     }
 
     /**
@@ -136,7 +123,14 @@ class Captcha
         imagefilter($image, IMG_FILTER_GAUSSIAN_BLUR);
         
         $timestamp = time();
-        $this->captchaResult .= $timestamp;
+        $id = bin2hex(random_bytes(32));
+        $challenge = [
+            'time' => $timestamp,
+            'answer' => hash_hmac('sha256', $this->captchaResult . ':' . $timestamp . ':' . $id, wp_salt('nonce')),
+        ];
+        if (!set_transient('cherry_captcha_' . $id, $challenge, 60)) {
+            throw new \RuntimeException('Unable to store captcha challenge.');
+        }
         //打开缓存区
         ob_start();
         //降低图片质量
@@ -148,12 +142,12 @@ class Captcha
         //销毁图片(释放资源)
         imagedestroy($image);
         // 以json格式输出
-        $captchaimg = 'data:image/png;base64,' . base64_encode($captchaimg);
+        $captchaimg = 'data:image/jpeg;base64,' . base64_encode($captchaimg);
         return [
             'code' => 0,
             'data' => $captchaimg,
             'msg' => '',
-            'id' => $this->crypt_captcha(),
+            'id' => $id,
             'time' => $timestamp,
         ];
     }
@@ -167,29 +161,26 @@ class Captcha
      */
     public function check_captcha(string $captcha, int $timestamp, string $id): array
     {
-        $currentTime = time();
-        $timeThreshold = $currentTime - 60;
-        if (!isset($timestamp) || !isset($id) || !preg_match('/^[\w$.\/]+$/', $id) || !ctype_digit((string)$timestamp)) {
-            $code = 3;
-            $msg = __('Bad Request.',"sakurairo");//非法请求
-        } elseif (!preg_match('/^(?:(?!199)(?:[1-9]\d?|1\d{2}|0))$/', $captcha)) {
-            //匹配非0 ~ 198
-            $code = 3;
-            $msg = __("Look like you forgot to enter the captcha.","sakurairo");//请输入正确的验证码!
-        } elseif ($timestamp < $timeThreshold) {
+        $code = 3;
+        $msg = __('Bad Request.', 'sakurairo');
+        if (!preg_match('/\A[a-f0-9]{64}\z/', $id)) {
+            return ['code' => $code, 'data' => '', 'msg' => $msg];
+        }
+        $key = 'cherry_captcha_' . $id;
+        $challenge = get_transient($key);
+        // Consume on every attempt, so a challenge cannot be brute-forced or replayed.
+        $consumed = delete_transient($key);
+        if (!$consumed || !is_array($challenge) || !isset($challenge['time'], $challenge['answer'])
+            || $timestamp !== $challenge['time'] || $timestamp < time() - 60 || $timestamp > time()) {
             $code = 2;
-            $msg =  __("Captcha timeout.","sakurairo");//超时!
-        } elseif ($timestamp >= $timeThreshold && $timestamp <= $currentTime) {
-            if ($this->verify_captcha($captcha . $timestamp, $id)) {
-                $code = 5;
-                $msg = __("Captcha check passed.","sakurairo");//'验证码正确!'
-            } else {
-                $code = 1;
-                $msg = __("Captcha incorrect.","sakurairo");//'验证码错误!'
-            }
+            $msg = __('Captcha timeout.', 'sakurairo');
+        } elseif (preg_match('/\A(?:[0-9]|[1-9][0-9]|1[0-8][0-9]|19[0-8])\z/', $captcha)
+            && hash_equals($challenge['answer'], hash_hmac('sha256', $captcha . ':' . $timestamp . ':' . $id, wp_salt('nonce')))) {
+            $code = 5;
+            $msg = __('Captcha check passed.', 'sakurairo');
         } else {
             $code = 1;
-            $msg = __("An error has occurred.","sakurairo");//'错误!'
+            $msg = __('Captcha incorrect.', 'sakurairo');
         }
         return [
             'code' => $code,
